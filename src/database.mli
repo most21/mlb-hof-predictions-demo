@@ -1,6 +1,6 @@
 open Owl
 
-(* Set the schema for the database. TODO: take DB connection as argument? *)
+(* Set the schema for the database. *)
 val create_schema : unit -> unit
 
 (* Insert rows of data (stored as a dataframe) into the specified table. *)
