@@ -1,0 +1,296 @@
+CREATE TABLE IF NOT EXISTS People (
+    playerID TEXT PRIMARY KEY,
+    birthYear INTEGER,
+    birthMonth INTEGER,
+    birthDay INTEGER,
+    birthCountry TEXT,
+    birthState TEXT,
+    birthCity TEXT,
+    deathYear INTEGER,
+    deathMonth INTEGER,
+    deathDay INTEGER,
+    deathCountry TEXT,
+    deathState TEXT,
+    deathCity TEXT,
+    nameFirst TEXT,
+    nameLast TEXT,
+    nameGiven TEXT,
+    weight INTEGER,
+    height INTEGER,
+    bats TEXT,
+    throws TEXT,
+    debut TEXT,
+    finalGame TEXT,
+    retroID TEXT,
+    bbrefID TEXT
+);
+
+CREATE TABLE IF NOT EXISTS TeamsFranchises (
+    franchID TEXT PRIMARY KEY,
+    franchName TEXT NOT NULL,
+    active TEXT,
+    NAassoc TEXT
+);
+
+CREATE TABLE IF NOT EXISTS AwardsPlayers (
+    playerID TEXT NOT NULL,
+    awardID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    lgID TEXT NOT NULL,
+    tie TEXT,
+    notes TEXT,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS AwardsSharePlayers (
+    awardID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    lgID TEXT NOT NULL,
+    playerID TEXT NOT NULL,
+    pointsWon INTEGER NOT NULL,
+    pointsMax INTEGER NOT NULL,
+    votesFirst INTEGER,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS Batting (
+    playerID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    stint INTEGER NOT NULL,
+    teamID TEXT NOT NULL,
+    lgID TEXT,
+    G INTEGER NOT NULL,
+    AB INTEGER NOT NULL,
+    R INTEGER NOT NULL,
+    H INTEGER NOT NULL,
+    2B INTEGER NOT NULL,
+    3B INTEGER NOT NULL,
+    HR INTEGER NOT NULL,
+    RBI INTEGER,
+    SB INTEGER,
+    CS INTEGER,
+    BB INTEGER NOT NULL,
+    SO INTEGER,
+    IBB INTEGER,
+    HBP INTEGER,
+    SH INTEGER,
+    SF INTEGER,
+    GIDP INTEGER,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS BattingPost (
+    yearID INTEGER NOT NULL,
+    round TEXT NOT NULL,
+    playerID TEXT NOT NULL,
+    teamID TEXT NOT NULL,
+    lgID TEXT,
+    G INTEGER NOT NULL,
+    AB INTEGER NOT NULL,
+    R INTEGER NOT NULL,
+    H INTEGER NOT NULL,
+    2B INTEGER NOT NULL,
+    3B INTEGER NOT NULL,
+    HR INTEGER NOT NULL,
+    RBI INTEGER NOT NULL,
+    SB INTEGER NOT NULL,
+    CS INTEGER,
+    BB INTEGER NOT NULL,
+    SO INTEGER NOT NULL,
+    IBB INTEGER NOT NULL,
+    HBP INTEGER,
+    SH INTEGER,
+    SF INTEGER,
+    GIDP INTEGER,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS HallOfFame (
+    playerID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    votedBy TEXT, NOT NULL,
+    ballots INTEGER,
+    needed INTEGER,
+    votes INTEGER,
+    inducted TEXT NOT NULL,
+    category TEXT NOT NULL,
+    needed_note TEXT,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS Pitching (
+    playerID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    stint INTEGER NOT NULL,
+    teamID TEXT NOT NULL,
+    lgID TEXT,
+    W INTEGER NOT NULL,
+    L INTEGER NOT NULL,
+    G INTEGER NOT NULL,
+    GS INTEGER NOT NULL,
+    CG INTEGER NOT NULL,
+    SHO INTEGER NOT NULL,
+    SV INTEGER NOT NULL,
+    IPouts INTEGER NOT NULL,
+    H INTEGER NOT NULL,
+    ER INTEGER NOT NULL,
+    HR INTEGER NOT NULL,
+    BB INTEGER NOT NULL,
+    SO INTEGER NOT NULL,
+    BAOpp REAL,
+    ERA REAL,
+    IBB INTEGER,
+    WP INTEGER NOT NULL,
+    HBP INTEGER,
+    BK INTEGER NOT NULL,
+    BFP INTEGER,
+    GF INTEGER NOT NULL,
+    R INTEGER NOT NULL,
+    SH INTEGER,
+    SF INTEGER,
+    GIDP INTEGER,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS PitchingPost (
+    playerID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    round INTEGER NOT NULL,
+    teamID TEXT NOT NULL,
+    lgID TEXT,
+    W INTEGER NOT NULL,
+    L INTEGER NOT NULL,
+    G INTEGER NOT NULL,
+    GS INTEGER NOT NULL,
+    CG INTEGER NOT NULL,
+    SHO INTEGER NOT NULL,
+    SV INTEGER NOT NULL,
+    IPouts INTEGER NOT NULL,
+    H INTEGER NOT NULL,
+    ER INTEGER NOT NULL,
+    HR INTEGER NOT NULL,
+    BB INTEGER NOT NULL,
+    SO INTEGER NOT NULL,
+    BAOpp REAL,
+    ERA REAL,
+    IBB INTEGER,
+    WP INTEGER,
+    HBP INTEGER,
+    BK INTEGER,
+    BFP INTEGER,
+    GF INTEGER NOT NULL,
+    R INTEGER NOT NULL,
+    SH INTEGER,
+    SF INTEGER,
+    GIDP INTEGER,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS SeriesPost (
+    yearID INTEGER NOT NULL,
+    round TEXT NOT NULL,
+    teamIDwinner TEXT NOT NULL,
+    lgIDwinner TEXT NOT NULL,
+    teamIDloser TEXT NOT NULL,
+    lgIDloser TEXT NOT NULL,
+    wins INTEGER NOT NULL,
+    losses INTEGER NOT NULL,
+    ties INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Teams (
+    yearID INTEGER NOT NULL,
+    lgID TEXT,
+    teamID TEXT NOT NULL,
+    franchID TEXT NOT NULL,
+    divID TEXT,
+    Rank INTEGER NOT NULL,
+    G INTEGER NOT NULL,
+    Ghome INTEGER,
+    W INTEGER NOT NULL,
+    L INTEGER NOT NULL,
+    DivWin TEXT,
+    WCWin TEXT,
+    LgWin TEXT,
+    WSWin TEXT,
+    R INTEGER NOT NULL,
+    AB INTEGER NOT NULL,
+    H INTEGER NOT NULL,
+    2B INTEGER NOT NULL,
+    3B INTEGER NOT NULL,
+    HR INTEGER NOT NULL,
+    BB INTEGER,
+    SO INTEGER,
+    SB INTEGER,
+    CS INTEGER,
+    HBP INTEGER,
+    SF INTEGER,
+    RA INTEGER NOT NULL,
+    ER INTEGER NOT NULL,
+    ERA REAL NOT NULL,
+    CG INTEGER NOT NULL,
+    SHO INTEGER NOT NULL,
+    SV INTEGER NOT NULL,
+    IPouts INTEGER NOT NULL,
+    HA INTEGER NOT NULL,
+    HRA INTEGER NOT NULL,
+    BBA INTEGER NOT NULL,
+    SOA INTEGER NOT NULL,
+    E INTEGER NOT NULL,
+    DP INTEGER NOT NULL,
+    FP REAL NOT NULL,
+    name TEXT NOT NULL,
+    park TEXT,
+    attendance INT,
+    BPF REAL NOT NULL,
+    PPF REAL NOT NULL,
+    teamIDBR TEXT NOT NULL,
+    teamIDlahman45 TEXT NOT NULL,
+    teamIDretro TEXT NOT NULL,
+    FOREIGN KEY (franchID)
+        REFERENCES TeamsFranchises (franchID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS Advanced (
+    bbrefID TEXT NOT NULL,
+    yearID INTEGER NOT NULL,
+    teamID TEXT NOT NULL,
+    franchID TEXT NOT NULL,
+    stint INTEGER NOT NULL,
+    isPitcher TEXT NOT NULL,
+    gamesBatter INTEGER NOT NULL,
+    bWAR162 REAL NOT NULL,
+    wRC_plus REAL,
+    gamesPitcher INTEGER,
+    pWAR162 REAL NOT NULL,
+    ERA_minus REAL,
+    xFIP_minus REAL,
+    WAR162 REAL NOT NULL,
+    FOREIGN KEY (bbrefID)
+        REFERENCES People (bbrefID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);
