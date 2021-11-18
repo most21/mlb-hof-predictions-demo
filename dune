@@ -1,0 +1,13 @@
+(rule
+  (target fpse-project-most1.zip)
+  (deps 
+    src/dataframe_utils.mli
+    src/database.mli
+    src/jaws.mli
+    src/knn.mli
+    src/cli.mli
+    src/misc.py
+    src/dune
+  )
+  (action
+    (run zip -R fpse-project-most1.zip %{deps})))
