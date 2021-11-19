@@ -1,6 +1,7 @@
 (rule
   (target fpse-project-most1.zip)
   (deps 
+    src/main.ml
     src/dataframe_utils.mli
     src/database.mli
     src/jaws.mli

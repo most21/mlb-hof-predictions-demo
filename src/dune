@@ -5,3 +5,11 @@
     core
     owl)
 )
+
+(executable
+  (name main)
+  (modules main)
+  (libraries
+    lib
+    core)
+)
