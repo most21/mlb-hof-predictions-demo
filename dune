@@ -4,6 +4,7 @@
     src/main.ml
     src/dataframe_utils.mli
     src/database.mli
+    src/database.ml
     src/jaws.mli
     src/knn.mli
     src/cli.mli

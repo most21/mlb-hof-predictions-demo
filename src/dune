@@ -1,8 +1,11 @@
 (library
   (name hof)
-  (modules cli)
+  (modules 
+    cli
+    database)
   (libraries 
     core
+    sqlite3
     owl)
 )
 
