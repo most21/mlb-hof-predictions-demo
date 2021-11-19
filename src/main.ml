@@ -1,4 +1,7 @@
-open Core
+(* open Core *)
+
+(* module H = Hof *)
+open Hof
 
 let () = 
-    printf "TODO: Implement CLI\n"
+    Cli.menu_choice_loop ()

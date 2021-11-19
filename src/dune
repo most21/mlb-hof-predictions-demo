@@ -1,6 +1,6 @@
 (library
-  (name lib)
-  (modules )
+  (name hof)
+  (modules cli)
   (libraries 
     core
     owl)
@@ -10,6 +10,6 @@
   (name main)
   (modules main)
   (libraries
-    lib
-    core)
+    core
+    hof)
 )

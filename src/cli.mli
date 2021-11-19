@@ -1,10 +1,13 @@
-open Core
-open Owl
+(* open Core *)
+
+type input
+
+val menu_choice_loop : unit -> unit
 
 val print_main_menu : unit -> unit
 
 (* Validate/parse user input for menu option selection  *)
-val parse_menu_choice : string -> int
+val parse_menu_choice : string -> input
 
 (* 
     Validate/parse user input for the player being queried. 

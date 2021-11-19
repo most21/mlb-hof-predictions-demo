@@ -1,7 +1,7 @@
 open Owl
 
 (* Set the schema for the database. *)
-val create_schema : unit -> unit
+val create_schema : string -> unit
 
 (* Insert rows of data (stored as a dataframe) into the specified table. *)
 val insert_rows : string -> Dataframe.t -> unit

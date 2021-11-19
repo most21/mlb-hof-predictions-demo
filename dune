@@ -7,6 +7,7 @@
     src/jaws.mli
     src/knn.mli
     src/cli.mli
+    src/cli.ml
     src/misc.py
     src/dune
   )
