@@ -2,12 +2,28 @@
 
 type input
 
-val menu_choice_loop : unit -> unit
+(* Run the main loop for the program, which displays the main menu. Basically just a wrapper around menu_choice_loop *)
+val run_main_menu_loop : unit -> unit
 
-val print_main_menu : unit -> unit
+(* 
+    Validate/parse user input for menu option selection.
+    Args: string containing the line of user input and an int list containing possible legal menu options.
+*)
+val parse_menu_choice : string -> int list -> input
 
-(* Validate/parse user input for menu option selection  *)
-val parse_menu_choice : string -> input
+(* 
+    Run a general menu loop where the user can choose from a set of integer options. 
+    Takes a function as an argument that prints the desired menu.
+*)
+val menu_choice_loop : (unit -> unit) -> int list -> (int -> bool ref -> unit) -> unit
+
+(* Function that handles the database admin menu selection. *)
+val perform_db_menu_selection : int -> bool ref -> unit
+
+(* Function that handles the main menu selection. *)
+val perform_main_menu_selection : int -> bool ref -> unit
+
+
 
 (* 
     Validate/parse user input for the player being queried. 
