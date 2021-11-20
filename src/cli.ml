@@ -1,5 +1,4 @@
 open Core
-(* open Owl *)
 
 (* TODO: Add Player option eventually *)
 type input = MenuOption of int |  Invalid of string (* | Player of string *)
@@ -65,7 +64,7 @@ let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices
 
 let perform_db_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
-  | 1 -> failwith "Case 1: Unimplemented"
+  | 1 -> Database.create_schema () (*failwith "Case 1: Unimplemented"*)
   | 2 -> failwith "Case 2: Unimplemented"
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
