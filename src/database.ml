@@ -8,18 +8,17 @@ let db_file = "mlb-hof.db"
 let all_table_names = ["People"; "TeamsFranchises"; "AwardsPlayers"; "AwardsSharePlayers"; "Batting"; "BattingPost"; "HallOfFame"; "Pitching"; "PitchingPost"; "SeriesPost"; "Teams"; "Advanced"]
 
 
-let exec_non_query_sql (db: Sqlite3.db) (sql: string) = 
+let exec_non_query_sql ?(indicator=".") (db: Sqlite3.db) (sql: string) = 
   let result = Sqlite3.exec_no_headers db sql ~cb:(fun _ -> ()) 
   in 
   match result with
-  | Rc.OK -> print_string ".\n"
+  | Rc.OK -> print_string indicator
   | _ -> print_string @@ "Error: " ^ (Rc.to_string result) ^ "    " ^ sql ^ "\n"
 
 
 let drop_db_tables (db: Sqlite3.db) (tables: string list)= 
   let sql_template = "DROP TABLE IF EXISTS "
   in List.iter tables ~f:(fun t -> exec_non_query_sql db (sql_template ^ t ^ ";"))
-
 
 let create_schema () = 
   let& db = Sqlite3.db_open db_file 
@@ -36,14 +35,6 @@ let create_schema () =
 
 
 
-(* let populate_database (table_names: string list) = 
-  let& db = Sqlite3.db_open db_file 
-  in
-  List.iter table_names ~f:(fun table -> Dataframe_utils.read_data_file (table ^ ".csv")) *)
-(* TODO:  get read_data_file up and running *)
-
-
-
 let unpack_value_to_string (value: Dataframe.elt) : string = 
   match value with
   | Dataframe.Int x -> Int.to_string x
@@ -54,11 +45,21 @@ let unpack_value_to_string (value: Dataframe.elt) : string =
 let row_to_string (row: Dataframe.elt array) : string = 
   row
   |> Array.fold ~init:[] ~f:(fun accum elt -> (let s = unpack_value_to_string elt in accum @ [s]))
-  |> List.map ~f:(fun s -> "\'" ^ s ^ "\'")
+  |> List.map ~f:(fun s -> "\"" ^ s ^ "\"")
   |> String.concat ~sep:", "
 
 
 let insert_rows (table: string) (data: Dataframe.t) (db: Sqlite3.db) = 
   let sql = Format.sprintf "INSERT INTO %s VALUES (%s);" table
+  in Dataframe.iter_row (fun r -> exec_non_query_sql db (sql @@ row_to_string r) ~indicator:"") data
+
+
+let populate_database () = 
+  let& db = Sqlite3.db_open db_file 
   in 
-  Dataframe.iter_row (fun r -> exec_non_query_sql db (sql @@ row_to_string r)) data
+  let iter_func t = 
+    let df = Dataframe_utils.read_data_file ("data/clean/" ^ t ^ ".csv")
+    in insert_rows t df db; print_string @@ "Populated " ^ t ^ " table\n";
+  in
+  List.iter all_table_names ~f:iter_func;
+  print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n";

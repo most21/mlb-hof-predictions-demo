@@ -1,4 +1,4 @@
-(* open Owl *)
+open Owl
 
 
 (* Given a list of table names, drop each one in the table. This is a preparatory step for re-loading the schema. *)
@@ -12,16 +12,16 @@ val create_schema : unit -> unit
     Provide a list of DB table names to populate, each of which should have a corresponding .csv file. 
     Assume the schema exists.
 *)
-val populate_database : string list -> unit
+val populate_database : unit -> unit
 
 (* Execute a non-query SQL command, like dropping/creating tables. *)
-val exec_non_query_sql : Sqlite3.db -> string -> unit
+val exec_non_query_sql : ?indicator:string -> Sqlite3.db -> string -> unit
 
-(* Insert rows of data (stored as a dataframe) into the specified table.
-val insert_rows : string -> Dataframe.t -> unit
+(* Insert rows of data (stored as a dataframe) into the specified table. *)
+val insert_rows : string -> Dataframe.t -> Sqlite3.db -> unit
 
 
 
 
 (* Given a player ID, return that player's data. TODO: return type *)
-val get_player_data : string -> Dataframe.t *)
+(* val get_player_data : string -> Dataframe.t *)

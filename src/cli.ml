@@ -46,6 +46,7 @@ let parse_menu_choice (s: string) (choices: int list): input =
     end
   | _ -> Invalid s
 
+(* TODO: Delete "You selected..." once I know the CLI definitely works *)
 let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices: int list) (selection_handler: int -> bool ref -> unit) = 
   print_menu ();
   let quit = ref false in
@@ -64,8 +65,8 @@ let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices
 
 let perform_db_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
-  | 1 -> Database.create_schema () (*failwith "Case 1: Unimplemented"*)
-  | 2 -> failwith "Case 2: Unimplemented"
+  | 1 -> Database.create_schema ()
+  | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 

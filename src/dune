@@ -2,7 +2,8 @@
   (name hof)
   (modules 
     cli
-    database)
+    database
+    dataframe_utils)
   (libraries 
     core
     sqlite3

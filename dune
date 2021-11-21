@@ -3,6 +3,7 @@
   (deps 
     src/main.ml
     src/dataframe_utils.mli
+    src/dataframe_utils.ml
     src/database.mli
     src/database.ml
     src/jaws.mli
