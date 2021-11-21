@@ -48,9 +48,6 @@ def drop_players_and_columns():
 def fill_missing_values_df(df, default_vals):
     """ 
         Fill NaN values in a single dataframe.
-        Unfortunately, this cannot be done easily with Owl dataframes b/c columns cannot have mixed types.
-        Owl drops rows with missing values rather than storing them as NaN.
-
         Args:
             df : pandas dataframe, potentially with missing data to fill
             default_vals : dict mapping df column names to an appropriate default value
@@ -80,7 +77,7 @@ if __name__ == "__main__":
 
     # drop_players_and_columns()
 
-    fill_missing_values_wrapper()
+    # fill_missing_values_wrapper()
     pass
 
     

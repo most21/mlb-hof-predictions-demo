@@ -222,11 +222,11 @@ sullibi03,1937,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 veachbo01,1937,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 wallabo01,1937,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 wilsoha01,1937,BBWAA,201.0,151.0,1.0,N,Player,MISSING
-bulkemo99,1937,Centennial,-1,-1,-1,Y,Pioneer/Executive,MISSING
-johnsba99,1937,Centennial,-1,-1,-1,Y,Pioneer/Executive,MISSING
-mackco01,1937,Centennial,-1,-1,-1,Y,Manager,MISSING
-mcgrajo01,1937,Veterans,-1,-1,-1,Y,Manager,MISSING
-wrighge01,1937,Centennial,-1,-1,-1,Y,Pioneer/Executive,MISSING
+bulkemo99,1937,Centennial,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+johnsba99,1937,Centennial,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+mackco01,1937,Centennial,-1.0,-1.0,-1.0,Y,Manager,MISSING
+mcgrajo01,1937,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+wrighge01,1937,Centennial,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 alexape01,1938,BBWAA,262.0,197.0,212.0,Y,Player,MISSING
 sislege01,1938,BBWAA,262.0,197.0,179.0,N,Player,MISSING
 keelewi01,1938,BBWAA,262.0,197.0,177.0,N,Player,MISSING
@@ -347,8 +347,8 @@ streega01,1938,BBWAA,262.0,197.0,1.0,N,Player,MISSING
 thomair01,1938,BBWAA,262.0,197.0,1.0,N,Player,MISSING
 willicy01,1938,BBWAA,262.0,197.0,1.0,N,Player,MISSING
 zimmech01,1938,BBWAA,262.0,197.0,1.0,N,Player,MISSING
-cartwal99,1938,Centennial,-1,-1,-1,Y,Pioneer/Executive,MISSING
-chadwhe99,1938,Centennial,-1,-1,-1,Y,Pioneer/Executive,MISSING
+cartwal99,1938,Centennial,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+chadwhe99,1938,Centennial,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 sislege01,1939,BBWAA,274.0,206.0,235.0,Y,Player,MISSING
 collied01,1939,BBWAA,274.0,206.0,213.0,Y,Player,MISSING
 keelewi01,1939,BBWAA,274.0,206.0,207.0,Y,Player,MISSING
@@ -457,13 +457,13 @@ shockur01,1939,BBWAA,274.0,206.0,1.0,N,Player,MISSING
 stahlja01,1939,BBWAA,274.0,206.0,1.0,N,Player,MISSING
 steinha01,1939,BBWAA,274.0,206.0,1.0,N,Player,MISSING
 wilsoha01,1939,BBWAA,274.0,206.0,1.0,N,Player,MISSING
-ansonca01,1939,Old Timers,-1,-1,-1,Y,Player,MISSING
-comisch01,1939,Old Timers,-1,-1,-1,Y,Pioneer/Executive,MISSING
-cummica01,1939,Old Timers,-1,-1,-1,Y,Pioneer/Executive,MISSING
-ewingbu01,1939,Old Timers,-1,-1,-1,Y,Player,MISSING
-gehrilo01,1939,Special Election,-1,-1,-1,Y,Player,MISSING
-radboch01,1939,Old Timers,-1,-1,-1,Y,Player,MISSING
-spaldal01,1939,Old Timers,-1,-1,-1,Y,Pioneer/Executive,MISSING
+ansonca01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+comisch01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+cummica01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+ewingbu01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+gehrilo01,1939,Special Election,-1.0,-1.0,-1.0,Y,Player,MISSING
+radboch01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+spaldal01,1939,Old Timers,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 hornsro01,1942,BBWAA,233.0,175.0,182.0,Y,Player,MISSING
 chancfr01,1942,BBWAA,233.0,175.0,136.0,N,Player,MISSING
 wadderu01,1942,BBWAA,233.0,175.0,136.0,N,Player,MISSING
@@ -536,7 +536,7 @@ tennefr02,1942,BBWAA,233.0,175.0,1.0,N,Player,MISSING
 wambsbi01,1942,BBWAA,233.0,175.0,1.0,N,Player,MISSING
 wilsoha01,1942,BBWAA,233.0,175.0,1.0,N,Player,MISSING
 woodjo02,1942,BBWAA,233.0,175.0,1.0,N,Player,MISSING
-landike99,1944,Old Timers,-1,-1,-1,Y,Pioneer/Executive,MISSING
+landike99,1944,Old Timers,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 chancfr01,1945,BBWAA,247.0,186.0,179.0,N,Player,MISSING
 wadderu01,1945,BBWAA,247.0,186.0,154.0,N,Player,MISSING
 walshed01,1945,BBWAA,247.0,186.0,137.0,N,Player,MISSING
@@ -632,124 +632,124 @@ tanneje01,1945,BBWAA,247.0,186.0,1.0,N,Player,MISSING
 vandejo01,1945,BBWAA,247.0,186.0,1.0,N,Player,MISSING
 willicy01,1945,BBWAA,247.0,186.0,1.0,N,Player,MISSING
 yerkest02,1945,BBWAA,247.0,186.0,1.0,N,Player,MISSING
-bresnro01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-broutda01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-clarkfr01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-colliji01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-delahed01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-duffyhu01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-jennihu01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-kellyki01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-orourji01,1945,Old Timers,-1,-1,-1,Y,Player,MISSING
-robinwi01,1945,Old Timers,-1,-1,-1,Y,Manager,MISSING
+bresnro01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+broutda01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+clarkfr01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+colliji01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+delahed01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+duffyhu01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+jennihu01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+kellyki01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+orourji01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+robinwi01,1945,Old Timers,-1.0,-1.0,-1.0,Y,Manager,MISSING
 chancfr01,1946,Final Ballot,263.0,198.0,150.0,N,Player,MISSING
-chancfr01,1946,Nominating Vote,202.0,-1,144.0,N,Player,Top 20
-eversjo01,1946,Nominating Vote,202.0,-1,130.0,N,Player,Top 20
-huggimi01,1946,Nominating Vote,202.0,-1,129.0,N,Player,Top 20
-wadderu01,1946,Nominating Vote,202.0,-1,122.0,N,Player,Top 20
-walshed01,1946,Nominating Vote,202.0,-1,115.0,N,Player,Top 20
+chancfr01,1946,Nominating Vote,202.0,-1.0,144.0,N,Player,Top 20
+eversjo01,1946,Nominating Vote,202.0,-1.0,130.0,N,Player,Top 20
+huggimi01,1946,Nominating Vote,202.0,-1.0,129.0,N,Player,Top 20
+wadderu01,1946,Nominating Vote,202.0,-1.0,122.0,N,Player,Top 20
+walshed01,1946,Nominating Vote,202.0,-1.0,115.0,N,Player,Top 20
 eversjo01,1946,Final Ballot,263.0,198.0,110.0,N,Player,MISSING
 huggimi01,1946,Final Ballot,263.0,198.0,106.0,N,Player,MISSING
 walshed01,1946,Final Ballot,263.0,198.0,106.0,N,Player,MISSING
-friscfr01,1946,Nominating Vote,202.0,-1,104.0,N,Player,Top 20
-hubbeca01,1946,Nominating Vote,202.0,-1,101.0,N,Player,Top 20
+friscfr01,1946,Nominating Vote,202.0,-1.0,104.0,N,Player,Top 20
+hubbeca01,1946,Nominating Vote,202.0,-1.0,101.0,N,Player,Top 20
 wadderu01,1946,Final Ballot,263.0,198.0,87.0,N,Player,MISSING
 griffcl01,1946,Final Ballot,263.0,198.0,82.0,N,Player,MISSING
-cochrmi01,1946,Nominating Vote,202.0,-1,80.0,N,Player,Top 20
+cochrmi01,1946,Nominating Vote,202.0,-1.0,80.0,N,Player,Top 20
 hubbeca01,1946,Final Ballot,263.0,198.0,75.0,N,Player,MISSING
-griffcl01,1946,Nominating Vote,202.0,-1,73.0,N,Player,Top 20
-grovele01,1946,Nominating Vote,202.0,-1,71.0,N,Player,Top 20
+griffcl01,1946,Nominating Vote,202.0,-1.0,73.0,N,Player,Top 20
+grovele01,1946,Nominating Vote,202.0,-1.0,71.0,N,Player,Top 20
 friscfr01,1946,Final Ballot,263.0,198.0,67.0,N,Player,MISSING
 cochrmi01,1946,Final Ballot,263.0,198.0,65.0,N,Player,MISSING
-traynpi01,1946,Nominating Vote,202.0,-1,65.0,N,Player,Top 20
+traynpi01,1946,Nominating Vote,202.0,-1.0,65.0,N,Player,Top 20
 grovele01,1946,Final Ballot,263.0,198.0,61.0,N,Player,MISSING
-brownmo01,1946,Nominating Vote,202.0,-1,56.0,N,Player,Top 20
-tinkejo01,1946,Nominating Vote,202.0,-1,55.0,N,Player,Top 20
+brownmo01,1946,Nominating Vote,202.0,-1.0,56.0,N,Player,Top 20
+tinkejo01,1946,Nominating Vote,202.0,-1.0,55.0,N,Player,Top 20
 traynpi01,1946,Final Ballot,263.0,198.0,53.0,N,Player,MISSING
-mcginjo01,1946,Nominating Vote,202.0,-1,53.0,N,Player,Top 20
-maranra01,1946,Nominating Vote,202.0,-1,50.0,N,Player,Top 20
+mcginjo01,1946,Nominating Vote,202.0,-1.0,53.0,N,Player,Top 20
+maranra01,1946,Nominating Vote,202.0,-1.0,50.0,N,Player,Top 20
 brownmo01,1946,Final Ballot,263.0,198.0,48.0,N,Player,MISSING
 mcginjo01,1946,Final Ballot,263.0,198.0,47.0,N,Player,MISSING
 deandi01,1946,Final Ballot,263.0,198.0,45.0,N,Player,MISSING
 tinkejo01,1946,Final Ballot,263.0,198.0,45.0,N,Player,MISSING
-gehrich01,1946,Nominating Vote,202.0,-1,43.0,N,Player,Top 20
-pennohe01,1946,Nominating Vote,202.0,-1,41.0,N,Player,Top 20
-deandi01,1946,Nominating Vote,202.0,-1,40.0,N,Player,Top 20
-dickebi01,1946,Nominating Vote,202.0,-1,40.0,N,Player,Top 20
-bakerfr01,1946,Nominating Vote,202.0,-1,39.0,N,Player,Top 20
-bendech01,1946,Nominating Vote,202.0,-1,39.0,N,Player,Top 20
+gehrich01,1946,Nominating Vote,202.0,-1.0,43.0,N,Player,Top 20
+pennohe01,1946,Nominating Vote,202.0,-1.0,41.0,N,Player,Top 20
+deandi01,1946,Nominating Vote,202.0,-1.0,40.0,N,Player,Top 20
+dickebi01,1946,Nominating Vote,202.0,-1.0,40.0,N,Player,Top 20
+bakerfr01,1946,Nominating Vote,202.0,-1.0,39.0,N,Player,Top 20
+bendech01,1946,Nominating Vote,202.0,-1.0,39.0,N,Player,Top 20
 bakerfr01,1946,Final Ballot,263.0,198.0,36.0,N,Player,MISSING
-schalra01,1946,Nominating Vote,202.0,-1,36.0,N,Player,Top 20
+schalra01,1946,Nominating Vote,202.0,-1.0,36.0,N,Player,Top 20
 bendech01,1946,Final Ballot,263.0,198.0,35.0,N,Player,MISSING
-planked01,1946,Nominating Vote,202.0,-1,34.0,N,Player,Top 20
+planked01,1946,Nominating Vote,202.0,-1.0,34.0,N,Player,Top 20
 dickebi01,1946,Final Ballot,263.0,198.0,32.0,N,Player,MISSING
-terrybi01,1946,Nominating Vote,202.0,-1,31.0,N,Player,Top 20
-vanceda01,1946,Nominating Vote,202.0,-1,31.0,N,Player,Top 20
+terrybi01,1946,Nominating Vote,202.0,-1.0,31.0,N,Player,Top 20
+vanceda01,1946,Nominating Vote,202.0,-1.0,31.0,N,Player,Top 20
 maranra01,1946,Final Ballot,263.0,198.0,29.0,N,Player,MISSING
-foxxji01,1946,Nominating Vote,202.0,-1,26.0,N,Player,Top 20
-youngro01,1946,Nominating Vote,202.0,-1,25.0,N,Player,Top 20
+foxxji01,1946,Nominating Vote,202.0,-1.0,26.0,N,Player,Top 20
+youngro01,1946,Nominating Vote,202.0,-1.0,25.0,N,Player,Top 20
 gehrich01,1946,Final Ballot,263.0,198.0,23.0,N,Player,MISSING
-heilmha01,1946,Nominating Vote,202.0,-1,23.0,N,Player,Top 20
-klingjo01,1946,Nominating Vote,202.0,-1,20.0,N,Player,Top 20
+heilmha01,1946,Nominating Vote,202.0,-1.0,23.0,N,Player,Top 20
+klingjo01,1946,Nominating Vote,202.0,-1.0,20.0,N,Player,Top 20
 pennohe01,1946,Final Ballot,263.0,198.0,16.0,N,Player,MISSING
-jossad01,1946,Nominating Vote,202.0,-1,14.0,N,Player,Top 20
-ruckena01,1946,Nominating Vote,202.0,-1,13.0,N,Player,Top 20
-roushed01,1946,Nominating Vote,202.0,-1,11.0,N,Player,Top 20
-crawfsa01,1946,Nominating Vote,202.0,-1,9.0,N,Player,Top 20
-adamsba01,1946,Nominating Vote,202.0,-1,6.0,N,Player,Top 20
-crigelo01,1946,Nominating Vote,202.0,-1,6.0,N,Player,Top 20
-marquru01,1946,Nominating Vote,202.0,-1,6.0,N,Player,Top 20
-wheatza01,1946,Nominating Vote,202.0,-1,6.0,N,Player,Top 20
-woodjo02,1946,Nominating Vote,202.0,-1,5.0,N,Player,Top 20
-donovbi01,1946,Nominating Vote,202.0,-1,4.0,N,Player,Top 20
-gomezle01,1946,Nominating Vote,202.0,-1,4.0,N,Player,Top 20
-wanerpa01,1946,Nominating Vote,202.0,-1,4.0,N,Player,Top 20
-lyonste01,1946,Nominating Vote,202.0,-1,3.0,N,Player,Top 20
-burkeje01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-bushdo01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-coombja01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-davisha01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-hartnga01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-jacksjo01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-mckecbi01,1946,Nominating Vote,202.0,-1,2.0,N,Player,Top 20
-bancrda01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-beaumgi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-bradlbi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-chesbja01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-clarkjo01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-cravaga01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-dinnebi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-dunnja01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-granted01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-grimmch01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-hoytwa01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-jonesfi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-killebi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-knabeot01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-longhe01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-mageesh01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-martipe01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-nichoki01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-phillde01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-ruelmu01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-sheckji01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-simmoal01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-southbi01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-sparktu01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-sullibi03,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-tanneje01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-tennefr01,1946,Nominating Vote,202.0,-1,1.0,N,Player,Top 20
-burkeje01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-chancfr01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-chesbja01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-eversjo01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-griffcl01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-mccarto01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-mcginjo01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-planked01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-tinkejo01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-wadderu01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
-walshed01,1946,Old Timers,-1,-1,-1,Y,Player,MISSING
+jossad01,1946,Nominating Vote,202.0,-1.0,14.0,N,Player,Top 20
+ruckena01,1946,Nominating Vote,202.0,-1.0,13.0,N,Player,Top 20
+roushed01,1946,Nominating Vote,202.0,-1.0,11.0,N,Player,Top 20
+crawfsa01,1946,Nominating Vote,202.0,-1.0,9.0,N,Player,Top 20
+adamsba01,1946,Nominating Vote,202.0,-1.0,6.0,N,Player,Top 20
+crigelo01,1946,Nominating Vote,202.0,-1.0,6.0,N,Player,Top 20
+marquru01,1946,Nominating Vote,202.0,-1.0,6.0,N,Player,Top 20
+wheatza01,1946,Nominating Vote,202.0,-1.0,6.0,N,Player,Top 20
+woodjo02,1946,Nominating Vote,202.0,-1.0,5.0,N,Player,Top 20
+donovbi01,1946,Nominating Vote,202.0,-1.0,4.0,N,Player,Top 20
+gomezle01,1946,Nominating Vote,202.0,-1.0,4.0,N,Player,Top 20
+wanerpa01,1946,Nominating Vote,202.0,-1.0,4.0,N,Player,Top 20
+lyonste01,1946,Nominating Vote,202.0,-1.0,3.0,N,Player,Top 20
+burkeje01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+bushdo01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+coombja01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+davisha01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+hartnga01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+jacksjo01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+mckecbi01,1946,Nominating Vote,202.0,-1.0,2.0,N,Player,Top 20
+bancrda01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+beaumgi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+bradlbi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+chesbja01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+clarkjo01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+cravaga01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+dinnebi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+dunnja01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+granted01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+grimmch01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+hoytwa01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+jonesfi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+killebi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+knabeot01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+longhe01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+mageesh01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+martipe01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+nichoki01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+phillde01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+ruelmu01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+sheckji01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+simmoal01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+southbi01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+sparktu01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+sullibi03,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+tanneje01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+tennefr01,1946,Nominating Vote,202.0,-1.0,1.0,N,Player,Top 20
+burkeje01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+chancfr01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+chesbja01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+eversjo01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+griffcl01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+mccarto01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+mcginjo01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+planked01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+tinkejo01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+wadderu01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+walshed01,1946,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
 hubbeca01,1947,BBWAA,161.0,121.0,140.0,Y,Player,MISSING
 friscfr01,1947,BBWAA,161.0,121.0,136.0,Y,Player,MISSING
 cochrmi01,1947,BBWAA,161.0,121.0,128.0,Y,Player,MISSING
@@ -895,28 +895,28 @@ smithsh01,1948,BBWAA,121.0,91.0,1.0,N,Player,MISSING
 stengca01,1948,BBWAA,121.0,91.0,1.0,N,Manager,MISSING
 westsa01,1948,BBWAA,121.0,91.0,1.0,N,Player,MISSING
 willicy01,1948,BBWAA,121.0,91.0,1.0,N,Player,MISSING
-gehrich01,1949,Run Off,187.0,-1,159.0,Y,Player,1st
-ottme01,1949,Run Off,187.0,-1,128.0,N,Player,1st
+gehrich01,1949,Run Off,187.0,-1.0,159.0,Y,Player,1st
+ottme01,1949,Run Off,187.0,-1.0,128.0,N,Player,1st
 gehrich01,1949,BBWAA,153.0,115.0,102.0,N,Player,MISSING
 ottme01,1949,BBWAA,153.0,115.0,94.0,N,Player,MISSING
 simmoal01,1949,BBWAA,153.0,115.0,89.0,N,Player,MISSING
-foxxji01,1949,Run Off,187.0,-1,89.0,N,Player,1st
+foxxji01,1949,Run Off,187.0,-1.0,89.0,N,Player,1st
 deandi01,1949,BBWAA,153.0,115.0,88.0,N,Player,MISSING
 foxxji01,1949,BBWAA,153.0,115.0,85.0,N,Player,MISSING
 terrybi01,1949,BBWAA,153.0,115.0,81.0,N,Player,MISSING
-deandi01,1949,Run Off,187.0,-1,81.0,N,Player,1st
-simmoal01,1949,Run Off,187.0,-1,76.0,N,Player,1st
+deandi01,1949,Run Off,187.0,-1.0,81.0,N,Player,1st
+simmoal01,1949,Run Off,187.0,-1.0,76.0,N,Player,1st
 wanerpa01,1949,BBWAA,153.0,115.0,73.0,N,Player,MISSING
 greenha01,1949,BBWAA,153.0,115.0,67.0,N,Player,MISSING
 dickebi01,1949,BBWAA,153.0,115.0,65.0,N,Player,MISSING
-wanerpa01,1949,Run Off,187.0,-1,63.0,N,Player,1st
+wanerpa01,1949,Run Off,187.0,-1.0,63.0,N,Player,1st
 heilmha01,1949,BBWAA,153.0,115.0,59.0,N,Player,MISSING
 maranra01,1949,BBWAA,153.0,115.0,58.0,N,Player,MISSING
-heilmha01,1949,Run Off,187.0,-1,52.0,N,Player,1st
-terrybi01,1949,Run Off,187.0,-1,48.0,N,Player,1st
-greenha01,1949,Run Off,187.0,-1,44.0,N,Player,1st
-dickebi01,1949,Run Off,187.0,-1,39.0,N,Player,1st
-maranra01,1949,Run Off,187.0,-1,39.0,N,Player,1st
+heilmha01,1949,Run Off,187.0,-1.0,52.0,N,Player,1st
+terrybi01,1949,Run Off,187.0,-1.0,48.0,N,Player,1st
+greenha01,1949,Run Off,187.0,-1.0,44.0,N,Player,1st
+dickebi01,1949,Run Off,187.0,-1.0,39.0,N,Player,1st
+maranra01,1949,Run Off,187.0,-1.0,39.0,N,Player,1st
 hartnga01,1949,BBWAA,153.0,115.0,35.0,N,Player,MISSING
 cronijo01,1949,BBWAA,153.0,115.0,33.0,N,Player,MISSING
 vanceda01,1949,BBWAA,153.0,115.0,33.0,N,Player,MISSING
@@ -927,17 +927,17 @@ ruffire01,1949,BBWAA,153.0,115.0,22.0,N,Player,MISSING
 lazzeto01,1949,BBWAA,153.0,115.0,20.0,N,Player,MISSING
 youngro01,1949,BBWAA,153.0,115.0,20.0,N,Player,MISSING
 gomezle01,1949,BBWAA,153.0,115.0,17.0,N,Player,MISSING
-schalra01,1949,Run Off,187.0,-1,17.0,N,Player,1st
+schalra01,1949,Run Off,187.0,-1.0,17.0,N,Player,1st
 martipe01,1949,BBWAA,153.0,115.0,16.0,N,Player,MISSING
-cronijo01,1949,Run Off,187.0,-1,16.0,N,Player,1st
+cronijo01,1949,Run Off,187.0,-1.0,16.0,N,Player,1st
 wheatza01,1949,BBWAA,153.0,115.0,15.0,N,Player,MISSING
-vanceda01,1949,Run Off,187.0,-1,15.0,N,Player,1st
+vanceda01,1949,Run Off,187.0,-1.0,15.0,N,Player,1st
 roushed01,1949,BBWAA,153.0,115.0,14.0,N,Player,MISSING
-lyonste01,1949,Run Off,187.0,-1,14.0,N,Player,1st
+lyonste01,1949,Run Off,187.0,-1.0,14.0,N,Player,1st
 careyma01,1949,BBWAA,153.0,115.0,12.0,N,Player,MISSING
-wilsoha01,1949,Run Off,187.0,-1,12.0,N,Player,1st
+wilsoha01,1949,Run Off,187.0,-1.0,12.0,N,Player,1st
 harribu01,1949,BBWAA,153.0,115.0,11.0,N,Player,MISSING
-youngro01,1949,Run Off,187.0,-1,11.0,N,Player,1st
+youngro01,1949,Run Off,187.0,-1.0,11.0,N,Player,1st
 gowdyha01,1949,BBWAA,153.0,115.0,10.0,N,Player,MISSING
 grimmch01,1949,BBWAA,153.0,115.0,10.0,N,Player,MISSING
 kleinch01,1949,BBWAA,153.0,115.0,9.0,N,Player,MISSING
@@ -947,13 +947,13 @@ mcinnst01,1949,BBWAA,153.0,115.0,8.0,N,Player,MISSING
 dykesji01,1949,BBWAA,153.0,115.0,7.0,N,Player,MISSING
 hoytwa01,1949,BBWAA,153.0,115.0,7.0,N,Player,MISSING
 southbi01,1949,BBWAA,153.0,115.0,7.0,N,Player,MISSING
-hartnga01,1949,Run Off,187.0,-1,7.0,N,Player,1st
+hartnga01,1949,Run Off,187.0,-1.0,7.0,N,Player,1st
 combsea01,1949,BBWAA,153.0,115.0,6.0,N,Player,MISSING
 faberre01,1949,BBWAA,153.0,115.0,6.0,N,Player,MISSING
 jackstr01,1949,BBWAA,153.0,115.0,6.0,N,Player,MISSING
 oneilst01,1949,BBWAA,153.0,115.0,6.0,N,Player,MISSING
 wilsoji01,1949,BBWAA,153.0,115.0,6.0,N,Player,MISSING
-lazzeto01,1949,Run Off,187.0,-1,6.0,N,Player,1st
+lazzeto01,1949,Run Off,187.0,-1.0,6.0,N,Player,1st
 adamsba01,1949,BBWAA,153.0,115.0,5.0,N,Player,MISSING
 bancrda01,1949,BBWAA,153.0,115.0,5.0,N,Player,MISSING
 hermaba01,1949,BBWAA,153.0,115.0,5.0,N,Player,MISSING
@@ -965,7 +965,7 @@ hardeme01,1949,BBWAA,153.0,115.0,4.0,N,Player,MISSING
 marquru01,1949,BBWAA,153.0,115.0,4.0,N,Player,MISSING
 odoulle01,1949,BBWAA,153.0,115.0,4.0,N,Player,MISSING
 rixeyep01,1949,BBWAA,153.0,115.0,4.0,N,Player,MISSING
-ruffire01,1949,Run Off,187.0,-1,4.0,N,Player,1st
+ruffire01,1949,Run Off,187.0,-1.0,4.0,N,Player,1st
 covelst01,1949,BBWAA,153.0,115.0,3.0,N,Player,MISSING
 meusebo01,1949,BBWAA,153.0,115.0,3.0,N,Player,MISSING
 ricesa01,1949,BBWAA,153.0,115.0,3.0,N,Player,MISSING
@@ -1013,8 +1013,8 @@ toneyfr01,1949,BBWAA,153.0,115.0,1.0,N,Player,MISSING
 werbebi01,1949,BBWAA,153.0,115.0,1.0,N,Player,MISSING
 wittwh01,1949,BBWAA,153.0,115.0,1.0,N,Player,MISSING
 wrighgl01,1949,BBWAA,153.0,115.0,1.0,N,Player,MISSING
-brownmo01,1949,Old Timers,-1,-1,-1,Y,Player,MISSING
-nichoki01,1949,Old Timers,-1,-1,-1,Y,Player,MISSING
+brownmo01,1949,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
+nichoki01,1949,Old Timers,-1.0,-1.0,-1.0,Y,Player,MISSING
 ottme01,1950,BBWAA,168.0,126.0,115.0,N,Player,MISSING
 terrybi01,1950,BBWAA,168.0,126.0,105.0,N,Player,MISSING
 foxxji01,1950,BBWAA,168.0,126.0,103.0,N,Player,MISSING
@@ -1359,12 +1359,12 @@ sherdbi01,1953,BBWAA,264.0,198.0,1.0,N,Player,MISSING
 streega01,1953,BBWAA,264.0,198.0,1.0,N,Player,MISSING
 vaughar01,1953,BBWAA,264.0,198.0,1.0,N,Player,MISSING
 wambsbi01,1953,BBWAA,264.0,198.0,1.0,N,Player,MISSING
-barroed99,1953,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-bendech01,1953,Veterans,-1,-1,-1,Y,Player,MISSING
-connoto99,1953,Veterans,-1,-1,-1,Y,Umpire,MISSING
-klembi99,1953,Veterans,-1,-1,-1,Y,Umpire,MISSING
-wallabo01,1953,Veterans,-1,-1,-1,Y,Player,MISSING
-wrighha01,1953,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+barroed99,1953,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+bendech01,1953,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+connoto99,1953,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+klembi99,1953,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+wallabo01,1953,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+wrighha01,1953,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 maranra01,1954,BBWAA,252.0,189.0,209.0,Y,Player,MISSING
 dickebi01,1954,BBWAA,252.0,189.0,202.0,Y,Player,MISSING
 terrybi01,1954,BBWAA,252.0,189.0,195.0,Y,Player,MISSING
@@ -1482,8 +1482,8 @@ peckiro01,1955,BBWAA,251.0,189.0,1.0,N,Player,MISSING
 schumha02,1955,BBWAA,251.0,189.0,1.0,N,Player,MISSING
 seweljo01,1955,BBWAA,251.0,189.0,1.0,N,Player,MISSING
 sherdbi01,1955,BBWAA,251.0,189.0,1.0,N,Player,MISSING
-bakerfr01,1955,Veterans,-1,-1,-1,Y,Player,MISSING
-schalra01,1955,Veterans,-1,-1,-1,Y,Player,MISSING
+bakerfr01,1955,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+schalra01,1955,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 greenha01,1956,BBWAA,193.0,145.0,164.0,Y,Player,MISSING
 cronijo01,1956,BBWAA,193.0,145.0,152.0,Y,Player,MISSING
 ruffire01,1956,BBWAA,193.0,145.0,97.0,N,Player,MISSING
@@ -1590,8 +1590,8 @@ wambsbi01,1956,BBWAA,193.0,145.0,1.0,N,Player,MISSING
 whitebu01,1956,BBWAA,193.0,145.0,1.0,N,Player,MISSING
 whiteea01,1956,BBWAA,193.0,145.0,1.0,N,Player,MISSING
 willike01,1956,BBWAA,193.0,145.0,1.0,N,Player,MISSING
-crawfsa01,1957,Veterans,-1,-1,-1,Y,Player,MISSING
-mccarjo99,1957,Veterans,-1,-1,-1,Y,Manager,MISSING
+crawfsa01,1957,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+mccarjo99,1957,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
 careyma01,1958,BBWAA,266.0,200.0,136.0,N,Player,MISSING
 roushed01,1958,BBWAA,266.0,200.0,112.0,N,Player,MISSING
 ruffire01,1958,BBWAA,266.0,200.0,99.0,N,Player,MISSING
@@ -1746,7 +1746,7 @@ willike01,1958,BBWAA,266.0,200.0,1.0,N,Player,MISSING
 wyattwh01,1958,BBWAA,266.0,200.0,1.0,N,Player,MISSING
 youngpe01,1958,BBWAA,266.0,200.0,1.0,N,Player,MISSING
 zachato01,1958,BBWAA,266.0,200.0,1.0,N,Player,MISSING
-wheatza01,1959,Veterans,-1,-1,-1,Y,Player,MISSING
+wheatza01,1959,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 roushed01,1960,BBWAA,269.0,202.0,146.0,N,Player,MISSING
 ricesa01,1960,BBWAA,269.0,202.0,143.0,N,Player,MISSING
 rixeyep01,1960,BBWAA,269.0,202.0,142.0,N,Player,MISSING
@@ -1881,8 +1881,8 @@ suhrgu01,1960,BBWAA,269.0,202.0,1.0,N,Player,MISSING
 tebbebi01,1960,BBWAA,269.0,202.0,1.0,N,Player,MISSING
 walberu01,1960,BBWAA,269.0,202.0,1.0,N,Player,MISSING
 zachato01,1960,BBWAA,269.0,202.0,1.0,N,Player,MISSING
-careyma01,1961,Veterans,-1,-1,-1,Y,Player,MISSING
-hamilbi01,1961,Veterans,-1,-1,-1,Y,Player,MISSING
+careyma01,1961,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hamilbi01,1961,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 fellebo01,1962,BBWAA,160.0,120.0,150.0,Y,Player,MISSING
 robinja02,1962,BBWAA,160.0,120.0,124.0,Y,Player,MISSING
 ricesa01,1962,BBWAA,160.0,120.0,81.0,N,Player,MISSING
@@ -1962,18 +1962,18 @@ stephri01,1962,BBWAA,160.0,120.0,1.0,N,Player,MISSING
 walkedi02,1962,BBWAA,160.0,120.0,1.0,N,Player,MISSING
 wrighgl01,1962,BBWAA,160.0,120.0,1.0,N,Player,MISSING
 yorkru01,1962,BBWAA,160.0,120.0,1.0,N,Player,MISSING
-mckecbi01,1962,Veterans,-1,-1,-1,Y,Manager,MISSING
-roushed01,1962,Veterans,-1,-1,-1,Y,Player,MISSING
-clarkjo01,1963,Veterans,-1,-1,-1,Y,Player,MISSING
-flickel01,1963,Veterans,-1,-1,-1,Y,Player,MISSING
-ricesa01,1963,Veterans,-1,-1,-1,Y,Player,MISSING
-rixeyep01,1963,Veterans,-1,-1,-1,Y,Player,MISSING
-applilu01,1964,Run Off,201.0,-1,189.0,Y,Player,1st
-ruffire01,1964,Run Off,201.0,-1,184.0,N,Player,1st
+mckecbi01,1962,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+roushed01,1962,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+clarkjo01,1963,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+flickel01,1963,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+ricesa01,1963,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+rixeyep01,1963,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+applilu01,1964,Run Off,201.0,-1.0,189.0,Y,Player,1st
+ruffire01,1964,Run Off,201.0,-1.0,184.0,N,Player,1st
 applilu01,1964,BBWAA,201.0,151.0,142.0,N,Player,MISSING
 ruffire01,1964,BBWAA,201.0,151.0,141.0,N,Player,MISSING
-camparo01,1964,Run Off,201.0,-1,138.0,N,Player,1st
-medwijo01,1964,Run Off,201.0,-1,130.0,N,Player,1st
+camparo01,1964,Run Off,201.0,-1.0,138.0,N,Player,1st
+medwijo01,1964,Run Off,201.0,-1.0,130.0,N,Player,1st
 camparo01,1964,BBWAA,201.0,151.0,115.0,N,Player,MISSING
 medwijo01,1964,BBWAA,201.0,151.0,108.0,N,Player,MISSING
 reesepe01,1964,BBWAA,201.0,151.0,73.0,N,Player,MISSING
@@ -1985,12 +1985,12 @@ hardeme01,1964,BBWAA,201.0,151.0,51.0,N,Player,MISSING
 vandejo01,1964,BBWAA,201.0,151.0,51.0,N,Player,MISSING
 marioma01,1964,BBWAA,201.0,151.0,50.0,N,Player,MISSING
 wanerll01,1964,BBWAA,201.0,151.0,47.0,N,Player,MISSING
-reesepe01,1964,Run Off,201.0,-1,47.0,N,Player,1st
+reesepe01,1964,Run Off,201.0,-1.0,47.0,N,Player,1st
 rizzuph01,1964,BBWAA,201.0,151.0,45.0,N,Player,MISSING
-boudrlo01,1964,Run Off,201.0,-1,43.0,N,Player,1st
+boudrlo01,1964,Run Off,201.0,-1.0,43.0,N,Player,1st
 reynoal01,1964,BBWAA,201.0,151.0,35.0,N,Player,MISSING
 waltebu01,1964,BBWAA,201.0,151.0,35.0,N,Player,MISSING
-lopezal01,1964,Run Off,201.0,-1,34.0,N,Player,1st
+lopezal01,1964,Run Off,201.0,-1.0,34.0,N,Player,1st
 kellge01,1964,BBWAA,201.0,151.0,33.0,N,Player,MISSING
 lombaer01,1964,BBWAA,201.0,151.0,33.0,N,Player,MISSING
 kinerra01,1964,BBWAA,201.0,151.0,31.0,N,Player,MISSING
@@ -2000,51 +2000,51 @@ newhoha01,1964,BBWAA,201.0,151.0,26.0,N,Player,MISSING
 doerrbo01,1964,BBWAA,201.0,151.0,24.0,N,Player,MISSING
 lemonbo01,1964,BBWAA,201.0,151.0,24.0,N,Player,MISSING
 cavarph01,1964,BBWAA,201.0,151.0,22.0,N,Player,MISSING
-vandejo01,1964,Run Off,201.0,-1,20.0,N,Player,1st
+vandejo01,1964,Run Off,201.0,-1.0,20.0,N,Player,1st
 martipe01,1964,BBWAA,201.0,151.0,19.0,N,Player,MISSING
-kleinch01,1964,Run Off,201.0,-1,18.0,N,Player,1st
+kleinch01,1964,Run Off,201.0,-1.0,18.0,N,Player,1st
 newsobo01,1964,BBWAA,201.0,151.0,17.0,N,Player,MISSING
 vaughar01,1964,BBWAA,201.0,151.0,17.0,N,Player,MISSING
-marioma01,1964,Run Off,201.0,-1,17.0,N,Player,1st
+marioma01,1964,Run Off,201.0,-1.0,17.0,N,Player,1st
 bridgto01,1964,BBWAA,201.0,151.0,15.0,N,Player,MISSING
 durocle01,1964,BBWAA,201.0,151.0,15.0,N,Player,MISSING
 moorete01,1964,BBWAA,201.0,151.0,14.0,N,Player,MISSING
-hardeme01,1964,Run Off,201.0,-1,14.0,N,Player,1st
+hardeme01,1964,Run Off,201.0,-1.0,14.0,N,Player,1st
 henrito01,1964,BBWAA,201.0,151.0,13.0,N,Player,MISSING
 maglisa01,1964,BBWAA,201.0,151.0,13.0,N,Player,MISSING
 warnelo01,1964,BBWAA,201.0,151.0,13.0,N,Player,MISSING
 cramedo01,1964,BBWAA,201.0,151.0,12.0,N,Player,MISSING
 dimagdo01,1964,BBWAA,201.0,151.0,12.0,N,Player,MISSING
 kellech01,1964,BBWAA,201.0,151.0,12.0,N,Player,MISSING
-mizejo01,1964,Run Off,201.0,-1,12.0,N,Player,1st
-wanerll01,1964,Run Off,201.0,-1,12.0,N,Player,1st
-rizzuph01,1964,Run Off,201.0,-1,11.0,N,Player,1st
+mizejo01,1964,Run Off,201.0,-1.0,12.0,N,Player,1st
+wanerll01,1964,Run Off,201.0,-1.0,12.0,N,Player,1st
+rizzuph01,1964,Run Off,201.0,-1.0,11.0,N,Player,1st
 hutchfr01,1964,BBWAA,201.0,151.0,10.0,N,Player,MISSING
 schumha02,1964,BBWAA,201.0,151.0,10.0,N,Player,MISSING
 yorkru01,1964,BBWAA,201.0,151.0,10.0,N,Player,MISSING
-hermabi01,1964,Run Off,201.0,-1,9.0,N,Player,1st
-lombaer01,1964,Run Off,201.0,-1,9.0,N,Player,1st
+hermabi01,1964,Run Off,201.0,-1.0,9.0,N,Player,1st
+lombaer01,1964,Run Off,201.0,-1.0,9.0,N,Player,1st
 raschvi01,1964,BBWAA,201.0,151.0,8.0,N,Player,MISSING
-kellge01,1964,Run Off,201.0,-1,8.0,N,Player,1st
-waltebu01,1964,Run Off,201.0,-1,8.0,N,Player,1st
+kellge01,1964,Run Off,201.0,-1.0,8.0,N,Player,1st
+waltebu01,1964,Run Off,201.0,-1.0,8.0,N,Player,1st
 chandsp01,1964,BBWAA,201.0,151.0,6.0,N,Player,MISSING
 mccorfr01,1964,BBWAA,201.0,151.0,6.0,N,Player,MISSING
 walkedi02,1964,BBWAA,201.0,151.0,6.0,N,Player,MISSING
-reynoal01,1964,Run Off,201.0,-1,6.0,N,Player,1st
-vaughar01,1964,Run Off,201.0,-1,6.0,N,Player,1st
-doerrbo01,1964,Run Off,201.0,-1,5.0,N,Player,1st
-martipe01,1964,Run Off,201.0,-1,5.0,N,Player,1st
+reynoal01,1964,Run Off,201.0,-1.0,6.0,N,Player,1st
+vaughar01,1964,Run Off,201.0,-1.0,6.0,N,Player,1st
+doerrbo01,1964,Run Off,201.0,-1.0,5.0,N,Player,1st
+martipe01,1964,Run Off,201.0,-1.0,5.0,N,Player,1st
 elliobo01,1964,BBWAA,201.0,151.0,4.0,N,Player,MISSING
 truckvi01,1964,BBWAA,201.0,151.0,4.0,N,Player,MISSING
 kindeel01,1964,BBWAA,201.0,151.0,3.0,N,Player,MISSING
 sainjo01,1964,BBWAA,201.0,151.0,3.0,N,Player,MISSING
-kinerra01,1964,Run Off,201.0,-1,3.0,N,Player,1st
-lemonbo01,1964,Run Off,201.0,-1,3.0,N,Player,1st
-newhoha01,1964,Run Off,201.0,-1,3.0,N,Player,1st
+kinerra01,1964,Run Off,201.0,-1.0,3.0,N,Player,1st
+lemonbo01,1964,Run Off,201.0,-1.0,3.0,N,Player,1st
+newhoha01,1964,Run Off,201.0,-1.0,3.0,N,Player,1st
 casege01,1964,BBWAA,201.0,151.0,2.0,N,Player,MISSING
 houttar01,1964,BBWAA,201.0,151.0,2.0,N,Player,MISSING
 westrwe01,1964,BBWAA,201.0,151.0,2.0,N,Player,MISSING
-durocle01,1964,Run Off,201.0,-1,2.0,N,Player,1st
+durocle01,1964,Run Off,201.0,-1.0,2.0,N,Player,1st
 gromest01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 kuzavbo01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 miksied01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
@@ -2052,17 +2052,17 @@ northro01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 sewelri01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 smallro01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
 troutdi01,1964,BBWAA,201.0,151.0,1.0,N,Player,MISSING
-bridgto01,1964,Run Off,201.0,-1,1.0,N,Player,1st
-cavarph01,1964,Run Off,201.0,-1,1.0,N,Player,1st
-gordojo01,1964,Run Off,201.0,-1,1.0,N,Player,1st
-newsobo01,1964,Run Off,201.0,-1,1.0,N,Player,1st
-faberre01,1964,Veterans,-1,-1,-1,Y,Player,MISSING
-grimebu01,1964,Veterans,-1,-1,-1,Y,Player,MISSING
-huggimi01,1964,Veterans,-1,-1,-1,Y,Manager,MISSING
-keefeti01,1964,Veterans,-1,-1,-1,Y,Player,MISSING
-manushe01,1964,Veterans,-1,-1,-1,Y,Player,MISSING
-wardjo01,1964,Veterans,-1,-1,-1,Y,Player,MISSING
-galvipu01,1965,Veterans,-1,-1,-1,Y,Player,MISSING
+bridgto01,1964,Run Off,201.0,-1.0,1.0,N,Player,1st
+cavarph01,1964,Run Off,201.0,-1.0,1.0,N,Player,1st
+gordojo01,1964,Run Off,201.0,-1.0,1.0,N,Player,1st
+newsobo01,1964,Run Off,201.0,-1.0,1.0,N,Player,1st
+faberre01,1964,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+grimebu01,1964,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+huggimi01,1964,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+keefeti01,1964,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+manushe01,1964,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+wardjo01,1964,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+galvipu01,1965,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 willite01,1966,BBWAA,302.0,227.0,282.0,Y,Player,MISSING
 ruffire01,1966,BBWAA,302.0,227.0,208.0,N,Player,MISSING
 camparo01,1966,BBWAA,302.0,227.0,197.0,N,Player,MISSING
@@ -2112,13 +2112,13 @@ carrach01,1966,BBWAA,302.0,227.0,1.0,N,Player,MISSING
 hearnji01,1966,BBWAA,302.0,227.0,1.0,N,Player,MISSING
 hemusso01,1966,BBWAA,302.0,227.0,1.0,N,Player,MISSING
 portebo01,1966,BBWAA,302.0,227.0,1.0,N,Player,MISSING
-stengca01,1966,Veterans,-1,-1,-1,Y,Manager,MISSING
-ruffire01,1967,Run Off,306.0,-1,266.0,Y,Player,1st
-medwijo01,1967,Run Off,306.0,-1,248.0,N,Player,1st
+stengca01,1966,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+ruffire01,1967,Run Off,306.0,-1.0,266.0,Y,Player,1st
+medwijo01,1967,Run Off,306.0,-1.0,248.0,N,Player,1st
 medwijo01,1967,BBWAA,292.0,219.0,212.0,N,Player,MISSING
 ruffire01,1967,BBWAA,292.0,219.0,212.0,N,Player,MISSING
 camparo01,1967,BBWAA,292.0,219.0,204.0,N,Player,MISSING
-camparo01,1967,Run Off,306.0,-1,170.0,N,Player,1st
+camparo01,1967,Run Off,306.0,-1.0,170.0,N,Player,1st
 boudrlo01,1967,BBWAA,292.0,219.0,143.0,N,Player,MISSING
 kinerra01,1967,BBWAA,292.0,219.0,124.0,N,Player,MISSING
 slaugen01,1967,BBWAA,292.0,219.0,123.0,N,Player,MISSING
@@ -2129,50 +2129,50 @@ reesepe01,1967,BBWAA,292.0,219.0,89.0,N,Player,MISSING
 vandejo01,1967,BBWAA,292.0,219.0,87.0,N,Player,MISSING
 reynoal01,1967,BBWAA,292.0,219.0,77.0,N,Player,MISSING
 rizzuph01,1967,BBWAA,292.0,219.0,71.0,N,Player,MISSING
-boudrlo01,1967,Run Off,306.0,-1,68.0,N,Player,1st
+boudrlo01,1967,Run Off,306.0,-1.0,68.0,N,Player,1st
 gordojo01,1967,BBWAA,292.0,219.0,66.0,N,Player,MISSING
 waltebu01,1967,BBWAA,292.0,219.0,65.0,N,Player,MISSING
 newhoha01,1967,BBWAA,292.0,219.0,62.0,N,Player,MISSING
 hermabi01,1967,BBWAA,292.0,219.0,59.0,N,Player,MISSING
 hardeme01,1967,BBWAA,292.0,219.0,52.0,N,Player,MISSING
-lopezal01,1967,Run Off,306.0,-1,50.0,N,Player,1st
-slaugen01,1967,Run Off,306.0,-1,48.0,N,Player,1st
+lopezal01,1967,Run Off,306.0,-1.0,50.0,N,Player,1st
+slaugen01,1967,Run Off,306.0,-1.0,48.0,N,Player,1st
 vaughar01,1967,BBWAA,292.0,219.0,46.0,N,Player,MISSING
 lombaer01,1967,BBWAA,292.0,219.0,43.0,N,Player,MISSING
-kinerra01,1967,Run Off,306.0,-1,41.0,N,Player,1st
+kinerra01,1967,Run Off,306.0,-1.0,41.0,N,Player,1st
 kellge01,1967,BBWAA,292.0,219.0,40.0,N,Player,MISSING
 darkal01,1967,BBWAA,292.0,219.0,38.0,N,Player,MISSING
 doerrbo01,1967,BBWAA,292.0,219.0,35.0,N,Player,MISSING
 lemonbo01,1967,BBWAA,292.0,219.0,35.0,N,Player,MISSING
-vandejo01,1967,Run Off,306.0,-1,35.0,N,Player,1st
-lombaer01,1967,Run Off,306.0,-1,25.0,N,Player,1st
-waltebu01,1967,Run Off,306.0,-1,24.0,N,Player,1st
+vandejo01,1967,Run Off,306.0,-1.0,35.0,N,Player,1st
+lombaer01,1967,Run Off,306.0,-1.0,25.0,N,Player,1st
+waltebu01,1967,Run Off,306.0,-1.0,24.0,N,Player,1st
 bauerha01,1967,BBWAA,292.0,219.0,23.0,N,Player,MISSING
-marioma01,1967,Run Off,306.0,-1,22.0,N,Player,1st
+marioma01,1967,Run Off,306.0,-1.0,22.0,N,Player,1st
 newsobo01,1967,BBWAA,292.0,219.0,19.0,N,Player,MISSING
-reynoal01,1967,Run Off,306.0,-1,19.0,N,Player,1st
-vaughar01,1967,Run Off,306.0,-1,19.0,N,Player,1st
+reynoal01,1967,Run Off,306.0,-1.0,19.0,N,Player,1st
+vaughar01,1967,Run Off,306.0,-1.0,19.0,N,Player,1st
 newcodo01,1967,BBWAA,292.0,219.0,18.0,N,Player,MISSING
-reesepe01,1967,Run Off,306.0,-1,16.0,N,Player,1st
+reesepe01,1967,Run Off,306.0,-1.0,16.0,N,Player,1st
 cavarph01,1967,BBWAA,292.0,219.0,15.0,N,Player,MISSING
-doerrbo01,1967,Run Off,306.0,-1,15.0,N,Player,1st
+doerrbo01,1967,Run Off,306.0,-1.0,15.0,N,Player,1st
 vernomi01,1967,BBWAA,292.0,219.0,14.0,N,Player,MISSING
-hardeme01,1967,Run Off,306.0,-1,14.0,N,Player,1st
-hermabi01,1967,Run Off,306.0,-1,14.0,N,Player,1st
-mizejo01,1967,Run Off,306.0,-1,14.0,N,Player,1st
-rizzuph01,1967,Run Off,306.0,-1,14.0,N,Player,1st
-gordojo01,1967,Run Off,306.0,-1,13.0,N,Player,1st
-newhoha01,1967,Run Off,306.0,-1,13.0,N,Player,1st
-kellge01,1967,Run Off,306.0,-1,11.0,N,Player,1st
+hardeme01,1967,Run Off,306.0,-1.0,14.0,N,Player,1st
+hermabi01,1967,Run Off,306.0,-1.0,14.0,N,Player,1st
+mizejo01,1967,Run Off,306.0,-1.0,14.0,N,Player,1st
+rizzuph01,1967,Run Off,306.0,-1.0,14.0,N,Player,1st
+gordojo01,1967,Run Off,306.0,-1.0,13.0,N,Player,1st
+newhoha01,1967,Run Off,306.0,-1.0,13.0,N,Player,1st
+kellge01,1967,Run Off,306.0,-1.0,11.0,N,Player,1st
 dobyla01,1967,BBWAA,292.0,219.0,10.0,N,Player,MISSING
 thomsbo01,1967,BBWAA,292.0,219.0,10.0,N,Player,MISSING
 kluszte01,1967,BBWAA,292.0,219.0,9.0,N,Player,MISSING
-bauerha01,1967,Run Off,306.0,-1,9.0,N,Player,1st
-darkal01,1967,Run Off,306.0,-1,7.0,N,Player,1st
-lemonbo01,1967,Run Off,306.0,-1,7.0,N,Player,1st
-newsobo01,1967,Run Off,306.0,-1,6.0,N,Player,1st
+bauerha01,1967,Run Off,306.0,-1.0,9.0,N,Player,1st
+darkal01,1967,Run Off,306.0,-1.0,7.0,N,Player,1st
+lemonbo01,1967,Run Off,306.0,-1.0,7.0,N,Player,1st
+newsobo01,1967,Run Off,306.0,-1.0,6.0,N,Player,1st
 mcdougi01,1967,BBWAA,292.0,219.0,4.0,N,Player,MISSING
-cavarph01,1967,Run Off,306.0,-1,4.0,N,Player,1st
+cavarph01,1967,Run Off,306.0,-1.0,4.0,N,Player,1st
 jenseja01,1967,BBWAA,292.0,219.0,3.0,N,Player,MISSING
 moorete01,1967,BBWAA,292.0,219.0,3.0,N,Player,MISSING
 ennisde01,1967,BBWAA,292.0,219.0,2.0,N,Player,MISSING
@@ -2180,8 +2180,8 @@ furilca01,1967,BBWAA,292.0,219.0,2.0,N,Player,MISSING
 heganji01,1967,BBWAA,292.0,219.0,2.0,N,Player,MISSING
 torgeea01,1967,BBWAA,292.0,219.0,2.0,N,Player,MISSING
 valoel01,1967,BBWAA,292.0,219.0,2.0,N,Player,MISSING
-newcodo01,1967,Run Off,306.0,-1,2.0,N,Player,1st
-vernomi01,1967,Run Off,306.0,-1,2.0,N,Player,1st
+newcodo01,1967,Run Off,306.0,-1.0,2.0,N,Player,1st
+vernomi01,1967,Run Off,306.0,-1.0,2.0,N,Player,1st
 courtcl01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
 dropowa01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
 garvene01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
@@ -2189,10 +2189,10 @@ hattogr01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
 hearnji01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
 martibi02,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
 pafkoan01,1967,BBWAA,292.0,219.0,1.0,N,Player,MISSING
-dobyla01,1967,Run Off,306.0,-1,1.0,N,Player,1st
-thomsbo01,1967,Run Off,306.0,-1,1.0,N,Player,1st
-rickebr01,1967,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-wanerll01,1967,Veterans,-1,-1,-1,Y,Player,MISSING
+dobyla01,1967,Run Off,306.0,-1.0,1.0,N,Player,1st
+thomsbo01,1967,Run Off,306.0,-1.0,1.0,N,Player,1st
+rickebr01,1967,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+wanerll01,1967,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 medwijo01,1968,BBWAA,283.0,213.0,240.0,Y,Player,MISSING
 camparo01,1968,BBWAA,283.0,213.0,205.0,N,Player,MISSING
 boudrlo01,1968,BBWAA,283.0,213.0,146.0,N,Player,MISSING
@@ -2241,8 +2241,8 @@ galanau01,1968,BBWAA,283.0,213.0,2.0,N,Player,MISSING
 lopated01,1968,BBWAA,283.0,213.0,2.0,N,Player,MISSING
 roepr01,1968,BBWAA,283.0,213.0,2.0,N,Player,MISSING
 raschvi01,1968,BBWAA,283.0,213.0,1.0,N,Player,MISSING
-cuyleki01,1968,Veterans,-1,-1,-1,Y,Player,MISSING
-gosligo01,1968,Veterans,-1,-1,-1,Y,Player,MISSING
+cuyleki01,1968,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+gosligo01,1968,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 musiast01,1969,BBWAA,340.0,255.0,317.0,Y,Player,MISSING
 camparo01,1969,BBWAA,340.0,255.0,270.0,Y,Player,MISSING
 boudrlo01,1969,BBWAA,340.0,255.0,218.0,N,Player,MISSING
@@ -2289,8 +2289,8 @@ raschvi01,1969,BBWAA,340.0,255.0,3.0,N,Player,MISSING
 brechha01,1969,BBWAA,340.0,255.0,2.0,N,Player,MISSING
 lopated01,1969,BBWAA,340.0,255.0,2.0,N,Player,MISSING
 jenseja01,1969,BBWAA,340.0,255.0,1.0,N,Player,MISSING
-covelst01,1969,Veterans,-1,-1,-1,Y,Player,MISSING
-hoytwa01,1969,Veterans,-1,-1,-1,Y,Player,MISSING
+covelst01,1969,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hoytwa01,1969,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 boudrlo01,1970,BBWAA,300.0,225.0,232.0,Y,Player,MISSING
 kinerra01,1970,BBWAA,300.0,225.0,167.0,N,Player,MISSING
 hodgegi01,1970,BBWAA,300.0,225.0,145.0,N,Player,MISSING
@@ -2337,9 +2337,9 @@ jenseja01,1970,BBWAA,300.0,225.0,1.0,N,Player,MISSING
 lopated01,1970,BBWAA,300.0,225.0,1.0,N,Player,MISSING
 mcdougi01,1970,BBWAA,300.0,225.0,1.0,N,Player,MISSING
 roepr01,1970,BBWAA,300.0,225.0,1.0,N,Player,MISSING
-combsea01,1970,Veterans,-1,-1,-1,Y,Player,MISSING
-frickfo99,1970,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-haineje01,1970,Veterans,-1,-1,-1,Y,Player,MISSING
+combsea01,1970,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+frickfo99,1970,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+haineje01,1970,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 berrayo01,1971,BBWAA,360.0,270.0,242.0,N,Player,MISSING
 wynnea01,1971,BBWAA,360.0,270.0,240.0,N,Player,MISSING
 kinerra01,1971,BBWAA,360.0,270.0,212.0,N,Player,MISSING
@@ -2388,14 +2388,14 @@ powervi01,1971,BBWAA,360.0,270.0,2.0,N,Player,MISSING
 raschvi01,1971,BBWAA,360.0,270.0,2.0,N,Player,MISSING
 wertzvi01,1971,BBWAA,360.0,270.0,2.0,N,Player,MISSING
 brutobi01,1971,BBWAA,360.0,270.0,1.0,N,Player,MISSING
-bancrda01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-becklja01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-hafeych01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-hoopeha01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-kellejo01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-marquru01,1971,Veterans,-1,-1,-1,Y,Player,MISSING
-paigesa01,1971,Negro League,-1,-1,-1,Y,Player,MISSING
-weissge99,1971,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+bancrda01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+becklja01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hafeych01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hoopeha01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+kellejo01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+marquru01,1971,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+paigesa01,1971,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+weissge99,1971,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 koufasa01,1972,BBWAA,396.0,297.0,344.0,Y,Player,MISSING
 berrayo01,1972,BBWAA,396.0,297.0,339.0,Y,Player,MISSING
 wynnea01,1972,BBWAA,396.0,297.0,301.0,Y,Player,MISSING
@@ -2442,11 +2442,11 @@ furilca01,1972,BBWAA,396.0,297.0,2.0,N,Player,MISSING
 lopated01,1972,BBWAA,396.0,297.0,2.0,N,Player,MISSING
 roepr01,1972,BBWAA,396.0,297.0,2.0,N,Player,MISSING
 jenseja01,1972,BBWAA,396.0,297.0,1.0,N,Player,MISSING
-gibsojo99,1972,Negro League,-1,-1,-1,Y,Player,MISSING
-gomezle01,1972,Veterans,-1,-1,-1,Y,Player,MISSING
-harriwi99,1972,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-leonabu99,1972,Negro League,-1,-1,-1,Y,Player,MISSING
-youngro01,1972,Veterans,-1,-1,-1,Y,Player,MISSING
+gibsojo99,1972,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+gomezle01,1972,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+harriwi99,1972,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+leonabu99,1972,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+youngro01,1972,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 spahnwa01,1973,BBWAA,380.0,285.0,316.0,Y,Player,MISSING
 fordwh01,1973,BBWAA,380.0,285.0,255.0,N,Player,MISSING
 kinerra01,1973,BBWAA,380.0,285.0,235.0,N,Player,MISSING
@@ -2491,11 +2491,11 @@ richabo01,1973,BBWAA,380.0,285.0,2.0,N,Player,MISSING
 wertzvi01,1973,BBWAA,380.0,285.0,2.0,N,Player,MISSING
 burgesm01,1973,BBWAA,380.0,285.0,1.0,N,Player,MISSING
 haddiha01,1973,BBWAA,380.0,285.0,1.0,N,Player,MISSING
-clemero01,1973,Special Election,-1,-1,-1,Y,Player,MISSING
-evansbi99,1973,Veterans,-1,-1,-1,Y,Umpire,MISSING
-irvinmo01,1973,Negro League,-1,-1,-1,Y,Player,MISSING
-kellyge01,1973,Veterans,-1,-1,-1,Y,Player,MISSING
-welchmi01,1973,Veterans,-1,-1,-1,Y,Player,MISSING
+clemero01,1973,Special Election,-1.0,-1.0,-1.0,Y,Player,MISSING
+evansbi99,1973,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+irvinmo01,1973,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+kellyge01,1973,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+welchmi01,1973,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 mantlmi01,1974,BBWAA,365.0,274.0,322.0,Y,Player,MISSING
 fordwh01,1974,BBWAA,365.0,274.0,284.0,Y,Player,MISSING
 roberro01,1974,BBWAA,365.0,274.0,224.0,N,Player,MISSING
@@ -2540,10 +2540,10 @@ virdobi01,1974,BBWAA,365.0,274.0,3.0,N,Player,MISSING
 burgesm01,1974,BBWAA,365.0,274.0,2.0,N,Player,MISSING
 colavro01,1974,BBWAA,365.0,274.0,2.0,N,Player,MISSING
 wertzvi01,1974,BBWAA,365.0,274.0,2.0,N,Player,MISSING
-bellco99,1974,Negro League,-1,-1,-1,Y,Player,MISSING
-bottoji01,1974,Veterans,-1,-1,-1,Y,Player,MISSING
-conlajo01,1974,Veterans,-1,-1,-1,Y,Umpire,MISSING
-thompsa01,1974,Veterans,-1,-1,-1,Y,Player,MISSING
+bellco99,1974,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+bottoji01,1974,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+conlajo01,1974,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+thompsa01,1974,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 kinerra01,1975,BBWAA,362.0,272.0,273.0,Y,Player,MISSING
 roberro01,1975,BBWAA,362.0,272.0,263.0,N,Player,MISSING
 lemonbo01,1975,BBWAA,362.0,272.0,233.0,N,Player,MISSING
@@ -2581,10 +2581,10 @@ groatdi01,1975,BBWAA,362.0,272.0,4.0,N,Player,MISSING
 podrejo01,1975,BBWAA,362.0,272.0,3.0,N,Player,MISSING
 colavro01,1975,BBWAA,362.0,272.0,1.0,N,Player,MISSING
 virdobi01,1975,BBWAA,362.0,272.0,1.0,N,Player,MISSING
-averiea01,1975,Veterans,-1,-1,-1,Y,Player,MISSING
-harribu01,1975,Veterans,-1,-1,-1,Y,Manager,MISSING
-hermabi01,1975,Veterans,-1,-1,-1,Y,Player,MISSING
-johnsju99,1975,Negro League,-1,-1,-1,Y,Player,MISSING
+averiea01,1975,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+harribu01,1975,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+hermabi01,1975,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+johnsju99,1975,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
 roberro01,1976,BBWAA,388.0,291.0,337.0,Y,Player,MISSING
 lemonbo01,1976,BBWAA,388.0,291.0,305.0,Y,Player,MISSING
 hodgegi01,1976,BBWAA,388.0,291.0,233.0,N,Player,MISSING
@@ -2617,10 +2617,10 @@ groatdi01,1976,BBWAA,388.0,291.0,7.0,N,Player,MISSING
 whitewi01,1976,BBWAA,388.0,291.0,7.0,N,Player,MISSING
 wertzvi01,1976,BBWAA,388.0,291.0,5.0,N,Player,MISSING
 podrejo01,1976,BBWAA,388.0,291.0,2.0,N,Player,MISSING
-charlos99,1976,Negro League,-1,-1,-1,Y,Player,MISSING
-connoro01,1976,Veterans,-1,-1,-1,Y,Player,MISSING
-hubbaca99,1976,Veterans,-1,-1,-1,Y,Umpire,MISSING
-lindsfr01,1976,Veterans,-1,-1,-1,Y,Player,MISSING
+charlos99,1976,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+connoro01,1976,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hubbaca99,1976,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+lindsfr01,1976,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 bankser01,1977,BBWAA,383.0,288.0,321.0,Y,Player,MISSING
 matheed01,1977,BBWAA,383.0,288.0,239.0,N,Player,MISSING
 hodgegi01,1977,BBWAA,383.0,288.0,224.0,N,Player,MISSING
@@ -2655,11 +2655,11 @@ wertzvi01,1977,BBWAA,383.0,288.0,4.0,N,Player,MISSING
 whitewi01,1977,BBWAA,383.0,288.0,4.0,N,Player,MISSING
 pascuca02,1977,BBWAA,383.0,288.0,3.0,N,Player,MISSING
 podrejo01,1977,BBWAA,383.0,288.0,3.0,N,Player,MISSING
-dihigma99,1977,Negro League,-1,-1,-1,Y,Player,MISSING
-lloydpo99,1977,Negro League,-1,-1,-1,Y,Player,MISSING
-lopezal01,1977,Veterans,-1,-1,-1,Y,Manager,MISSING
-rusieam01,1977,Veterans,-1,-1,-1,Y,Player,MISSING
-seweljo01,1977,Veterans,-1,-1,-1,Y,Player,MISSING
+dihigma99,1977,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+lloydpo99,1977,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+lopezal01,1977,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+rusieam01,1977,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+seweljo01,1977,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 matheed01,1978,BBWAA,379.0,285.0,301.0,Y,Player,MISSING
 slaugen01,1978,BBWAA,379.0,285.0,261.0,N,Player,MISSING
 snidedu01,1978,BBWAA,379.0,285.0,254.0,N,Player,MISSING
@@ -2697,8 +2697,8 @@ mclaide01,1978,BBWAA,379.0,285.0,1.0,N,Player,MISSING
 pascuca02,1978,BBWAA,379.0,285.0,1.0,N,Player,MISSING
 grantmu01,1978,BBWAA,379.0,285.0,0.0,N,Player,MISSING
 ramospe01,1978,BBWAA,379.0,285.0,0.0,N,Player,MISSING
-jossad01,1978,Veterans,-1,-1,-1,Y,Player,MISSING
-macphla99,1978,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+jossad01,1978,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+macphla99,1978,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 mayswi01,1979,BBWAA,432.0,324.0,409.0,Y,Player,MISSING
 snidedu01,1979,BBWAA,432.0,324.0,308.0,N,Player,MISSING
 slaugen01,1979,BBWAA,432.0,324.0,297.0,N,Player,MISSING
@@ -2753,8 +2753,8 @@ stahlla01,1979,BBWAA,432.0,324.0,0.0,N,Player,MISSING
 stephjo03,1979,BBWAA,432.0,324.0,0.0,N,Player,MISSING
 stewaji01,1979,BBWAA,432.0,324.0,0.0,N,Player,MISSING
 torboje01,1979,BBWAA,432.0,324.0,0.0,N,Player,MISSING
-gileswa99,1979,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-wilsoha01,1979,Veterans,-1,-1,-1,Y,Player,MISSING
+gileswa99,1979,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+wilsoha01,1979,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 kalinal01,1980,BBWAA,385.0,289.0,340.0,Y,Player,MISSING
 snidedu01,1980,BBWAA,385.0,289.0,333.0,Y,Player,MISSING
 drysddo01,1980,BBWAA,385.0,289.0,238.0,N,Player,MISSING
@@ -2816,8 +2816,8 @@ schaapa01,1980,BBWAA,385.0,289.0,0.0,N,Player,MISSING
 selmadi01,1980,BBWAA,385.0,289.0,0.0,N,Player,MISSING
 simsdu01,1980,BBWAA,385.0,289.0,0.0,N,Player,MISSING
 vealebo01,1980,BBWAA,385.0,289.0,0.0,N,Player,MISSING
-kleinch01,1980,Veterans,-1,-1,-1,Y,Player,MISSING
-yawketo99,1980,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+kleinch01,1980,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+yawketo99,1980,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 gibsobo01,1981,BBWAA,401.0,301.0,337.0,Y,Player,MISSING
 drysddo01,1981,BBWAA,401.0,301.0,243.0,N,Player,MISSING
 hodgegi01,1981,BBWAA,401.0,301.0,241.0,N,Player,MISSING
@@ -2857,8 +2857,8 @@ lockebo01,1981,BBWAA,401.0,301.0,0.0,N,Player,MISSING
 maxvida01,1981,BBWAA,401.0,301.0,0.0,N,Player,MISSING
 mcauldi01,1981,BBWAA,401.0,301.0,0.0,N,Player,MISSING
 mcdowsa01,1981,BBWAA,401.0,301.0,0.0,N,Player,MISSING
-fosteru99,1981,Veterans,-1,-1,-1,Y,Manager,MISSING
-mizejo01,1981,Veterans,-1,-1,-1,Y,Player,MISSING
+fosteru99,1981,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+mizejo01,1981,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 aaronha01,1982,BBWAA,415.0,312.0,406.0,Y,Player,MISSING
 robinfr02,1982,BBWAA,415.0,312.0,370.0,Y,Player,MISSING
 maricju01,1982,BBWAA,415.0,312.0,305.0,N,Player,MISSING
@@ -2901,8 +2901,8 @@ northji01,1982,BBWAA,415.0,312.0,0.0,N,Player,MISSING
 siebeso01,1982,BBWAA,415.0,312.0,0.0,N,Player,MISSING
 tayloto02,1982,BBWAA,415.0,312.0,0.0,N,Player,MISSING
 tovarce01,1982,BBWAA,415.0,312.0,0.0,N,Player,MISSING
-chandha99,1982,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-jackstr01,1982,Veterans,-1,-1,-1,Y,Player,MISSING
+chandha99,1982,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+jackstr01,1982,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 robinbr01,1983,BBWAA,374.0,281.0,344.0,Y,Player,MISSING
 maricju01,1983,BBWAA,374.0,281.0,313.0,Y,Player,MISSING
 killeha01,1983,BBWAA,374.0,281.0,269.0,N,Player,MISSING
@@ -2949,8 +2949,8 @@ rojasco01,1983,BBWAA,374.0,281.0,0.0,N,Player,MISSING
 seguidi01,1983,BBWAA,374.0,281.0,0.0,N,Player,MISSING
 singebi01,1983,BBWAA,374.0,281.0,0.0,N,Player,MISSING
 wynnji01,1983,BBWAA,374.0,281.0,0.0,N,Player,MISSING
-alstowa01,1983,Veterans,-1,-1,-1,Y,Manager,MISSING
-kellge01,1983,Veterans,-1,-1,-1,Y,Player,MISSING
+alstowa01,1983,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+kellge01,1983,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 aparilu01,1984,BBWAA,403.0,303.0,341.0,Y,Player,MISSING
 killeha01,1984,BBWAA,403.0,303.0,335.0,Y,Player,MISSING
 drysddo01,1984,BBWAA,403.0,303.0,316.0,Y,Player,MISSING
@@ -2980,8 +2980,8 @@ brilene01,1984,BBWAA,403.0,303.0,1.0,N,Player,MISSING
 carrocl02,1984,BBWAA,403.0,303.0,1.0,N,Player,MISSING
 colboji01,1984,BBWAA,403.0,303.0,0.0,N,Player,MISSING
 fairlro01,1984,BBWAA,403.0,303.0,0.0,N,Player,MISSING
-ferreri01,1984,Veterans,-1,-1,-1,Y,Player,MISSING
-reesepe01,1984,Veterans,-1,-1,-1,Y,Player,MISSING
+ferreri01,1984,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+reesepe01,1984,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 wilheho01,1985,BBWAA,395.0,297.0,331.0,Y,Player,MISSING
 brocklo01,1985,BBWAA,395.0,297.0,315.0,Y,Player,MISSING
 foxne01,1985,BBWAA,395.0,297.0,295.0,N,Player,MISSING
@@ -3023,8 +3023,8 @@ kraneed01,1985,BBWAA,395.0,297.0,0.0,N,Player,MISSING
 scottge02,1985,BBWAA,395.0,297.0,0.0,N,Player,MISSING
 tolanbo01,1985,BBWAA,395.0,297.0,0.0,N,Player,MISSING
 whitero01,1985,BBWAA,395.0,297.0,0.0,N,Player,MISSING
-slaugen01,1985,Veterans,-1,-1,-1,Y,Player,MISSING
-vaughar01,1985,Veterans,-1,-1,-1,Y,Player,MISSING
+slaugen01,1985,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+vaughar01,1985,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 mccovwi01,1986,BBWAA,425.0,319.0,346.0,Y,Player,MISSING
 willibi01,1986,BBWAA,425.0,319.0,315.0,N,Player,MISSING
 hunteca01,1986,BBWAA,425.0,319.0,289.0,N,Player,MISSING
@@ -3066,8 +3066,8 @@ harrebu01,1986,BBWAA,425.0,319.0,1.0,N,Player,MISSING
 scottge02,1986,BBWAA,425.0,319.0,1.0,N,Player,MISSING
 davalvi01,1986,BBWAA,425.0,319.0,0.0,N,Player,MISSING
 knowlda01,1986,BBWAA,425.0,319.0,0.0,N,Player,MISSING
-doerrbo01,1986,Veterans,-1,-1,-1,Y,Player,MISSING
-lombaer01,1986,Veterans,-1,-1,-1,Y,Player,MISSING
+doerrbo01,1986,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+lombaer01,1986,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 willibi01,1987,BBWAA,413.0,310.0,354.0,Y,Player,MISSING
 hunteca01,1987,BBWAA,413.0,310.0,315.0,Y,Player,MISSING
 bunniji01,1987,BBWAA,413.0,310.0,289.0,N,Player,MISSING
@@ -3096,7 +3096,7 @@ marshmi01,1987,BBWAA,413.0,310.0,6.0,N,Player,MISSING
 bandosa01,1987,BBWAA,413.0,310.0,3.0,N,Player,MISSING
 groteje01,1987,BBWAA,413.0,310.0,0.0,N,Player,MISSING
 stonest01,1987,BBWAA,413.0,310.0,0.0,N,Player,MISSING
-dandrra99,1987,Veterans,-1,-1,-1,Y,Player,MISSING
+dandrra99,1987,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 stargwi01,1988,BBWAA,427.0,321.0,352.0,Y,Player,MISSING
 bunniji01,1988,BBWAA,427.0,321.0,317.0,N,Player,MISSING
 olivato01,1988,BBWAA,427.0,321.0,202.0,N,Player,MISSING
@@ -3182,8 +3182,8 @@ mayru01,1989,BBWAA,447.0,336.0,0.0,N,Player,MISSING
 mcbriba01,1989,BBWAA,447.0,336.0,0.0,N,Player,MISSING
 robinbi02,1989,BBWAA,447.0,336.0,0.0,N,Player,MISSING
 ziskri01,1989,BBWAA,447.0,336.0,0.0,N,Player,MISSING
-barlial99,1989,Veterans,-1,-1,-1,Y,Umpire,MISSING
-schoere01,1989,Veterans,-1,-1,-1,Y,Player,MISSING
+barlial99,1989,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+schoere01,1989,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 palmeji01,1990,BBWAA,444.0,333.0,411.0,Y,Player,MISSING
 morgajo02,1990,BBWAA,444.0,333.0,363.0,Y,Player,MISSING
 perryga01,1990,BBWAA,444.0,333.0,320.0,N,Player,MISSING
@@ -3273,8 +3273,8 @@ rogerst01,1991,BBWAA,443.0,333.0,0.0,N,Player,MISSING
 wathajo01,1991,BBWAA,443.0,333.0,0.0,N,Player,MISSING
 zachrpa01,1991,BBWAA,443.0,333.0,0.0,N,Player,MISSING
 zahnge01,1991,BBWAA,443.0,333.0,0.0,N,Player,MISSING
-lazzeto01,1991,Veterans,-1,-1,-1,Y,Player,MISSING
-veeckbi99,1991,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+lazzeto01,1991,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+veeckbi99,1991,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 seaveto01,1992,BBWAA,430.0,323.0,425.0,Y,Player,MISSING
 fingero01,1992,BBWAA,430.0,323.0,349.0,Y,Player,MISSING
 cepedor01,1992,BBWAA,430.0,323.0,246.0,N,Player,MISSING
@@ -3312,8 +3312,8 @@ maddoga01,1992,BBWAA,430.0,323.0,0.0,N,Player,MISSING
 oglivbe01,1992,BBWAA,430.0,323.0,0.0,N,Player,MISSING
 thomago01,1992,BBWAA,430.0,323.0,0.0,N,Player,MISSING
 vuckope01,1992,BBWAA,430.0,323.0,0.0,N,Player,MISSING
-mcgowbi99,1992,Veterans,-1,-1,-1,Y,Umpire,MISSING
-newhoha01,1992,Veterans,-1,-1,-1,Y,Player,MISSING
+mcgowbi99,1992,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+newhoha01,1992,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 jacksre01,1993,BBWAA,423.0,318.0,396.0,Y,Player,MISSING
 niekrph01,1993,BBWAA,423.0,318.0,278.0,N,Player,MISSING
 cepedor01,1993,BBWAA,423.0,318.0,252.0,N,Player,MISSING
@@ -3386,8 +3386,8 @@ hendrge01,1994,BBWAA,456.0,342.0,0.0,N,Player,MISSING
 hornebo01,1994,BBWAA,456.0,342.0,0.0,N,Player,MISSING
 mcgresc01,1994,BBWAA,456.0,342.0,0.0,N,Player,MISSING
 sotoma01,1994,BBWAA,456.0,342.0,0.0,N,Player,MISSING
-durocle01,1994,Veterans,-1,-1,-1,Y,Manager,MISSING
-rizzuph01,1994,Veterans,-1,-1,-1,Y,Player,MISSING
+durocle01,1994,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+rizzuph01,1994,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 schmimi01,1995,BBWAA,460.0,345.0,444.0,Y,Player,MISSING
 niekrph01,1995,BBWAA,460.0,345.0,286.0,N,Player,MISSING
 suttodo01,1995,BBWAA,460.0,345.0,264.0,N,Player,MISSING
@@ -3427,10 +3427,10 @@ alexado01,1995,BBWAA,460.0,345.0,0.0,N,Player,MISSING
 grossgr01,1995,BBWAA,460.0,345.0,0.0,N,Player,MISSING
 rhoderi01,1995,BBWAA,460.0,345.0,0.0,N,Player,MISSING
 trillma01,1995,BBWAA,460.0,345.0,0.0,N,Player,MISSING
-ashburi01,1995,Veterans,-1,-1,-1,Y,Player,MISSING
-dayle99,1995,Veterans,-1,-1,-1,Y,Player,MISSING
-hulbewi99,1995,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-willivi01,1995,Veterans,-1,-1,-1,Y,Player,MISSING
+ashburi01,1995,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+dayle99,1995,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hulbewi99,1995,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+willivi01,1995,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 niekrph01,1996,BBWAA,470.0,353.0,321.0,N,Player,MISSING
 perezto01,1996,BBWAA,470.0,353.0,309.0,N,Player,MISSING
 suttodo01,1996,BBWAA,470.0,353.0,300.0,N,Player,MISSING
@@ -3466,10 +3466,10 @@ kneppbo01,1996,BBWAA,470.0,353.0,0.0,N,Player,MISSING
 leonaje01,1996,BBWAA,470.0,353.0,0.0,N,Player,MISSING
 rayjo01,1996,BBWAA,470.0,353.0,0.0,N,Player,MISSING
 washicl01,1996,BBWAA,470.0,353.0,0.0,N,Player,MISSING
-bunniji01,1996,Veterans,-1,-1,-1,Y,Player,MISSING
-fostebi99,1996,Veterans,-1,-1,-1,Y,Player,MISSING
-hanlone01,1996,Veterans,-1,-1,-1,Y,Manager,MISSING
-weaveea99,1996,Veterans,-1,-1,-1,Y,Manager,MISSING
+bunniji01,1996,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+fostebi99,1996,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+hanlone01,1996,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+weaveea99,1996,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
 niekrph01,1997,BBWAA,473.0,353.0,380.0,Y,Player,MISSING
 suttodo01,1997,BBWAA,473.0,353.0,346.0,N,Player,MISSING
 perezto01,1997,BBWAA,473.0,353.0,312.0,N,Player,MISSING
@@ -3500,9 +3500,9 @@ scottmi03,1997,BBWAA,473.0,353.0,2.0,N,Player,MISSING
 templga01,1997,BBWAA,473.0,353.0,2.0,N,Player,MISSING
 kennete02,1997,BBWAA,473.0,353.0,1.0,N,Player,MISSING
 puhlte01,1997,BBWAA,473.0,353.0,1.0,N,Player,MISSING
-foxne01,1997,Veterans,-1,-1,-1,Y,Player,MISSING
-lasorto01,1997,Veterans,-1,-1,-1,Y,Manager,MISSING
-wellswi99,1997,Veterans,-1,-1,-1,Y,Player,MISSING
+foxne01,1997,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+lasorto01,1997,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+wellswi99,1997,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 suttodo01,1998,BBWAA,473.0,355.0,386.0,Y,Player,MISSING
 perezto01,1998,BBWAA,473.0,355.0,321.0,N,Player,MISSING
 santoro01,1998,BBWAA,473.0,355.0,204.0,N,Player,MISSING
@@ -3529,10 +3529,10 @@ lansfca01,1998,BBWAA,473.0,355.0,3.0,N,Player,MISSING
 downibr01,1998,BBWAA,473.0,355.0,2.0,N,Player,MISSING
 flanami01,1998,BBWAA,473.0,355.0,2.0,N,Player,MISSING
 dempsri01,1998,BBWAA,473.0,355.0,1.0,N,Player,MISSING
-davisge01,1998,Veterans,-1,-1,-1,Y,Player,MISSING
-dobyla01,1998,Veterans,-1,-1,-1,Y,Player,MISSING
-macphle99,1998,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-roganbu99,1998,Veterans,-1,-1,-1,Y,Player,MISSING
+davisge01,1998,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+dobyla01,1998,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+macphle99,1998,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+roganbu99,1998,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 ryanno01,1999,BBWAA,497.0,373.0,491.0,Y,Player,MISSING
 brettge01,1999,BBWAA,497.0,373.0,488.0,Y,Player,MISSING
 yountro01,1999,BBWAA,497.0,373.0,385.0,Y,Player,MISSING
@@ -3561,10 +3561,10 @@ boddimi01,1999,BBWAA,497.0,373.0,0.0,N,Player,MISSING
 leibrch01,1999,BBWAA,497.0,373.0,0.0,N,Player,MISSING
 tananfr01,1999,BBWAA,497.0,373.0,0.0,N,Player,MISSING
 wittmi01,1999,BBWAA,497.0,373.0,0.0,N,Player,MISSING
-cepedor01,1999,Veterans,-1,-1,-1,Y,Player,MISSING
-chylane99,1999,Veterans,-1,-1,-1,Y,Umpire,MISSING
-seleefr99,1999,Veterans,-1,-1,-1,Y,Manager,MISSING
-willijo99,1999,Veterans,-1,-1,-1,Y,Player,MISSING
+cepedor01,1999,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+chylane99,1999,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+seleefr99,1999,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+willijo99,1999,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 fiskca01,2000,BBWAA,499.0,375.0,397.0,Y,Player,MISSING
 perezto01,2000,BBWAA,499.0,375.0,385.0,Y,Player,MISSING
 riceji01,2000,BBWAA,499.0,375.0,257.0,N,Player,MISSING
@@ -3595,9 +3595,9 @@ hurstbr01,2000,BBWAA,499.0,375.0,1.0,N,Player,MISSING
 smithlo01,2000,BBWAA,499.0,375.0,1.0,N,Player,MISSING
 welchbo01,2000,BBWAA,499.0,375.0,1.0,N,Player,MISSING
 brookhu01,2000,BBWAA,499.0,375.0,0.0,N,Player,MISSING
-andersp01,2000,Veterans,-1,-1,-1,Y,Manager,MISSING
-mcphebi01,2000,Veterans,-1,-1,-1,Y,Player,MISSING
-steartu99,2000,Veterans,-1,-1,-1,Y,Player,MISSING
+andersp01,2000,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+mcphebi01,2000,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+steartu99,2000,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 winfida01,2001,BBWAA,515.0,387.0,435.0,Y,Player,MISSING
 puckeki01,2001,BBWAA,515.0,387.0,423.0,Y,Player,MISSING
 cartega01,2001,BBWAA,515.0,387.0,334.0,N,Player,MISSING
@@ -3630,8 +3630,8 @@ krukjo01,2001,BBWAA,515.0,387.0,1.0,N,Player,MISSING
 rijojo01,2001,BBWAA,515.0,387.0,1.0,N,Player,MISSING
 johnsho01,2001,BBWAA,515.0,387.0,0.0,N,Player,MISSING
 vanslan01,2001,BBWAA,515.0,387.0,0.0,N,Player,MISSING
-mazerbi01,2001,Veterans,-1,-1,-1,Y,Player,MISSING
-smithhi99,2001,Veterans,-1,-1,-1,Y,Player,MISSING
+mazerbi01,2001,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+smithhi99,2001,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 smithoz01,2002,BBWAA,472.0,354.0,433.0,Y,Player,MISSING
 cartega01,2002,BBWAA,472.0,354.0,343.0,N,Player,MISSING
 riceji01,2002,BBWAA,472.0,354.0,260.0,N,Player,MISSING
@@ -3781,23 +3781,23 @@ jonesdo01,2006,BBWAA,520.0,390.0,2.0,N,Player,MISSING
 weisswa01,2006,BBWAA,520.0,390.0,1.0,N,Player,MISSING
 disarga01,2006,BBWAA,520.0,390.0,0.0,N,Player,MISSING
 fernaal01,2006,BBWAA,520.0,390.0,0.0,N,Player,MISSING
-brownra99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-brownwi02,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-coopean99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-grantfr99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-hillpe99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-mackebi99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-manleef99,2006,Negro League,-1,-1,-1,Y,Pioneer/Executive,MISSING
-mendejo99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-pompeal99,2006,Negro League,-1,-1,-1,Y,Pioneer/Executive,MISSING
-poseycu99,2006,Negro League,-1,-1,-1,Y,Pioneer/Executive,MISSING
-santolo99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-suttlmu99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-taylobe99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-torricr99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
-whiteso99,2006,Negro League,-1,-1,-1,Y,Pioneer/Executive,MISSING
-wilkijl99,2006,Negro League,-1,-1,-1,Y,Pioneer/Executive,MISSING
-wilsoju99,2006,Negro League,-1,-1,-1,Y,Player,MISSING
+brownra99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+brownwi02,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+coopean99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+grantfr99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+hillpe99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+mackebi99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+manleef99,2006,Negro League,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+mendejo99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+pompeal99,2006,Negro League,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+poseycu99,2006,Negro League,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+santolo99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+suttlmu99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+taylobe99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+torricr99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
+whiteso99,2006,Negro League,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+wilkijl99,2006,Negro League,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+wilsoju99,2006,Negro League,-1.0,-1.0,-1.0,Y,Player,MISSING
 ripkeca01,2007,BBWAA,545.0,409.0,537.0,Y,Player,MISSING
 gwynnto01,2007,BBWAA,545.0,409.0,532.0,Y,Player,MISSING
 gossari01,2007,BBWAA,545.0,409.0,388.0,N,Player,MISSING
@@ -3855,11 +3855,11 @@ knoblch01,2008,BBWAA,543.0,408.0,1.0,N,Player,MISSING
 stottto01,2008,BBWAA,543.0,408.0,1.0,N,Player,MISSING
 anderbr01,2008,BBWAA,543.0,408.0,0.0,N,Player,MISSING
 rijojo01,2008,BBWAA,543.0,408.0,0.0,N,Player,MISSING
-dreyfba99,2008,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-kuhnbo99,2008,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-omallwa99,2008,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-southbi01,2008,Veterans,-1,-1,-1,Y,Manager,MISSING
-willidi02,2008,Veterans,-1,-1,-1,Y,Manager,MISSING
+dreyfba99,2008,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+kuhnbo99,2008,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+omallwa99,2008,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+southbi01,2008,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+willidi02,2008,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
 henderi01,2009,BBWAA,539.0,405.0,511.0,Y,Player,MISSING
 riceji01,2009,BBWAA,539.0,405.0,412.0,Y,Player,MISSING
 dawsoan01,2009,BBWAA,539.0,405.0,361.0,N,Player,MISSING
@@ -3883,7 +3883,7 @@ oroscje01,2009,BBWAA,539.0,405.0,1.0,N,Player,MISSING
 gantro01,2009,BBWAA,539.0,405.0,0.0,N,Player,MISSING
 plesada01,2009,BBWAA,539.0,405.0,0.0,N,Player,MISSING
 vaughgr01,2009,BBWAA,539.0,405.0,0.0,N,Player,MISSING
-gordojo01,2009,Veterans,-1,-1,-1,Y,Player,MISSING
+gordojo01,2009,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 dawsoan01,2010,BBWAA,539.0,405.0,420.0,Y,Player,MISSING
 blylebe01,2010,BBWAA,539.0,405.0,400.0,N,Player,MISSING
 alomaro01,2010,BBWAA,539.0,405.0,397.0,N,Player,MISSING
@@ -3910,8 +3910,8 @@ reynosh01,2010,BBWAA,539.0,405.0,0.0,N,Player,MISSING
 lankfra01,2010,BBWAA,539.0,405.0,0.0,N,Player,MISSING
 zeileto01,2010,BBWAA,539.0,405.0,0.0,N,Player,MISSING
 jacksmi02,2010,BBWAA,539.0,405.0,0.0,N,Player,MISSING
-herzowh01,2010,Veterans,-1,-1,-1,Y,Manager,MISSING
-harvedo99,2010,Veterans,-1,-1,-1,Y,Umpire,MISSING
+herzowh01,2010,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+harvedo99,2010,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
 alomaro01,2011,BBWAA,581.0,436.0,523.0,Y,Player,MISSING
 blylebe01,2011,BBWAA,581.0,436.0,463.0,Y,Player,MISSING
 larkiba01,2011,BBWAA,581.0,436.0,361.0,N,Player,MISSING
@@ -3945,7 +3945,7 @@ higgibo02,2011,BBWAA,581.0,436.0,0.0,N,Player,MISSING
 johnsch04,2011,BBWAA,581.0,436.0,0.0,N,Player,MISSING
 mondera01,2011,BBWAA,581.0,436.0,0.0,N,Player,MISSING
 rueteki01,2011,BBWAA,581.0,436.0,0.0,N,Player,MISSING
-gillipa99,2011,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+gillipa99,2011,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 larkiba01,2012,BBWAA,573.0,430.0,495.0,Y,Player,MISSING
 morrija02,2012,BBWAA,573.0,430.0,382.0,N,Player,MISSING
 bagweje01,2012,BBWAA,573.0,430.0,321.0,N,Player,MISSING
@@ -3973,7 +3973,7 @@ sierrru01,2012,BBWAA,573.0,430.0,0.0,N,Player,MISSING
 burnije01,2012,BBWAA,573.0,430.0,0.0,N,Player,MISSING
 mulhote01,2012,BBWAA,573.0,430.0,0.0,N,Player,MISSING
 womacto01,2012,BBWAA,573.0,430.0,0.0,N,Player,MISSING
-santoro01,2012,Veterans,-1,-1,-1,Y,Player,MISSING
+santoro01,2012,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
 biggicr01,2013,BBWAA,569.0,427.0,388.0,N,Player,MISSING
 morrija02,2013,BBWAA,569.0,427.0,385.0,N,Player,MISSING
 bagweje01,2013,BBWAA,569.0,427.0,339.0,N,Player,MISSING
@@ -4011,12 +4011,12 @@ claytro01,2013,BBWAA,569.0,427.0,0.0,N,Player,MISSING
 kleskry01,2013,BBWAA,569.0,427.0,0.0,N,Player,MISSING
 walketo04,2013,BBWAA,569.0,427.0,0.0,N,Player,MISSING
 williwo02,2013,BBWAA,569.0,427.0,0.0,N,Player,MISSING
-ruperja99,2013,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-odayha01,2013,Veterans,-1,-1,-1,Y,Umpire,MISSING
-whitede01,2013,Veterans,-1,-1,-1,Y,Player,MISSING
-coxbo01,2014,Veterans,-1,-1,-1,Y,Manager,MISSING
-larusto01,2014,Veterans,-1,-1,-1,Y,Manager,MISSING
-torrejo01,2014,Veterans,-1,-1,-1,Y,Manager,MISSING
+ruperja99,2013,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+odayha01,2013,Veterans,-1.0,-1.0,-1.0,Y,Umpire,MISSING
+whitede01,2013,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+coxbo01,2014,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+larusto01,2014,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
+torrejo01,2014,Veterans,-1.0,-1.0,-1.0,Y,Manager,MISSING
 maddugr01,2014,BBWAA,571.0,429.0,555.0,Y,Player,MISSING
 glavito02,2014,BBWAA,571.0,429.0,525.0,Y,Player,MISSING
 thomafr04,2014,BBWAA,571.0,429.0,478.0,Y,Player,MISSING
@@ -4153,8 +4153,8 @@ morame01,2017,BBWAA,442.0,332.0,0.0,N,Player,MISSING
 rhodear01,2017,BBWAA,442.0,332.0,0.0,N,Player,MISSING
 sanchfr01,2017,BBWAA,442.0,332.0,0.0,N,Player,MISSING
 stairma01,2017,BBWAA,442.0,332.0,0.0,N,Player,MISSING
-seligbu99,2017,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
-schurjo99,2017,Veterans,-1,-1,-1,Y,Pioneer/Executive,MISSING
+seligbu99,2017,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
+schurjo99,2017,Veterans,-1.0,-1.0,-1.0,Y,Pioneer/Executive,MISSING
 jonesch06,2018,BBWAA,422.0,317.0,410.0,Y,Player,MISSING
 guerrvl01,2018,BBWAA,422.0,317.0,392.0,Y,Player,MISSING
 thomeji01,2018,BBWAA,422.0,317.0,379.0,Y,Player,MISSING
@@ -4188,5 +4188,5 @@ isrinja01,2018,BBWAA,422.0,317.0,0.0,N,Player,MISSING
 lidgebr01,2018,BBWAA,422.0,317.0,0.0,N,Player,MISSING
 millwke01,2018,BBWAA,422.0,317.0,0.0,N,Player,MISSING
 zambrca01,2018,BBWAA,422.0,317.0,0.0,N,Player,MISSING
-morrija02,2018,Veterans,-1,-1,-1,Y,Player,MISSING
-trammal01,2018,Veterans,-1,-1,-1,Y,Player,MISSING
+morrija02,2018,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
+trammal01,2018,Veterans,-1.0,-1.0,-1.0,Y,Player,MISSING
