@@ -1,0 +1,121 @@
+franchID,franchName,active,NAassoc
+ALT,Altoona Mountain City,N,MISSING
+ANA,Los Angeles Angels of Anaheim,Y,MISSING
+ARI,Arizona Diamondbacks,Y,MISSING
+ATH,Philadelphia Athletics,N,PNA
+ATL,Atlanta Braves,Y,BNA
+BAL,Baltimore Orioles,Y,MISSING
+BFB,Buffalo Bisons,N,MISSING
+BFL,Buffalo Bisons,N,MISSING
+BLC,Baltimore Canaries,MISSING,MISSING
+BLO,Baltimore Orioles,N,MISSING
+BLT,Baltimore Terrapins,N,MISSING
+BLU,Baltimore Monumentals,N,MISSING
+BNA,Boston Red Stockings,MISSING,ATL
+BOS,Boston Red Sox,Y,MISSING
+BRA,Brooklyn Atlantics,MISSING,MISSING
+BRD,Boston Reds,N,MISSING
+BRG,Brooklyn Gladiators,N,MISSING
+BRS,Boston Reds,N,MISSING
+BTT,Brooklyn Tip-Tops,N,MISSING
+BUF,Buffalo Bisons,N,MISSING
+BWW,Brooklyn Ward's Wonders,N,MISSING
+CBK,Columbus Buckeyes,N,MISSING
+CBL,Cleveland Blues,N,MISSING
+CEN,Philadelphia Centennials,MISSING,MISSING
+CFC,Cleveland Forest Citys,MISSING,MISSING
+CHC,Chicago Cubs,Y,CNA
+CHH,Chicago Whales,N,MISSING
+CHP,Chicago Pirates,N,MISSING
+CHW,Chicago White Sox,Y,MISSING
+CIN,Cincinnati Reds,Y,MISSING
+CKK,Cincinnati Kelly's Killers,N,MISSING
+CLE,Cleveland Indians,Y,MISSING
+CLI,Cleveland Infants,N,MISSING
+CLS,Columbus Solons,N,MISSING
+CLV,Cleveland Spiders,N,MISSING
+CNA,Chicago White Stockings,MISSING,CHC
+CNR,Cincinnati Reds,N,MISSING
+COL,Colorado Rockies,Y,MISSING
+COR,Cincinnati Outlaw Reds,N,MISSING
+CPI,Chicago/Pittsburgh (Union League),N,MISSING
+DET,Detroit Tigers,Y,MISSING
+DTN,Detroit Wolverines,N,MISSING
+ECK,Brooklyn Eckfords,MISSING,MISSING
+FLA,Florida Marlins,Y,MISSING
+HAR,Hartford Dark Blues,N,HNA
+HNA,Hartford Dark Blues,MISSING,HAR
+HOU,Houston Astros,Y,MISSING
+IBL,Indianapolis Blues,N,MISSING
+IHO,Indianapolis Hoosiers,N,MISSING
+IND,Indianapolis Hoosiers,N,MISSING
+KCC,Kansas City Cowboys,N,MISSING
+KCN,Kansas City Cowboys,N,MISSING
+KCP,Kansas City Packers,N,MISSING
+KCR,Kansas City Royals,Y,MISSING
+KCU,Kansas City Cowboys,N,MISSING
+KEK,Fort Wayne Kekiongas,MISSING,MISSING
+LAD,Los Angeles Dodgers,Y,MISSING
+LGR,Louisville Grays,N,MISSING
+LOU,Louisville Colonels,N,MISSING
+MAN,Middletown Mansfields,MISSING,MISSING
+MAR,Baltimore Marylands,MISSING,MISSING
+MIL,Milwaukee Brewers,Y,MISSING
+MIN,Minnesota Twins,Y,MISSING
+MLA,Milwaukee Brewers,N,MISSING
+MLG,Milwaukee Grays,N,MISSING
+MLU,Milwaukee Brewers,N,MISSING
+NAT,Washington Nationals,MISSING,MISSING
+NEW,Newark Pepper,N,MISSING
+NHV,New Haven Elm Citys,MISSING,MISSING
+NNA,New York Mutuals,MISSING,NYU
+NYI,New York Giants,N,MISSING
+NYM,New York Mets,Y,MISSING
+NYP,New York Metropolitans,N,MISSING
+NYU,New York Mutuals,N,NNA
+NYY,New York Yankees,Y,MISSING
+OAK,Oakland Athletics,Y,MISSING
+OLY,Washington Olympics,MISSING,MISSING
+PBB,Pittsburgh Burghers,N,MISSING
+PBS,Pittsburgh Rebels,N,MISSING
+PHA,Philadelphia Athletics,N,MISSING
+PHI,Philadelphia Phillies,Y,MISSING
+PHK,Philadelphia Keystones,N,MISSING
+PHQ,Philadelphia Athletics,N,MISSING
+PIT,Pittsburgh Pirates,Y,MISSING
+PNA,Philadelphia Athletics,MISSING,ATH
+PRO,Providence Grays,N,MISSING
+PWS,Philadelphia White Stockings,MISSING,MISSING
+RES,Elizabeth Resolutes,MISSING,MISSING
+RIC,Richmond Virginians,N,MISSING
+ROC,Rochester Broncos,N,MISSING
+ROK,Rockford Forest Citys,MISSING,MISSING
+SBS,St. Louis Brown Stockings,N,SNA
+SDP,San Diego Padres,Y,MISSING
+SEA,Seattle Mariners,Y,MISSING
+SFG,San Francisco Giants,Y,MISSING
+SLI,St. Louis Terriers,N,MISSING
+SLM,St. Louis Maroons,N,MISSING
+SLR,St. Louis Red Stockings,MISSING,MISSING
+SNA,St. Louis Brown Stockings,MISSING,SBS
+STL,St. Louis Cardinals,Y,MISSING
+STP,St. Paul Apostles,N,MISSING
+SYR,Syracuse Stars,N,MISSING
+SYS,Syracuse Stars,N,MISSING
+TBD,Tampa Bay Rays,Y,MISSING
+TEX,Texas Rangers,Y,MISSING
+TLM,Toledo Maumees,N,MISSING
+TOL,Toledo Blue Stockings,N,MISSING
+TOR,Toronto Blue Jays,Y,MISSING
+TRO,Troy Haymakers,MISSING,MISSING
+TRT,Troy Trojans,N,MISSING
+WAS,Washington Senators,N,MISSING
+WBL,Washington Blue Legs,MISSING,MISSING
+WES,Keokuk Westerns,MISSING,MISSING
+WIL,Wilmington Quicksteps,N,MISSING
+WNA,Washington Nationals,N,MISSING
+WNL,Washington Nationals,N,MISSING
+WNT,Washington Nationals,MISSING,MISSING
+WOR,Worcester Ruby Legs,N,MISSING
+WSN,Washington Nationals,Y,MISSING
+WST,Washington Statesmen,N,MISSING

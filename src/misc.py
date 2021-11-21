@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import unidecode
 
@@ -44,10 +45,42 @@ def drop_players_and_columns():
     # Write to file
     adv_data.to_csv("./data/Advanced.csv", index=False)
 
+def fill_missing_values_df(df, default_vals):
+    """ 
+        Fill NaN values in a single dataframe.
+        Unfortunately, this cannot be done easily with Owl dataframes b/c columns cannot have mixed types.
+        Owl drops rows with missing values rather than storing them as NaN.
+
+        Args:
+            df : pandas dataframe, potentially with missing data to fill
+            default_vals : dict mapping df column names to an appropriate default value
+    """
+    # For each column, fill any missing values with some default value
+    for col in df.columns:
+        if np.sum(df[col].isna()) > 0:
+            df[col] = df[col].fillna(default_vals[col])
+
+    return df
+
+def fill_missing_values_wrapper():
+    """ Wrapper function that calls fill_missing_values_df() on each file in the list. """
+    tables = ["People", "TeamsFranchises", "AwardsPlayers", "AwardsSharePlayers", "Batting", "BattingPost", "HallOfFame", "Pitching", "PitchingPost", "SeriesPost", "Teams", "Advanced"]
+    df = pd.read_csv("data/default_values.csv")#.set_index("column", drop=True)
+    default_values = {k:v for k, v in zip(list(df["column"]), list(df["value"]))}
+
+    for t in tables:
+        print(t)
+        df = pd.read_csv("data/raw/" + t + ".csv")
+        filled_df = fill_missing_values_df(df, default_values)
+        df.to_csv("data/clean/" + t + ".csv", index=False)
+        #quit()
+
 if __name__ == "__main__":
     # remove_accents()
 
     # drop_players_and_columns()
+
+    fill_missing_values_wrapper()
     pass
 
     

@@ -262,7 +262,7 @@ CREATE TABLE IF NOT EXISTS Teams (
     FP REAL NOT NULL,
     name TEXT NOT NULL,
     park TEXT,
-    attendance INT,
+    attendance INTEGER,
     BPF REAL NOT NULL,
     PPF REAL NOT NULL,
     teamIDBR TEXT NOT NULL,
