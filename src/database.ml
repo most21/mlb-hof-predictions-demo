@@ -80,7 +80,7 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 
 
-let get_players () : Dataframe.t = 
+let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
   let sql = "SELECT playerID, nameFirst, nameLast FROM People;" 
   in 
