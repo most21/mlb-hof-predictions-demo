@@ -4,7 +4,7 @@ open Core
 type input = MenuOption of int |  Invalid of string (* | Player of string *)
 
 let main_menu_choices = [1; 2; 3; 42]
-let db_admin_menu_choices = [1; 2; 3]
+let db_admin_menu_choices = [1; 2; 3; 4]
 
 let print_main_menu () = 
   print_string "+======================================================================+\n";
@@ -12,7 +12,7 @@ let print_main_menu () =
   print_string "+     1 - View player data                                             +\n";
   print_string "+     2 - Predict HOF candidacy for a player                           +\n";
   print_string "+     3 - Quit                                                         +\n";
-  print_string "+     42 - Super Secret Database Admin Panel                           +\n";
+  print_string "+     42 - Super Secret Admin Panel                                    +\n";
   print_string "+======================================================================+\n";
   ()
 
@@ -22,6 +22,7 @@ let print_db_menu () =
   print_string "+     1 - Create database schema                                       +\n";
   print_string "+     2 - Populate database                                            +\n";
   print_string "+     3 - Quit                                                         +\n";
+  print_string "+     4 - Test current task                                            +\n";
   print_string "+======================================================================+\n";
   ()
 
@@ -68,6 +69,7 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
+  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_all_players ()
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
