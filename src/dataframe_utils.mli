@@ -1,5 +1,6 @@
 open Owl;;
 
+
 (* Read a csv file into a dataframe *)
 val read_data_file : string -> Dataframe.t
 
@@ -14,3 +15,6 @@ val print_dataframe : Dataframe.t -> unit
 
 (* Add a string column to a dataframe *)
 (* val add_string_column : Dataframe.t -> string list -> Dataframe.t *)
+
+(* Given a dataframe option, unpack it to extract the underlying dataframe. *)
+val unpack_dataframe : Dataframe.t option -> Dataframe.t

@@ -7,3 +7,9 @@ let read_data_file (file: string) : Dataframe.t =
 
 let print_dataframe (df: Dataframe.t) = 
     Owl_pretty.pp_dataframe Format.std_formatter df
+
+
+let unpack_dataframe (df_opt: Dataframe.t option) : Dataframe.t = 
+    match df_opt with
+    | Some df -> df
+    | None -> failwith "Could not unpack dataframe option type. This should never happen."

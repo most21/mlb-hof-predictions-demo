@@ -15,19 +15,23 @@ let exec_non_query_sql ?(indicator=".") (db: Sqlite3.db) (sql: string) =
   | Rc.OK -> print_string indicator
   | _ -> print_string @@ "Error: " ^ (Rc.to_string result) ^ "    " ^ sql ^ "\n"
 
-let exec_query_sql (db: Sqlite3.db) (sql: string) (cols: string list): Dataframe.t option = 
-  let df = Dataframe.make @@ Array.of_list cols in
-  let callback_func (db_row: string option array) = 
+let exec_query_sql (db: Sqlite3.db) (sql: string): Dataframe.t option = 
+  (* let df = Dataframe.make @@ Array.of_list cols in *)
+  let df = ref None in
+  let callback_func (db_row: string option array) (headers: string array) = 
     let pack_string_option item = 
       match item with 
       | Some s -> Dataframe.pack_string s 
       | None -> Dataframe.pack_string ""
-    in Dataframe.append_row df (Array.map db_row ~f:pack_string_option)
+    in 
+    match !df with
+    | None -> df := Some (Dataframe.make headers); Dataframe.append_row (Dataframe_utils.unpack_dataframe !df) (Array.map db_row ~f:pack_string_option)
+    | _ -> Dataframe.append_row (Dataframe_utils.unpack_dataframe !df) (Array.map db_row ~f:pack_string_option)
   in 
-  let result = Sqlite3.exec_no_headers db sql ~cb:callback_func 
+  let result = Sqlite3.exec db sql ~cb:callback_func 
   in
   match result with
-  | Rc.OK -> Some df
+  | Rc.OK -> !df
   | _ -> None
 
 
@@ -49,7 +53,7 @@ let create_schema () =
       print_string "Loaded database schema!\n")
 
 
-
+(* TODO: try replacing this with Dataframe.elt_to_str *)
 let unpack_value_to_string (value: Dataframe.elt) : string = 
   match value with
   | Dataframe.Int x -> Int.to_string x
@@ -80,10 +84,20 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 
 
+
+
 let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
   let sql = "SELECT playerID, nameFirst, nameLast FROM People;" 
   in 
-  match exec_query_sql db sql ["playerID"; "nameFirst"; "nameLast"] with
+  match exec_query_sql db sql with
+  | Some df -> df
+  | None -> failwith "SQL query failed."
+
+let get_player (player_id: string) : Dataframe.t = 
+  let& db = Sqlite3.db_open db_file in 
+  let sql = Format.sprintf "SELECT * FROM People WHERE playerID = '%s';" player_id 
+  in
+  match exec_query_sql db sql with
   | Some df -> df
   | None -> failwith "SQL query failed."

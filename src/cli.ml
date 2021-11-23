@@ -69,7 +69,7 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_all_players ()
+  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_player "jeterde01"
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
