@@ -6,7 +6,7 @@ let read_data_file (file: string) : Dataframe.t =
 
 
 let print_dataframe (df: Dataframe.t) = 
-    Owl_pretty.pp_dataframe Format.std_formatter df
+    Owl_pretty.pp_dataframe Format.std_formatter df; print_string "\n"
 
 let dataframe_to_string (df: Dataframe.t) = 
     Owl_pretty.dataframe_to_string df

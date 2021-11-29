@@ -23,7 +23,8 @@ val perform_db_menu_selection : int -> bool ref -> unit
 (* Function that handles the main menu selection. *)
 val perform_main_menu_selection : int -> bool ref -> unit
 
-
+(* Function that handles the user selection when disambiguating players with the same name. *)
+val perform_player_disambiguation_selection : int -> bool ref -> unit
 
 (* 
     Validate/parse user input for the player being queried. 

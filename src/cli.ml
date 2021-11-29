@@ -6,6 +6,12 @@ type input = MenuOption of int | Player of string | Invalid of string
 let main_menu_choices = [1; 2; 3; 42]
 let db_admin_menu_choices = [1; 2; 3; 4]
 
+
+let perform_player_disambiguation_selection (choice: int) (quit: bool ref) = 
+  print_string @@ "You selected " ^ (Int.to_string choice) ^ "\n";
+  quit := true
+
+
 let print_player_input_prompt () = 
   print_string "Enter the name of a current/former MLB player (FirstName LastName): "
 
@@ -84,11 +90,17 @@ let get_player_input (quit: bool ref) =
       match parse_player_input s with
       | Player p -> 
         begin
-          print_string @@ "You selected " ^ p ^ "\n";
+          print_string @@ "You selected " ^ p ^ "\n"; (* TODO: delete this later *)
           match Database.find_player_id p with
           | Error s -> print_string s
           | Ok (matches, player_id) when matches = 1 -> Dataframe_utils.print_dataframe @@ Database.get_player_stats player_id
-          | Ok (matches, df_str) when matches > 1 -> print_string df_str
+          | Ok (matches, df_str) when matches > 1 -> 
+            begin
+              print_string (Format.sprintf "Found multiple players with name '%s'. Enter row number to select a player.\n" p); 
+              print_string @@ df_str ^ "\n";
+              let choices = List.range ~start:`inclusive ~stop:`exclusive 0 matches
+              in menu_choice_loop ~prompt_prefix:"row #" (fun () -> ()) choices perform_player_disambiguation_selection
+            end
           | _ -> failwith "Unreachable case"
         end
       | Invalid y -> print_string @@ "Invalid input: " ^ y ^ "\n";
@@ -112,6 +124,7 @@ let perform_main_menu_selection (choice: int) (quit: bool ref) =
   | 3 -> print_string "Goodbye.\n"; quit := true
   | 42 -> menu_choice_loop print_db_menu db_admin_menu_choices perform_db_menu_selection ~prompt_prefix:"db"
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
+
 
 
 let run_main_menu_loop () = 
