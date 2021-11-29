@@ -74,6 +74,21 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 
 
+let is_pitcher (player_id: string) : bool = 
+  let& db = Sqlite3.db_open db_file in 
+  let sql = Format.sprintf "SELECT DISTINCT P.playerID, A.isPitcher FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND P.playerID = '%s';" player_id 
+  in
+  match exec_query_sql db sql with
+  | Some df -> 
+    begin 
+      let r = Dataframe.get_by_name df 0 "isPitcher" |> Dataframe.elt_to_str
+      in
+      match r with
+      | "Y" -> true
+      | "N" -> false
+      | _ -> failwith "Could not determine if player is pitcher."
+    end
+  | None -> failwith @@ "SQL query failed: Could not determine if " ^ player_id ^ " is a pitcher.\n"
 
 
 let get_all_players () : Dataframe.t = 
@@ -84,10 +99,130 @@ let get_all_players () : Dataframe.t =
   | Some df -> df
   | None -> failwith "SQL query failed."
 
-let get_player (player_id: string) : Dataframe.t = 
+let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
-  let sql = Format.sprintf "SELECT * FROM People WHERE playerID = '%s';" player_id 
+  let sql = Format.sprintf "SELECT 
+    B.playerID, 
+    B.yearID, 
+    B.stint, 
+    B.teamID, 
+    B.lgID,
+    B.G, 
+    B.AB, 
+    B.R, 
+    B.H, 
+    B._2B, 
+    B._3B, 
+    B.HR, 
+    B.RBI, 
+    B.SB, 
+    B.CS, 
+    B.BB, 
+    B.SO, 
+    B.IBB, 
+    B.HBP, 
+    B.SH, 
+    B.SF, 
+    B.GIDP, 
+    A.wRC_plus, 
+    A.bWAR162, 
+    A.WAR162 
+  FROM 
+    People as P, 
+    Advanced as A, 
+    Batting as B 
+  WHERE 
+    P.playerID = '%s' AND 
+    P.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'N' AND 
+    P.playerID = B.playerID AND 
+    B.yearID = A.yearID AND B.stint = A.stint;" player_id
+  in 
+  match exec_query_sql db sql with
+  | Some df -> df
+  | None -> failwith @@ "SQL query failed. Could not get batter data for " ^ player_id ^ "\n"
+
+let get_pitcher_data (player_id: string) : Dataframe.t = 
+  let& db = Sqlite3.db_open db_file in 
+  let sql = Format.sprintf "SELECT 
+    Pp.playerID, 
+    P.yearID, 
+    P.stint, 
+    P.teamID, 
+    P.lgID,
+    P.W, 
+    P.L, 
+    P.G, 
+    P.GS, 
+    P.CG, 
+    P.SHO, 
+    P.SV, 
+    P.IPouts, 
+    P.H, 
+    P.ER, 
+    P.HR, 
+    P.BB, 
+    P.SO, 
+    P.BAOpp, 
+    P.ERA, 
+    P.IBB, 
+    P.WP, 
+    P.HBP,
+    P.BK,
+    P.BFP,
+    P.GF,
+    P.R,
+    P.SH,
+    P.SF,
+    P.GIDP,
+    A.ERA_minus,
+    A.xFIP_minus,
+    A.pWAR162,  
+    A.WAR162 
+  FROM 
+    People as Pp, 
+    Advanced as A, 
+    Pitching as P
+  WHERE 
+    Pp.playerID = '%s' AND 
+    Pp.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'Y' AND 
+    Pp.playerID = P.playerID AND 
+    P.yearID = A.yearID AND P.stint = A.stint;" player_id
   in
   match exec_query_sql db sql with
   | Some df -> df
+  | None -> failwith "SQL query failed."
+
+let get_player_stats (player_id: string) : Dataframe.t = 
+  match is_pitcher player_id with
+  | false -> get_batter_data player_id
+  | true -> get_pitcher_data player_id
+
+let find_player_id (player_name: string) : (int * string, string) result = 
+  let db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf 
+      "SELECT DISTINCT
+        P.playerID, 
+        (P.nameFirst || ' ' || P.nameLast) as nameFull,
+        P.debut,
+        P.finalGame,
+        A.isPitcher
+      FROM 
+        People as P, 
+        Advanced as A
+      WHERE
+        P.bbrefID = A.bbrefID AND
+        nameFull = '%s';" player_name
+  in
+  let res = exec_query_sql db sql in
+  let _ = Sqlite3.db_close db in
+  match res with
+  | Some df -> 
+    begin 
+      match Dataframe.row_num df with
+      | 0 -> Error (Format.sprintf "Could not find player with name '%s'" player_name)
+      | 1 -> Ok (1, Dataframe.get_by_name df 0 "playerID" |> Dataframe.elt_to_str)
+      | num_options -> Ok (num_options, Dataframe_utils.dataframe_to_string df)
+    end
   | None -> failwith "SQL query failed."

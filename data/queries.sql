@@ -1,12 +1,16 @@
 -- Get the playerID for a given player name, or return multiple possibilities if ambiguous
-SELECT 
-    playerID, 
-    (nameFirst || ' ' || nameLast) as nameFull,
-    debut,
-    finalGame
+SELECT DISTINCT
+    P.playerID, 
+    (P.nameFirst || ' ' || P.nameLast) as nameFull,
+    P.debut,
+    P.finalGame,
+    A.isPitcher
 FROM 
-    People as P 
-WHERE nameFull = '%s';
+    People as P, 
+    Advanced as A
+WHERE
+    P.bbrefID = A.bbrefID AND
+    nameFull = '%s';
 
 -- Get offensive data for a certain playerID (%s)
 SELECT 

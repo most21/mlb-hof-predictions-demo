@@ -1,10 +1,13 @@
 open Core
 
 (* TODO: Add Player option eventually *)
-type input = MenuOption of int |  Invalid of string (* | Player of string *)
+type input = MenuOption of int | Player of string | Invalid of string
 
 let main_menu_choices = [1; 2; 3; 42]
 let db_admin_menu_choices = [1; 2; 3; 4]
+
+let print_player_input_prompt () = 
+  print_string "Enter the name of a current/former MLB player (FirstName LastName): "
 
 let print_main_menu () = 
   print_string "+======================================================================+\n";
@@ -59,22 +62,52 @@ let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices
       begin
         match parse_menu_choice s choices with
         | MenuOption opt -> print_string @@ "You selected " ^ (Int.to_string opt) ^ "\n"; selection_handler opt quit
+        | Player _ -> failwith "Not possible for parse_menu_choice to return a Player type"
         | Invalid y -> print_string @@ "Invalid input: " ^ y ^ "\n";
       end
     | None -> print_string "\nNo input detected. Exiting menu.\n"; quit := true
   done
+
+let parse_player_input (s: string) = 
+  let clean = String.for_all s ~f:(fun ch -> Char.is_alpha ch || Char.is_whitespace ch)
+  in
+  match clean with
+  | true -> Player s
+  | false -> Invalid s
+
+let get_player_input (quit: bool ref) = 
+  print_player_input_prompt ();
+  Out_channel.flush stdout;
+  match In_channel.input_line In_channel.stdin with
+  | Some s -> 
+    begin
+      match parse_player_input s with
+      | Player p -> 
+        begin
+          print_string @@ "You selected " ^ p ^ "\n";
+          match Database.find_player_id p with
+          | Error s -> print_string s
+          | Ok (matches, player_id) when matches = 1 -> Dataframe_utils.print_dataframe @@ Database.get_player_stats player_id
+          | Ok (matches, df_str) when matches > 1 -> print_string df_str
+          | _ -> failwith "Unreachable case"
+        end
+      | Invalid y -> print_string @@ "Invalid input: " ^ y ^ "\n";
+      | MenuOption _ -> failwith "Not possible for parse_player_input to return a MenuOption type"
+    end
+  | None -> print_string "\nNo input detected. Exiting menu.\n"; quit := true
+
 
 let perform_db_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_player "jeterde01"
+  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_player_stats "scherma01"
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
-  | 1 -> failwith "TODO: allow user to query a player's data"
+  | 1 -> get_player_input quit (*failwith "TODO: allow user to query a player's data"*)
   | 2 -> failwith "TODO: allow user to predict HOF for a certain player"
   | 3 -> print_string "Goodbye.\n"; quit := true
   | 42 -> menu_choice_loop print_db_menu db_admin_menu_choices perform_db_menu_selection ~prompt_prefix:"db"

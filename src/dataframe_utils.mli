@@ -10,6 +10,9 @@ val read_data_file : string -> Dataframe.t
 (* Pretty print an Owl dataframe *)
 val print_dataframe : Dataframe.t -> unit
 
+(* Convert a dataframe to a printable string *)
+val dataframe_to_string : Dataframe.t -> string
+
 (* Add a float column to a dataframe *)
 (* val add_float_column : Dataframe.t -> float list -> Dataframe.t *)
 
