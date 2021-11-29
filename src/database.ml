@@ -53,25 +53,15 @@ let create_schema () =
       print_string "Loaded database schema!\n")
 
 
-(* TODO: try replacing this with Dataframe.elt_to_str *)
-let unpack_value_to_string (value: Dataframe.elt) : string = 
-  match value with
-  | Dataframe.Int x -> Int.to_string x
-  | Dataframe.Float y -> Float.to_string y
-  | Dataframe.String z -> z
-  | _ -> failwith "Error: Value has unexpected type (not int, float, or string)"
-
 let row_to_string (row: Dataframe.elt array) : string = 
   row
-  |> Array.fold ~init:[] ~f:(fun accum elt -> (let s = unpack_value_to_string elt in accum @ [s]))
+  |> Array.fold ~init:[] ~f:(fun accum elt -> (let s = Dataframe.elt_to_str elt in accum @ [s]))
   |> List.map ~f:(fun s -> "\"" ^ s ^ "\"")
   |> String.concat ~sep:", "
-
 
 let insert_rows (table: string) (data: Dataframe.t) (db: Sqlite3.db) = 
   let sql = Format.sprintf "INSERT INTO %s VALUES (%s);" table
   in Dataframe.iter_row (fun r -> exec_non_query_sql db (sql @@ row_to_string r) ~indicator:"") data
-
 
 let populate_database () = 
   let& db = Sqlite3.db_open db_file 
