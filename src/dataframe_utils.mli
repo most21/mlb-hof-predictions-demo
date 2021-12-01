@@ -21,3 +21,6 @@ val dataframe_to_string : Dataframe.t -> string
 
 (* Given a dataframe option, unpack it to extract the underlying dataframe. *)
 val unpack_dataframe : Dataframe.t option -> Dataframe.t
+
+(* Given a dataframe and a column name, return a list of strings with all values in the column *)
+val get_column : Dataframe.t -> string -> string list

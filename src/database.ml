@@ -226,3 +226,50 @@ let find_player_id (player_name: string) : (int * string, string) result =
       | num_options -> Ok (num_options, Dataframe_utils.dataframe_to_string df)
     end
   | None -> failwith "SQL query failed."
+
+
+
+let get_batter_data_for_jaws (player_id: string) = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+    B.playerID, 
+    B.yearID, 
+    B.stint, 
+    GROUP_CONCAT(B.teamID) as teamID, 
+    B.lgID,
+    sum(B.G) as G, 
+    sum(B.AB) as AB, 
+    sum(B.R) as R, 
+    sum(B.H) as H, 
+    sum(B._2B) as _2B, 
+    sum(B._3B) as _3B, 
+    sum(B.HR) as HR, 
+    sum(B.RBI) as RBI, 
+    sum(B.SB) as SB, 
+    sum(B.CS) as CS, 
+    sum(B.BB) as BB, 
+    sum(B.SO) as SO, 
+    sum(B.IBB) as IBB, 
+    sum(B.HBP) as HBP, 
+    sum(B.SH) as SH, 
+    sum(B.SF) as SF, 
+    sum(B.GIDP) as GIDP, 
+    ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1) as wRC_plus, 
+    sum(A.bWAR162) as bWAR162, 
+        sum(A.WAR162) as WAR162
+    FROM 
+    People as P, 
+    Batting as B, 
+        Advanced as A 
+    WHERE 
+    P.playerID = '%s' AND 
+    P.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'N' AND 
+    P.playerID = B.playerID AND 
+    B.yearID = A.yearID AND 
+        B.stint = A.stint 
+    GROUP BY B.yearID;" player_id
+  in 
+  match exec_query_sql db sql with
+  | Some df -> df
+  | None -> failwith "SQL query failed for retrieving JAWS Batter data"

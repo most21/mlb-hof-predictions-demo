@@ -81,6 +81,7 @@ let parse_player_input (s: string) =
   | true -> Player s
   | false -> Invalid s
 
+(* TODO: refactor this to only get player input. Then process in a separate function. We may not always want to just print the data *)
 let get_player_input (quit: bool ref) = 
   print_player_input_prompt ();
   Out_channel.flush stdout;
@@ -114,7 +115,7 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> Dataframe_utils.print_dataframe @@ Database.get_player_stats "scherma01"
+  | 4 -> let data = Database.get_batter_data_for_jaws "martijd02" in print_string (Jaws.compute_peak_statistics data 5)
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 

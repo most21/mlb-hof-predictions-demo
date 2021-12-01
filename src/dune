@@ -3,7 +3,8 @@
   (modules 
     cli
     database
-    dataframe_utils)
+    dataframe_utils
+    jaws)
   (libraries 
     core
     sqlite3

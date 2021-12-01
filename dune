@@ -7,6 +7,7 @@
     src/database.mli
     src/database.ml
     src/jaws.mli
+    src/jaws.ml
     src/knn.mli
     src/cli.mli
     src/cli.ml

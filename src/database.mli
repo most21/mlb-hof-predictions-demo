@@ -36,6 +36,8 @@ val get_all_players : unit -> Dataframe.t
 (* Given a player ID, return that player's data. TODO: return type *)
 val get_player_stats : string -> Dataframe.t
 
+val get_batter_data_for_jaws : string -> Dataframe.t
+
 (* 
     Given a player's name, return the ID of that player. 
     If there are multiple players with the same name, return a dataframe of options. 
