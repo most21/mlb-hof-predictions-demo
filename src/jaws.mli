@@ -9,6 +9,7 @@ val compute_peak_statistics : Dataframe.t -> int -> player_peak
 (* Compute peak WAR totals for every player in the database, both hitters and pitchers. *)
 val compute_peak_all_players : int -> Dataframe.t
 
+(* Add peak war to the database for each player *)
 val add_peak_data_to_db : Dataframe.t -> unit
 
 (* For a query player, get players with similar peak stats. *)

@@ -100,7 +100,7 @@ let is_pitcher (player_id: string) : (bool, string) result =
 
 let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
-  let sql = "SELECT playerID, nameFirst, nameLast FROM People LIMIT 10;" 
+  let sql = "SELECT playerID, nameFirst, nameLast FROM People;" 
   in 
   match exec_query_sql db sql with
   | Some df -> df
