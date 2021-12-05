@@ -115,7 +115,8 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> Jaws.add_peak_data_to_db (Jaws.compute_peak_all_players 7)
+  | 4 -> let df = Jaws.get_nearby_players "scherma01" in Dataframe_utils.print_dataframe df
+  (* Jaws.add_peak_data_to_db (Jaws.compute_peak_all_players 7) *)
   (* let _ = Jaws.compute_peak_all_players 7 in () *)
     (* begin
       (* print_string "reached here first"; *)

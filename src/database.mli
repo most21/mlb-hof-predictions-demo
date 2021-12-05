@@ -50,3 +50,12 @@ val get_pitcher_data_for_jaws : string -> Dataframe.t option
     If there are multiple players with the same name, return a dataframe of options. 
 *)
 val find_player_id : string -> (int * string, string) result
+
+
+(* Given a playerID, find the 10 most similar players (either batters or hitters) by WAR. *)
+val query_nearby_players_jaws : string -> Dataframe.t option
+
+val is_hofer : string -> (bool, string) result
+
+(* Given a dataframe of player data, label each player as a HOFer or not (Y/N) *)
+val label_hofers : Dataframe.t -> Dataframe.t

@@ -37,3 +37,11 @@ let compute_peak_all_players (peak_size: int) : Dataframe.t =
 
 let add_peak_data_to_db (data: Dataframe.t) : unit = 
   Database.insert_rows_wrapper "Peak" data
+
+
+let get_nearby_players (player_id: string) : Dataframe.t =
+  let neighbors = Database.query_nearby_players_jaws player_id 
+  in
+  match neighbors with
+  | Some df -> Database.label_hofers df
+  | None -> failwith "Could not find JAWS neighbors"

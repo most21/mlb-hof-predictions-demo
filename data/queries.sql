@@ -215,3 +215,45 @@ FROM
     ) as R;
 
 
+-- Get 10 nearest batters by peak WAR total
+SELECT DISTINCT 
+    Pp.playerID, 
+    Pp.nameFirst, 
+    Pp.nameLast, 
+    P.peakWar, 
+    R.peakWar as targetWar, 
+    R.peakWar - P.peakWar as diff
+FROM 
+    People as Pp,
+    Peak as P, 
+    Advanced as A,
+    (SELECT peakWar FROM Peak WHERE playerID = 'troutmi01') as R
+WHERE 
+    Pp.playerID = P.playerID AND
+    Pp.bbrefID = A.bbrefID AND
+    A.isPitcher = 'N' AND
+    P.playerID <> 'troutmi01'
+ORDER BY ABS(diff) ASC LIMIT 10;
+
+-- Get 10 nearest batters by peak WAR total
+SELECT DISTINCT 
+    Pp.playerID, 
+    Pp.nameFirst, 
+    Pp.nameLast, 
+    P.peakWar, 
+    R.peakWar as targetWar, 
+    R.peakWar - P.peakWar as diff
+FROM 
+    People as Pp,
+    Peak as P, 
+    Advanced as A,
+    (SELECT peakWar FROM Peak WHERE playerID = 'scherma01') as R
+WHERE 
+    Pp.playerID = P.playerID AND
+    Pp.bbrefID = A.bbrefID AND
+    A.isPitcher = 'Y' AND
+    P.playerID <> 'scherma01'
+ORDER BY ABS(diff) ASC LIMIT 10;
+
+-- Check if player is a HOFer (Yes if query returns 1. If 0, then no)
+SELECT 'koufasa01' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF

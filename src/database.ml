@@ -287,3 +287,63 @@ let get_player_stats_jaws (player_id: string) : Dataframe.t option =
   | Ok false -> get_batter_data_for_jaws player_id
   | Ok true -> get_pitcher_data_for_jaws player_id
   | Error _ -> None
+
+
+let get_neighbors_jaws (player_id: string) (pitcher: bool) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let is_pitch = if pitcher then "Y" else "N" in
+  let sql = Format.sprintf "SELECT DISTINCT 
+      Pp.playerID, 
+      Pp.nameFirst, 
+      Pp.nameLast, 
+      P.peakWar, 
+      R.peakWar as targetWar, 
+      R.peakWar - P.peakWar as diff
+    FROM 
+      People as Pp,
+      Peak as P, 
+      Advanced as A,
+      (SELECT peakWar FROM Peak WHERE playerID = '%s') as R
+    WHERE 
+      Pp.playerID = P.playerID AND
+      Pp.bbrefID = A.bbrefID AND
+      A.isPitcher = '%s' AND
+      P.playerID <> '%s'
+    ORDER BY ABS(diff) ASC LIMIT 10;" player_id is_pitch player_id
+  in exec_query_sql db sql
+
+let query_nearby_players_jaws (player_id: string) : Dataframe.t option = 
+  match is_pitcher player_id with
+  | Ok false -> get_neighbors_jaws player_id false
+  | Ok true -> get_neighbors_jaws player_id true
+  | Error _ -> None
+
+let is_hofer (player_id: string) : (bool, string) result = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT '%s' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF" player_id
+  in 
+  match exec_query_sql db sql with
+  | Some df -> 
+    begin
+      let r = Dataframe.get_by_name df 0 "HOF" |> Dataframe.elt_to_str
+      in
+      match r with
+      | "1" -> Ok true
+      | "0" -> Ok false
+      | _ -> Error "Could not determine if player is in the Hall of Fame."
+    end
+  | None -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
+
+let label_hofers (players: Dataframe.t) : Dataframe.t = 
+  let num_rows = Dataframe.row_num players in
+  let series = Array.init num_rows ~f:(fun _ -> "N") |> Dataframe.pack_string_series in
+  let iter_func (i: int) (row: Dataframe.elt array) = 
+    let player_id = Array.get row (Dataframe.head_to_id players "playerID") |> Dataframe.elt_to_str in
+    match is_hofer player_id with
+    | Ok true -> Dataframe.set_by_name players i "HOF" (Dataframe.pack_string "Y")
+    | _ -> ()
+  in
+  Dataframe.append_col players series "HOF"; 
+  Dataframe.iteri_row iter_func players;
+  Dataframe_utils.print_dataframe players;
+  players
