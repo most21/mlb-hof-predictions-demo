@@ -59,9 +59,16 @@ let row_to_string (row: Dataframe.elt array) : string =
   |> List.map ~f:(fun s -> "\"" ^ s ^ "\"")
   |> String.concat ~sep:", "
 
-let insert_rows (table: string) (data: Dataframe.t) (db: Sqlite3.db) = 
+
+
+let insert_rows (table: string) (data: Dataframe.t) (db: Sqlite3.db) : unit = 
   let sql = Format.sprintf "INSERT INTO %s VALUES (%s);" table
   in Dataframe.iter_row (fun r -> exec_non_query_sql db (sql @@ row_to_string r) ~indicator:"") data
+
+let insert_rows_wrapper (table: string) (data: Dataframe.t) : unit = 
+  let& db = Sqlite3.db_open db_file 
+  in insert_rows table data db
+
 
 let populate_database () = 
   let& db = Sqlite3.db_open db_file 
@@ -74,8 +81,8 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 
 
-let is_pitcher (player_id: string) : bool = 
-  let& db = Sqlite3.db_open db_file in 
+let is_pitcher (player_id: string) : (bool, string) result = 
+  let& db = Sqlite3.db_open db_file in
   let sql = Format.sprintf "SELECT DISTINCT P.playerID, A.isPitcher FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND P.playerID = '%s';" player_id 
   in
   match exec_query_sql db sql with
@@ -84,20 +91,20 @@ let is_pitcher (player_id: string) : bool =
       let r = Dataframe.get_by_name df 0 "isPitcher" |> Dataframe.elt_to_str
       in
       match r with
-      | "Y" -> true
-      | "N" -> false
-      | _ -> failwith "Could not determine if player is pitcher."
+      | "Y" -> Ok true
+      | "N" -> Ok false
+      | _ -> Error "Could not determine if player is pitcher."
     end
-  | None -> failwith @@ "SQL query failed: Could not determine if " ^ player_id ^ " is a pitcher.\n"
+  | None -> Error ("SQL query failed: Could not determine if " ^ player_id ^ " is a pitcher.\n")
 
 
 let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
-  let sql = "SELECT playerID, nameFirst, nameLast FROM People;" 
+  let sql = "SELECT playerID, nameFirst, nameLast FROM People LIMIT 10;" 
   in 
   match exec_query_sql db sql with
   | Some df -> df
-  | None -> failwith "SQL query failed."
+  | None -> failwith "SQL query failed. Could not get all players."
 
 let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
@@ -192,12 +199,13 @@ let get_pitcher_data (player_id: string) : Dataframe.t =
   in
   match exec_query_sql db sql with
   | Some df -> df
-  | None -> failwith "SQL query failed."
+  | None -> failwith "SQL query failed. Could not get pitcher data"
 
 let get_player_stats (player_id: string) : Dataframe.t = 
   match is_pitcher player_id with
-  | false -> get_batter_data player_id
-  | true -> get_pitcher_data player_id
+  | Ok false -> get_batter_data player_id
+  | Ok true -> get_pitcher_data player_id
+  | Error s -> failwith s
 
 let find_player_id (player_name: string) : (int * string, string) result = 
   let db = Sqlite3.db_open db_file in
@@ -229,47 +237,53 @@ let find_player_id (player_name: string) : (int * string, string) result =
 
 
 
-let get_batter_data_for_jaws (player_id: string) = 
+
+let get_batter_data_for_jaws (player_id: string) : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
   let sql = Format.sprintf "SELECT 
-    B.playerID, 
-    B.yearID, 
-    B.stint, 
-    GROUP_CONCAT(B.teamID) as teamID, 
-    B.lgID,
-    sum(B.G) as G, 
-    sum(B.AB) as AB, 
-    sum(B.R) as R, 
-    sum(B.H) as H, 
-    sum(B._2B) as _2B, 
-    sum(B._3B) as _3B, 
-    sum(B.HR) as HR, 
-    sum(B.RBI) as RBI, 
-    sum(B.SB) as SB, 
-    sum(B.CS) as CS, 
-    sum(B.BB) as BB, 
-    sum(B.SO) as SO, 
-    sum(B.IBB) as IBB, 
-    sum(B.HBP) as HBP, 
-    sum(B.SH) as SH, 
-    sum(B.SF) as SF, 
-    sum(B.GIDP) as GIDP, 
-    ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1) as wRC_plus, 
-    sum(A.bWAR162) as bWAR162, 
-        sum(A.WAR162) as WAR162
+      B.playerID, 
+      B.yearID, 
+      B.stint, 
+      GROUP_CONCAT(B.teamID) as teamID, 
+      sum(A.WAR162) as WAR162
     FROM 
-    People as P, 
-    Batting as B, 
-        Advanced as A 
+      People as P, 
+      Batting as B, 
+      Advanced as A 
     WHERE 
-    P.playerID = '%s' AND 
-    P.bbrefID = A.bbrefID AND 
-    A.isPitcher = 'N' AND 
-    P.playerID = B.playerID AND 
-    B.yearID = A.yearID AND 
-        B.stint = A.stint 
+      P.playerID = '%s' AND 
+      P.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'N' AND 
+      P.playerID = B.playerID AND 
+      B.yearID = A.yearID AND 
+      B.stint = A.stint 
     GROUP BY B.yearID;" player_id
-  in 
-  match exec_query_sql db sql with
-  | Some df -> df
-  | None -> failwith "SQL query failed for retrieving JAWS Batter data"
+  in exec_query_sql db sql
+
+let get_pitcher_data_for_jaws (player_id: string) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+      Pp.playerID, 
+      P.yearID, 
+      P.stint, 
+      GROUP_CONCAT(P.teamID) as teamID, 
+      sum(A.WAR162) as WAR162
+    FROM 
+      People as Pp, 
+      Advanced as A, 
+      Pitching as P
+    WHERE 
+      Pp.playerID = '%s' AND 
+      Pp.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'Y' AND 
+      Pp.playerID = P.playerID AND 
+      P.yearID = A.yearID AND P.stint = A.stint
+    GROUP BY P.yearID;" player_id
+  in exec_query_sql db sql
+
+
+let get_player_stats_jaws (player_id: string) : Dataframe.t option = 
+  match is_pitcher player_id with
+  | Ok false -> get_batter_data_for_jaws player_id
+  | Ok true -> get_pitcher_data_for_jaws player_id
+  | Error _ -> None

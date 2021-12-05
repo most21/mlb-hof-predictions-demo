@@ -28,7 +28,9 @@ val exec_query_sql : Sqlite3.db -> string -> Dataframe.t option
 (* Insert rows of data (stored as a dataframe) into the specified table. *)
 val insert_rows : string -> Dataframe.t -> Sqlite3.db -> unit
 
+val insert_rows_wrapper : string -> Dataframe.t -> unit
 
+val is_pitcher : string -> (bool, string) result
 
 (* Get all players *)
 val get_all_players : unit -> Dataframe.t
@@ -36,7 +38,12 @@ val get_all_players : unit -> Dataframe.t
 (* Given a player ID, return that player's data. TODO: return type *)
 val get_player_stats : string -> Dataframe.t
 
-val get_batter_data_for_jaws : string -> Dataframe.t
+(* Specialized version that gets only the data necessary to compute peak WAR for JAWS *)
+val get_player_stats_jaws : string -> Dataframe.t option
+
+val get_batter_data_for_jaws : string -> Dataframe.t option
+
+val get_pitcher_data_for_jaws : string -> Dataframe.t option
 
 (* 
     Given a player's name, return the ID of that player. 

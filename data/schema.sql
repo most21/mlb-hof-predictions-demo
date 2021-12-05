@@ -294,3 +294,12 @@ CREATE TABLE IF NOT EXISTS Advanced (
             ON DELETE CASCADE
             ON UPDATE NO ACTION
 );
+
+CREATE TABLE IF NOT EXISTS Peak (
+    playerID TEXT NOT NULL,
+    peakWar REAL,
+    FOREIGN KEY (playerID)
+        REFERENCES People (playerID)
+            ON DELETE CASCADE
+            ON UPDATE NO ACTION
+);

@@ -115,7 +115,17 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> let data = Database.get_batter_data_for_jaws "martijd02" in print_string (Jaws.compute_peak_statistics data 5)
+  | 4 -> Jaws.add_peak_data_to_db (Jaws.compute_peak_all_players 7)
+  (* let _ = Jaws.compute_peak_all_players 7 in () *)
+    (* begin
+      (* print_string "reached here first"; *)
+      (* Jaws.compute_peak_all_players 7; *)
+      let data = Database.get_batter_data_for_jaws "martijd02" 
+      in
+      match data with 
+      | Some df -> let r = Jaws.compute_peak_statistics df 5 in print_string @@ (r.id) ^ "    " ^ (Float.to_string r.war) ^ "\n"
+      | None -> failwith "Test failed"
+    end *)
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 

@@ -1,42 +1,39 @@
 open Owl
 open Core
 
-let make_chunks (n: int) (l: 'a list): 'a list list =
-  let rec aux l' accum = 
-    match List.length l' with
-    | x when x < n -> accum
-    | _ ->
-      match l' with
-      | [] -> accum
-      | _ :: rest -> aux rest ((List.take l' n) :: accum)
-  in
-  match n > List.length l with
-  | true -> []
-  | false -> aux l [] |> List.rev
-
-(*
-(* Find the max/argmax of a list of floats, return a tuple of (idx, val) *)
-let argmax_exn (l: float list) : (int * float)= 
-  let max_idx = ref (-1) in
-  let fold_func idx accum x =
-    match Float.(>) x accum with
-    | false -> accum
-    | true -> max_idx := idx; x 
-  in
-  match l with
-  | [] -> failwith "Cannot take argmax of empty list"
-  | _ -> !max_idx, List.foldi l ~init:(List.hd_exn l) ~f:fold_func *)
+type player_peak = {id: string; war: float}
 
 
-let compute_peak_statistics (data: Dataframe.t)  (peak_size: int) =
-  let wars = Dataframe_utils.get_column data "WAR162" |> List.map ~f:(Float.of_string) in 
-  let _ = Dataframe_utils.get_column data "yearID" |> List.map ~f:(Int.of_string) in
-  let war_sums = make_chunks peak_size wars |> List.map ~f:(fun l -> List.sum (module Float) l ~f:Fn.id) in
-  (List.to_string war_sums ~f:Float.to_string)
+let compute_peak_statistics (data: Dataframe.t)  (peak_size: int) : player_peak =
+  let player_id = Dataframe.get_by_name data 0 "playerID" |> Dataframe.elt_to_str in
+  let wars = Dataframe_utils.get_column data "WAR162" |> List.map ~f:(Float.of_string) in
+  let peak_war = 
+    List.sort wars ~compare:Float.compare 
+    |> List.rev 
+    |> (fun l -> List.take l peak_size)
+    |> (fun l -> List.sum (module Float) l ~f:Fn.id) 
+  in {id=player_id; war=peak_war}
 
 
-(*
-let years = Dataframe.get_col_by_name data "yearID" |> Dataframe.unpack_int_series |> Array.to_list in
-  let war_sums = make_chunks peak_size war |> List.map ~f:(fun l -> List.sum (module Float) l ~f:Fn.id) in
-  let year_pairs = make_chunks peak_size years |> List.map ~f:(fun l -> (List.hd_exn l, l |> List.rev |> List.hd_exn )) in
-  let peak_idx, peak_val = argmax_exn war_sums *)
+let compute_peak_all_players (peak_size: int) : Dataframe.t = 
+  let output_df = Dataframe.make [|"playerID"; "peakWar"|] in
+  let players = Database.get_all_players () in 
+  let iter_func (row: Dataframe.elt array) : unit = 
+    let player_id = Array.get row 0 |> Dataframe.elt_to_str in 
+    let data = Database.get_player_stats_jaws player_id 
+    in
+    match data with
+    | Some df -> 
+      begin
+        let peak = compute_peak_statistics df peak_size in
+        let new_row = match peak with {id = i; war = w} -> Dataframe.([| pack_string i; pack_float w|]) in
+        Dataframe.append_row output_df new_row; print_string @@ player_id ^ "\n"
+      end
+    | None -> print_string @@ "FAILED on " ^ player_id ^ ". Skipping.\n"
+  in 
+  Dataframe.iter_row iter_func players; 
+  Dataframe_utils.print_dataframe output_df; 
+  output_df
+
+let add_peak_data_to_db (data: Dataframe.t) : unit = 
+  Database.insert_rows_wrapper "Peak" data
