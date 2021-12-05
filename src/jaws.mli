@@ -13,8 +13,8 @@ val compute_peak_all_players : int -> Dataframe.t
 val add_peak_data_to_db : Dataframe.t -> unit
 
 (* For a query player, get players with similar peak stats. *)
-val get_nearby_players : string -> Dataframe.t
+val get_nearby_players : string -> int -> Dataframe.t
 
 (* Given nearby players, compute fraction of those players that are in the HOF as an estimate of HOF probability. *)
-(* val predict : Dataframe.t -> float *)
+val predict : Dataframe.t -> Dataframe.t * float
 

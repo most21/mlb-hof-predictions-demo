@@ -39,9 +39,15 @@ let add_peak_data_to_db (data: Dataframe.t) : unit =
   Database.insert_rows_wrapper "Peak" data
 
 
-let get_nearby_players (player_id: string) : Dataframe.t =
-  let neighbors = Database.query_nearby_players_jaws player_id 
+let get_nearby_players (player_id: string) (num_neighbors: int) : Dataframe.t =
+  let neighbors = Database.query_nearby_players_jaws player_id num_neighbors
   in
   match neighbors with
   | Some df -> Database.label_hofers df
   | None -> failwith "Could not find JAWS neighbors"
+
+let predict (neighbors: Dataframe.t) : Dataframe.t * float =
+  let num_neighbors = Dataframe.row_num neighbors in
+  let hof_col = Dataframe.get_col_by_name neighbors "HOF" |> Dataframe.unpack_string_series in
+  let num_hofers = Array.sum (module Float) hof_col ~f:(fun h -> if String.(=) h "Y" then 1.0 else 0.0) in
+  (neighbors, num_hofers /. (Float.of_int num_neighbors))

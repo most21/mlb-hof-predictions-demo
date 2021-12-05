@@ -53,8 +53,9 @@ val find_player_id : string -> (int * string, string) result
 
 
 (* Given a playerID, find the 10 most similar players (either batters or hitters) by WAR. *)
-val query_nearby_players_jaws : string -> Dataframe.t option
+val query_nearby_players_jaws : string -> int -> Dataframe.t option
 
+(* Check if the given player is a hall of famer. *)
 val is_hofer : string -> (bool, string) result
 
 (* Given a dataframe of player data, label each player as a HOFer or not (Y/N) *)

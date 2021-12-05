@@ -289,7 +289,7 @@ let get_player_stats_jaws (player_id: string) : Dataframe.t option =
   | Error _ -> None
 
 
-let get_neighbors_jaws (player_id: string) (pitcher: bool) : Dataframe.t option = 
+let get_neighbors_jaws (player_id: string) (pitcher: bool) (num_neighbors: int): Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
   let is_pitch = if pitcher then "Y" else "N" in
   let sql = Format.sprintf "SELECT DISTINCT 
@@ -309,13 +309,13 @@ let get_neighbors_jaws (player_id: string) (pitcher: bool) : Dataframe.t option 
       Pp.bbrefID = A.bbrefID AND
       A.isPitcher = '%s' AND
       P.playerID <> '%s'
-    ORDER BY ABS(diff) ASC LIMIT 10;" player_id is_pitch player_id
+    ORDER BY ABS(diff) ASC LIMIT %d;" player_id is_pitch player_id num_neighbors
   in exec_query_sql db sql
 
-let query_nearby_players_jaws (player_id: string) : Dataframe.t option = 
+let query_nearby_players_jaws (player_id: string) (num_neighbors: int): Dataframe.t option = 
   match is_pitcher player_id with
-  | Ok false -> get_neighbors_jaws player_id false
-  | Ok true -> get_neighbors_jaws player_id true
+  | Ok false -> get_neighbors_jaws player_id false num_neighbors
+  | Ok true -> get_neighbors_jaws player_id true num_neighbors
   | Error _ -> None
 
 let is_hofer (player_id: string) : (bool, string) result = 
