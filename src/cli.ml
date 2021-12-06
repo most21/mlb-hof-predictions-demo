@@ -82,8 +82,8 @@ let parse_player_input (s: string) =
   | true -> Player s
   | false -> Invalid s
 
-(* TODO: refactor this to only get player input. Then process in a separate function. We may not always want to just print the data *)
-let get_player_input (quit: bool ref) f = 
+(* TODO: need to finish disambiguation *)
+let get_player_input (quit: bool ref) (do_next: string -> unit) = 
   print_player_input_prompt ();
   Out_channel.flush stdout;
   match In_channel.input_line In_channel.stdin with
@@ -95,7 +95,7 @@ let get_player_input (quit: bool ref) f =
           print_string @@ "You selected " ^ p ^ "\n"; (* TODO: delete this later *)
           match Database.find_player_id p with
           | Error s -> print_string s
-          | Ok (matches, player_id) when matches = 1 -> f player_id
+          | Ok (matches, player_id) when matches = 1 -> do_next player_id
           | Ok (matches, df_str) when matches > 1 -> 
             begin
               print_string (Format.sprintf "Found multiple players with name '%s'. Enter row number to select a player.\n" p); 
@@ -153,8 +153,8 @@ let run_main_menu_loop () =
 
 
 
-let parse_player_selection (_: string) = 
+(* let parse_player_selection (_: string) = 
   failwith "Unimplemented"
 
 let player_disambiguation (_: string) =
-  failwith "Unimplemented"
+  failwith "Unimplemented" *)
