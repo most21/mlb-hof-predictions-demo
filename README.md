@@ -23,7 +23,7 @@ As of 12/6/2021, the database has been built and the peak-WAR system (2a) has be
 ## Requirements
 - OCaml 4.12.0
 - Core
-- Sqlite3
+- sqlite3-ocaml
 - Owl
 
 ## Install + Run
