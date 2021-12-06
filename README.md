@@ -21,7 +21,7 @@ The goal of this project is to create a tool that can predict future Major Leagu
 As of 12/6/2021, the database has been built and the peak-WAR system (2a) has been implemented. The command line has been built out to support existing functionality.
 
 ## Requirements
-- Ocaml 4.12.0
+- OCaml 4.12.0
 - Core
 - Sqlite3
 - Owl
