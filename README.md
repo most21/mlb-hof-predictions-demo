@@ -31,7 +31,12 @@ git clone https://github.com/most21/mlb-hof-predictions.git
 cd mlb-hof-predictions/
 ```
 
-- Build and run the command line interface via the `main` executable
+- Build the application
+```shell
+dune build
+```
+
+- Run the command line interface via the `main` executable
 ```shell
 dune exec ./src/main.exe
 ```
