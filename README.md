@@ -1,5 +1,6 @@
 # mlb-hof-predictions
 
+## Purpose
 The goal of this project is to create a tool that can predict future Major League Baseball (MLB) Hall of Fame (HOF) inductees. The project can be broken down into three main phases with one stretch phase:
 
 1. Create a database of baseball statistics that specifically focuses on HOF players.
@@ -13,6 +14,9 @@ The goal of this project is to create a tool that can predict future Major Leagu
    c.   (STRETCH GOAL) A neural network autoencoder that will be used to create dense vector embeddings for each player which can then be compared using cosine similarity.
 
 3. Build a command-line tool to interact with the above functionality. Users should be able to view a player’s data, make a prediction for a player using each method, and visualize how close this player is to other players.
+
+## Progress
+As of 12/6/2021, the database has been built and the peak-WAR system (2a) has been implemented. The command line has been built out to support existing functionality.
 
 ## Requirements
 - Ocaml 4.12.0
