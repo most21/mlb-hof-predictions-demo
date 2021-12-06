@@ -3,7 +3,7 @@ open Core
 (* TODO: Add Player option eventually *)
 type input = MenuOption of int | Player of string | Invalid of string
 
-let main_menu_choices = [1; 2; 3; 42]
+let main_menu_choices = [1; 2; 3; 4; 42]
 let db_admin_menu_choices = [1; 2; 3; 4]
 
 
@@ -19,8 +19,9 @@ let print_main_menu () =
   print_string "+======================================================================+\n";
   print_string "+ Welcome to the MLB Hall of Fame prediction engine. Select an option: +\n";
   print_string "+     1 - View player data                                             +\n";
-  print_string "+     2 - Predict HOF candidacy for a player                           +\n";
-  print_string "+     3 - Quit                                                         +\n";
+  print_string "+     2 - Predict HOF candidacy for a player with JAWS                 +\n";
+  print_string "+     3 - Predict HOF candidacy for a player with KNN                  +\n";
+  print_string "+     4 - Quit                                                         +\n";
   print_string "+     42 - Super Secret Admin Panel                                    +\n";
   print_string "+======================================================================+\n";
   ()
@@ -82,7 +83,7 @@ let parse_player_input (s: string) =
   | false -> Invalid s
 
 (* TODO: refactor this to only get player input. Then process in a separate function. We may not always want to just print the data *)
-let get_player_input (quit: bool ref) = 
+let get_player_input (quit: bool ref) f = 
   print_player_input_prompt ();
   Out_channel.flush stdout;
   match In_channel.input_line In_channel.stdin with
@@ -94,7 +95,7 @@ let get_player_input (quit: bool ref) =
           print_string @@ "You selected " ^ p ^ "\n"; (* TODO: delete this later *)
           match Database.find_player_id p with
           | Error s -> print_string s
-          | Ok (matches, player_id) when matches = 1 -> Dataframe_utils.print_dataframe @@ Database.get_player_stats player_id
+          | Ok (matches, player_id) when matches = 1 -> f player_id
           | Ok (matches, df_str) when matches > 1 -> 
             begin
               print_string (Format.sprintf "Found multiple players with name '%s'. Enter row number to select a player.\n" p); 
@@ -118,8 +119,8 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 4 -> 
     begin
       let df = Jaws.get_nearby_players "scherma01" 10 in 
-      let _, prob = Jaws.predict df in
-      Dataframe_utils.print_dataframe df; print_string @@ "\n" ^ (Float.to_string prob) ^ "\n"
+      let _, s = Jaws.predict df in
+      Dataframe_utils.print_dataframe df; print_string @@ "\n" ^ s ^ "\n"
     end
   (* Jaws.add_peak_data_to_db (Jaws.compute_peak_all_players 7) *)
   (* let _ = Jaws.compute_peak_all_players 7 in () *)
@@ -136,9 +137,10 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
-  | 1 -> get_player_input quit (*failwith "TODO: allow user to query a player's data"*)
-  | 2 -> failwith "TODO: allow user to predict HOF for a certain player"
-  | 3 -> print_string "Goodbye.\n"; quit := true
+  | 1 -> get_player_input quit (fun id -> Dataframe_utils.print_dataframe @@ Database.get_player_stats id)
+  | 2 -> get_player_input quit (fun id -> match Jaws.predict (Jaws.get_nearby_players id 10) with (n_df, s) -> Dataframe_utils.print_dataframe n_df; print_string s)
+  | 3 -> failwith "TODO: HOF predictions with KNN"
+  | 4 -> print_string "Goodbye.\n"; quit := true
   | 42 -> menu_choice_loop print_db_menu db_admin_menu_choices perform_db_menu_selection ~prompt_prefix:"db"
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 

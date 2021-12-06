@@ -1,6 +1,6 @@
 open Owl
 
-type player_peak = {id: string; war: float}
+type player_peak
 
 
 (* Given a dataframe of a player's career data, compute their peak statistics. *)
@@ -15,6 +15,6 @@ val add_peak_data_to_db : Dataframe.t -> unit
 (* For a query player, get players with similar peak stats. *)
 val get_nearby_players : string -> int -> Dataframe.t
 
-(* Given nearby players, compute fraction of those players that are in the HOF as an estimate of HOF probability. *)
-val predict : Dataframe.t -> Dataframe.t * float
+(* Given nearby players, compute number of those players that are in the HOF. *)
+val predict : Dataframe.t -> Dataframe.t * string
 

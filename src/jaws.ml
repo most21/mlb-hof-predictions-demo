@@ -32,7 +32,6 @@ let compute_peak_all_players (peak_size: int) : Dataframe.t =
     | None -> print_string @@ "FAILED on " ^ player_id ^ ". Skipping.\n"
   in 
   Dataframe.iter_row iter_func players; 
-  Dataframe_utils.print_dataframe output_df; 
   output_df
 
 let add_peak_data_to_db (data: Dataframe.t) : unit = 
@@ -46,8 +45,9 @@ let get_nearby_players (player_id: string) (num_neighbors: int) : Dataframe.t =
   | Some df -> Database.label_hofers df
   | None -> failwith "Could not find JAWS neighbors"
 
-let predict (neighbors: Dataframe.t) : Dataframe.t * float =
+let predict (neighbors: Dataframe.t) : Dataframe.t * string =
   let num_neighbors = Dataframe.row_num neighbors in
   let hof_col = Dataframe.get_col_by_name neighbors "HOF" |> Dataframe.unpack_string_series in
-  let num_hofers = Array.sum (module Float) hof_col ~f:(fun h -> if String.(=) h "Y" then 1.0 else 0.0) in
-  (neighbors, num_hofers /. (Float.of_int num_neighbors))
+  let num_hofers = Array.sum (module Int) hof_col ~f:(fun h -> if String.(=) h "Y" then 1 else 0) in
+  let s = Format.sprintf "%d/%d nearest neighbors by peak WAR were inducted into the Hall of Fame.\n\n" num_hofers num_neighbors in
+  (neighbors, s)

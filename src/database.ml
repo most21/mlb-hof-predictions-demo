@@ -345,5 +345,4 @@ let label_hofers (players: Dataframe.t) : Dataframe.t =
   in
   Dataframe.append_col players series "HOF"; 
   Dataframe.iteri_row iter_func players;
-  Dataframe_utils.print_dataframe players;
   players
