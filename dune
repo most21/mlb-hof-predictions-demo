@@ -12,7 +12,9 @@
     src/cli.mli
     src/cli.ml
     src/misc.py
+    tests/tests.ml
     src/dune
+    tests/dune
   )
   (action
     (run zip -R fpse-project-most1.zip %{deps})))

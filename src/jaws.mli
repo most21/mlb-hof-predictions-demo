@@ -1,6 +1,6 @@
 open Owl
 
-type player_peak
+type player_peak = {id: string; war: float}
 
 
 (* Given a dataframe of a player's career data, compute their peak statistics. *)

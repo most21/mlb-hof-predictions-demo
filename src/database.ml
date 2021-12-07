@@ -16,7 +16,6 @@ let exec_non_query_sql ?(indicator=".") (db: Sqlite3.db) (sql: string) =
   | _ -> print_string @@ "Error: " ^ (Rc.to_string result) ^ "    " ^ sql ^ "\n"
 
 let exec_query_sql (db: Sqlite3.db) (sql: string): Dataframe.t option = 
-  (* let df = Dataframe.make @@ Array.of_list cols in *)
   let df = ref None in
   let callback_func (db_row: string option array) (headers: string array) = 
     let pack_string_option item = 
