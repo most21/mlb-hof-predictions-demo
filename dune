@@ -15,6 +15,7 @@
     tests/tests.ml
     src/dune
     tests/dune
+    README.md
   )
   (action
     (run zip -R fpse-project-most1.zip %{deps})))
