@@ -35,9 +35,9 @@ val is_pitcher : string -> (bool, string) result
 (* Get all players *)
 val get_all_players : unit -> Dataframe.t
 
-val get_all_batters : unit -> Dataframe.t
+(* val get_all_batters : unit -> Dataframe.t
 
-val get_all_pitchers : unit -> Dataframe.t
+val get_all_pitchers : unit -> Dataframe.t *)
 
 (* Given a player ID, return that player's data. TODO: return type *)
 val get_player_stats : string -> Dataframe.t
@@ -50,11 +50,9 @@ val get_batter_data_for_jaws : string -> Dataframe.t option
 val get_pitcher_data_for_jaws : string -> Dataframe.t option
 
 
-val get_player_stats_knn : string -> Dataframe.t option
+val get_batter_data_for_knn : unit -> Dataframe.t option
 
-val get_batter_data_for_knn : string -> Dataframe.t option
-
-val get_pitcher_data_for_knn : string -> Dataframe.t option
+val get_pitcher_data_for_knn : unit -> Dataframe.t option
 
 (* 
     Given a player's name, return the ID of that player. 

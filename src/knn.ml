@@ -7,26 +7,51 @@ module Mt = Owl.Dense.Matrix.S
 let num_batter_cols = 19
 (* let pitcher_cols = 27 *)
 
-(* type knn_model = {batter_id_list: string list; batter_matrix: Mt.mat; pitcher_id_list: string list; pitcher_matrix: Mt.mat} *)
+type knn_model = {id_list: string array; matrix: Mt.mat; labels: float array}
 
-(* let build_feature_matrix' () : unit (* Mt.mat *) =
-   let players = Database.get_all_players () in 
-   let fold_func accum row = 
-    List.join [accum; row |> Array.map ~f:Dataframe.elt_to_str |> Array.to_list]
-   in 
-   let iter_func (row: Dataframe.elt array) : unit = 
-    let player_id = Array.get row 0 |> Dataframe.elt_to_str in 
-    let data = Database.get_player_stats_knn player_id 
-    in
-    match data with
-    | Some df -> 
-    | None -> print_string @@ "FAILED on " ^ player_id ^ ". Skipping.\n"
-   in
-   Dataframe.iter_row iter_func players;
-   Dataframe_utils.fold players ~init:[] ~f:fold_func *)
+let build_batter_knn_model ?(matrix_file="") () : knn_model = 
+  match Database.get_batter_data_for_knn () with
+  | Some df -> 
+    begin
+      let labeled_batter_data = Database.label_hofers df in
+      let batter_index = Dataframe.get_col_by_name labeled_batter_data "playerID" |> Dataframe.unpack_string_series in
+      let batter_labels = 
+        Dataframe.get_col_by_name labeled_batter_data "HOF" 
+        |> Dataframe.unpack_string_series 
+        |> Array.map ~f:(fun h -> if String.(=) h "Y" then 1.0 else 0.0)
+      in
+      match matrix_file with
+      | "" -> 
+        begin
+            Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "playerID");
+            Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "HOF");
+            
+            let float_data = labeled_batter_data |> Dataframe.to_rows |> Array.map ~f:(fun arr -> Array.map arr ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x)) in 
+            let flattened = float_data |> Array.to_list |> Array.concat in
+            let data_matrix = Mt.of_array flattened (Array.length batter_index) num_batter_cols in
+            Mt.save ~out:"data/batter_knn_matrix.b" data_matrix;
+            {id_list=batter_index; matrix=data_matrix; labels=batter_labels}
+          end
+      | f -> {id_list=batter_index; matrix=(Mt.load f); labels=batter_labels}      
+    end
+  | None -> failwith "Couldn't get batter data for KNN"
 
 
-let build_feature_matrix () : unit = 
+
+
+      (* Dataframe_utils.print_dataframe labeled_batter_data;
+      print_string "\n";
+      print_string @@ Int.to_string (Array.length batter_index);
+      print_string "\n";
+      print_string @@ Int.to_string (Array.length batter_labels);
+      print_string "\n";
+      Mt.print data_matrix ~max_row:10 ~max_col:10;
+      print_string "\n"; *)
+
+
+
+(*
+let build_feature_matrix' () : unit = 
   let batters = Database.get_all_batters () in 
   let pitchers = Database.get_all_pitchers () in
   let batter_id_list = 
@@ -73,7 +98,7 @@ let build_feature_matrix () : unit =
 (* print_string "\n"; *)
 (* print_string @@ Int.to_string (Array.length all_batter_data); *)
 
-
+*)
 
 
 (* print_string (List.to_string (List.take batter_id_list 20000) ~f:Fn.id);

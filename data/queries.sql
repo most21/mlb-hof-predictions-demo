@@ -259,8 +259,9 @@ ORDER BY ABS(diff) ASC LIMIT 10;
 SELECT 'koufasa01' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF
 
 
--- Get career offensive data for a player. Lean format, ready to be converted to matrix for KNN
+-- Get career offensive data for all players. Lean format, ready to be converted to matrix for KNN
 SELECT 
+    P.playerID,
     sum(B.G) as G, 
     sum(B.AB) as AB, 
     sum(B.R) as R, 
@@ -285,15 +286,16 @@ FROM
     Advanced as A, 
     Batting as B 
 WHERE 
-    P.playerID = 'adamsri03' AND 
     P.bbrefID = A.bbrefID AND 
     A.isPitcher = 'N' AND 
     P.playerID = B.playerID AND 
-    B.yearID = A.yearID AND B.stint = A.stint;
+    B.yearID = A.yearID AND B.stint = A.stint
+GROUP BY P.playerID;
 
 
--- Get career pitching data for a player. Lean format, ready to be converted to matrix for KNN
+-- Get career pitching data for all players. Lean format, ready to be converted to matrix for KNN
 SELECT 
+    Pp.playerID,
     sum(P.W) as W, 
     sum(P.L) as L, 
     sum(P.G) as G, 
@@ -326,8 +328,8 @@ FROM
     Advanced as A, 
     Pitching as P
 WHERE 
-    Pp.playerID = 'scherma01' AND 
     Pp.bbrefID = A.bbrefID AND 
     A.isPitcher = 'Y' AND 
     Pp.playerID = P.playerID AND 
-    P.yearID = A.yearID AND P.stint = A.stint;
+    P.yearID = A.yearID AND P.stint = A.stint
+GROUP BY Pp.playerID;

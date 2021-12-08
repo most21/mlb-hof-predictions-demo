@@ -105,7 +105,7 @@ let get_all_players () : Dataframe.t =
   | Some df -> df
   | None -> failwith "SQL query failed. Could not get all players."
 
-let get_all_batters () : Dataframe.t = 
+(* let get_all_batters () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
   let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'N';" 
   in 
@@ -119,7 +119,7 @@ let get_all_pitchers () : Dataframe.t =
   in 
   match exec_query_sql db sql with
   | Some df -> df
-  | None -> failwith "SQL query failed. Could not get all pitchers."
+  | None -> failwith "SQL query failed. Could not get all pitchers." *)
 
 let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
@@ -363,9 +363,10 @@ let label_hofers (players: Dataframe.t) : Dataframe.t =
   players
 
 
-let get_batter_data_for_knn (player_id: string) : Dataframe.t option = 
+let get_batter_data_for_knn () : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
-  let sql = Format.sprintf "SELECT 
+  let sql = "SELECT 
+      P.playerID as playerID,
       sum(B.G) as G, 
       sum(B.AB) as AB, 
       sum(B.R) as R, 
@@ -390,16 +391,17 @@ let get_batter_data_for_knn (player_id: string) : Dataframe.t option =
       Advanced as A, 
       Batting as B 
     WHERE 
-      P.playerID = '%s' AND 
       P.bbrefID = A.bbrefID AND 
       A.isPitcher = 'N' AND 
       P.playerID = B.playerID AND 
-      B.yearID = A.yearID AND B.stint = A.stint;" player_id
+      B.yearID = A.yearID AND B.stint = A.stint
+    GROUP BY P.playerID;"
   in exec_query_sql db sql
 
-let get_pitcher_data_for_knn (player_id: string) : Dataframe.t option = 
+let get_pitcher_data_for_knn () : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
-  let sql = Format.sprintf "SELECT 
+  let sql = "SELECT 
+      Pp.playerID as playerID,
       sum(P.W) as W, 
       sum(P.L) as L, 
       sum(P.G) as G, 
@@ -432,16 +434,9 @@ let get_pitcher_data_for_knn (player_id: string) : Dataframe.t option =
       Advanced as A, 
       Pitching as P
     WHERE 
-      Pp.playerID = '%s' AND 
       Pp.bbrefID = A.bbrefID AND 
       A.isPitcher = 'Y' AND 
       Pp.playerID = P.playerID AND 
-      P.yearID = A.yearID AND P.stint = A.stint;" player_id
+      P.yearID = A.yearID AND P.stint = A.stint
+    GROUP BY Pp.playerID;"
   in exec_query_sql db sql
-
-
-let get_player_stats_knn (player_id: string) : Dataframe.t option = 
-  match is_pitcher player_id with
-  | Ok false -> get_batter_data_for_knn player_id
-  | Ok true -> get_pitcher_data_for_knn player_id
-  | Error _ -> None
