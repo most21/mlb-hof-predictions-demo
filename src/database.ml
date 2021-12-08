@@ -345,3 +345,87 @@ let label_hofers (players: Dataframe.t) : Dataframe.t =
   Dataframe.append_col players series "HOF"; 
   Dataframe.iteri_row iter_func players;
   players
+
+
+let get_batter_data_for_knn (player_id: string) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+      sum(B.G) as G, 
+      sum(B.AB) as AB, 
+      sum(B.R) as R, 
+      sum(B.H) as H, 
+      sum(B._2B) as _2B, 
+      sum(B._3B) as _3B, 
+      sum(B.HR) as HR, 
+      sum(B.RBI) as RBI, 
+      sum(B.SB) as SB, 
+      sum(B.CS) as CS, 
+      sum(B.BB) as BB, 
+      sum(B.SO) as SO, 
+      sum(B.IBB) as IBB, 
+      sum(B.HBP) as HBP, 
+      sum(B.SH) as SH, 
+      sum(B.SF) as SF, 
+      sum(B.GIDP) as GIDP, 
+      ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1) as wRC_plus, 
+      sum(A.bWAR162) as bWAR162
+    FROM 
+      People as P, 
+      Advanced as A, 
+      Batting as B 
+    WHERE 
+      P.playerID = '%s' AND 
+      P.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'N' AND 
+      P.playerID = B.playerID AND 
+      B.yearID = A.yearID AND B.stint = A.stint;" player_id
+  in exec_query_sql db sql
+
+let get_pitcher_data_for_knn (player_id: string) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+      sum(P.W) as W, 
+      sum(P.L) as L, 
+      sum(P.G) as G, 
+      sum(P.GS) as GS, 
+      sum(P.CG) as CG, 
+      sum(P.SHO) as SHO, 
+      sum(P.SV) as SV, 
+      sum(P.IPouts) as IPouts, 
+      sum(P.H) as H, 
+      sum(P.ER) as ER, 
+      sum(P.HR) as HR, 
+      sum(P.BB) as BB, 
+      sum(P.SO) as SO, 
+      ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3) as BAOpp, 
+      ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2) as ERA, 
+      sum(P.IBB) as IBB, 
+      sum(P.WP) as WP, 
+      sum(P.HBP) as HBP,
+      sum(P.BK) as BK,
+      sum(P.GF) as GF,
+      sum(P.R) as R,
+      sum(P.SH) as SH,
+      sum(P.SF) as SF,
+      sum(P.GIDP) as GIDP,
+      ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1) as ERA_minus,
+      ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1) as xFIP_minus,
+      sum(A.pWAR162) as pWAR162
+    FROM 
+      People as Pp, 
+      Advanced as A, 
+      Pitching as P
+    WHERE 
+      Pp.playerID = '%s' AND 
+      Pp.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'Y' AND 
+      Pp.playerID = P.playerID AND 
+      P.yearID = A.yearID AND P.stint = A.stint;" player_id
+  in exec_query_sql db sql
+
+
+let get_player_stats_knn (player_id: string) : Dataframe.t option = 
+  match is_pitcher player_id with
+  | Ok false -> get_batter_data_for_knn player_id
+  | Ok true -> get_pitcher_data_for_knn player_id
+  | Error _ -> None

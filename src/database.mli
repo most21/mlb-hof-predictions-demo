@@ -45,6 +45,13 @@ val get_batter_data_for_jaws : string -> Dataframe.t option
 
 val get_pitcher_data_for_jaws : string -> Dataframe.t option
 
+
+val get_player_stats_knn : string -> Dataframe.t option
+
+val get_batter_data_for_knn : string -> Dataframe.t option
+
+val get_pitcher_data_for_knn : string -> Dataframe.t option
+
 (* 
     Given a player's name, return the ID of that player. 
     If there are multiple players with the same name, return a dataframe of options. 

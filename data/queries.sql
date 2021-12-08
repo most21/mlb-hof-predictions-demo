@@ -44,7 +44,7 @@ FROM
     Advanced as A, 
     Batting as B 
 WHERE 
-    P.playerID = '%s' AND 
+    P.playerID = 'martijd02' AND 
     P.bbrefID = A.bbrefID AND 
     A.isPitcher = 'N' AND 
     P.playerID = B.playerID AND 
@@ -257,3 +257,77 @@ ORDER BY ABS(diff) ASC LIMIT 10;
 
 -- Check if player is a HOFer (Yes if query returns 1. If 0, then no)
 SELECT 'koufasa01' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF
+
+
+-- Get career offensive data for a player. Lean format, ready to be converted to matrix for KNN
+SELECT 
+    sum(B.G) as G, 
+    sum(B.AB) as AB, 
+    sum(B.R) as R, 
+    sum(B.H) as H, 
+    sum(B._2B) as _2B, 
+    sum(B._3B) as _3B, 
+    sum(B.HR) as HR, 
+    sum(B.RBI) as RBI, 
+    sum(B.SB) as SB, 
+    sum(B.CS) as CS, 
+    sum(B.BB) as BB, 
+    sum(B.SO) as SO, 
+    sum(B.IBB) as IBB, 
+    sum(B.HBP) as HBP, 
+    sum(B.SH) as SH, 
+    sum(B.SF) as SF, 
+    sum(B.GIDP) as GIDP, 
+    ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1) as wRC_plus, 
+    sum(A.bWAR162) as bWAR162
+FROM 
+    People as P, 
+    Advanced as A, 
+    Batting as B 
+WHERE 
+    P.playerID = 'martijd02' AND 
+    P.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'N' AND 
+    P.playerID = B.playerID AND 
+    B.yearID = A.yearID AND B.stint = A.stint;
+
+
+-- Get career pitching data for a player. Lean format, ready to be converted to matrix for KNN
+SELECT 
+    sum(P.W) as W, 
+    sum(P.L) as L, 
+    sum(P.G) as G, 
+    sum(P.GS) as GS, 
+    sum(P.CG) as CG, 
+    sum(P.SHO) as SHO, 
+    sum(P.SV) as SV, 
+    sum(P.IPouts) as IPouts, 
+    sum(P.H) as H, 
+    sum(P.ER) as ER, 
+    sum(P.HR) as HR, 
+    sum(P.BB) as BB, 
+    sum(P.SO) as SO, 
+    ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3) as BAOpp, 
+    ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2) as ERA, 
+    sum(P.IBB) as IBB, 
+    sum(P.WP) as WP, 
+    sum(P.HBP) as HBP,
+    sum(P.BK) as BK,
+    sum(P.GF) as GF,
+    sum(P.R) as R,
+    sum(P.SH) as SH,
+    sum(P.SF) as SF,
+    sum(P.GIDP) as GIDP,
+    ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1) as ERA_minus,
+    ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1) as xFIP_minus,
+    sum(A.pWAR162) as pWAR162
+FROM 
+    People as Pp, 
+    Advanced as A, 
+    Pitching as P
+WHERE 
+    Pp.playerID = 'scherma01' AND 
+    Pp.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'Y' AND 
+    Pp.playerID = P.playerID AND 
+    P.yearID = A.yearID AND P.stint = A.stint;

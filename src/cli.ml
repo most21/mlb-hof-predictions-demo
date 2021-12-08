@@ -118,21 +118,10 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
   | 4 -> 
     begin
-      let df = Jaws.get_nearby_players "scherma01" 10 in 
-      let _, s = Jaws.predict df in
-      Dataframe_utils.print_dataframe df; print_string @@ "\n" ^ s ^ "\n"
+      match Database.get_player_stats_knn "martijd02" with
+      | Some df -> Dataframe_utils.print_dataframe df
+      | None -> print_string "Got None"
     end
-  (* Jaws.add_peak_data_to_db (Jaws.compute_peak_all_players 7) *)
-  (* let _ = Jaws.compute_peak_all_players 7 in () *)
-    (* begin
-      (* print_string "reached here first"; *)
-      (* Jaws.compute_peak_all_players 7; *)
-      let data = Database.get_batter_data_for_jaws "martijd02" 
-      in
-      match data with 
-      | Some df -> let r = Jaws.compute_peak_statistics df 5 in print_string @@ (r.id) ^ "    " ^ (Float.to_string r.war) ^ "\n"
-      | None -> failwith "Test failed"
-    end *)
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
