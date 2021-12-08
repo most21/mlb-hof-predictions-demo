@@ -2,14 +2,14 @@ open Core
 open Owl
 
 (* Alias the module instead of just opening it to preserve readability *)
-module Mt = Owl.Dense.Matrix.S
+module Mt = Dense.Matrix.S
 
 let num_batter_cols = 19
-(* let pitcher_cols = 27 *)
+let num_pitcher_cols = 27
 
-type knn_model = {id_list: string array; matrix: Mt.mat; labels: float array}
+type knn_model = {index: string array; matrix: Mt.mat; labels: float array}
 
-let build_batter_knn_model ?(matrix_file="") () : knn_model = 
+(* let build_batter_knn_model () : knn_model = 
   match Database.get_batter_data_for_knn () with
   | Some df -> 
     begin
@@ -20,33 +20,57 @@ let build_batter_knn_model ?(matrix_file="") () : knn_model =
         |> Dataframe.unpack_string_series 
         |> Array.map ~f:(fun h -> if String.(=) h "Y" then 1.0 else 0.0)
       in
-      match matrix_file with
-      | "" -> 
-        begin
-            Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "playerID");
-            Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "HOF");
-            
-            let float_data = labeled_batter_data |> Dataframe.to_rows |> Array.map ~f:(fun arr -> Array.map arr ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x)) in 
-            let flattened = float_data |> Array.to_list |> Array.concat in
-            let data_matrix = Mt.of_array flattened (Array.length batter_index) num_batter_cols in
-            Mt.save ~out:"data/batter_knn_matrix.b" data_matrix;
-            {id_list=batter_index; matrix=data_matrix; labels=batter_labels}
-          end
-      | f -> {id_list=batter_index; matrix=(Mt.load f); labels=batter_labels}      
+      Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "playerID");
+      Dataframe.remove_col labeled_batter_data (Dataframe.head_to_id labeled_batter_data "HOF");
+
+      let float_data = labeled_batter_data |> Dataframe.to_rows |> Array.map ~f:(fun arr -> Array.map arr ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x)) in 
+      let flattened = float_data |> Array.to_list |> Array.concat in
+      let data_matrix = Mt.of_array flattened (Array.length batter_index) num_batter_cols in
+      {id_list=batter_index; matrix=data_matrix; labels=batter_labels}
     end
-  | None -> failwith "Couldn't get batter data for KNN"
+  | None -> failwith "Couldn't get batter data for KNN" *)
+
+let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: int) : knn_model = 
+  match get_data () with
+  | Some df -> 
+    begin
+      let labeled_data = Database.label_hofers df in
+      let index = Dataframe.get_col_by_name labeled_data "playerID" |> Dataframe.unpack_string_series in
+      let labels = 
+        Dataframe.get_col_by_name labeled_data "HOF" 
+        |> Dataframe.unpack_string_series 
+        |> Array.map ~f:(fun h -> if String.(=) h "Y" then 1.0 else 0.0)
+      in
+      Dataframe.remove_col labeled_data (Dataframe.head_to_id labeled_data "playerID");
+      Dataframe.remove_col labeled_data (Dataframe.head_to_id labeled_data "HOF");
+
+      let convert_to_float_array _ arr = 
+        (* try Array.map arr ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x) with *)
+        (* | Invalid_argument _ -> print_string @@ "Skipping row " ^ (Int.to_string i); [||] *)
+        Array.map arr ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x)
+      in
+      let float_data = labeled_data |> Dataframe.to_rows |> Array.mapi ~f:convert_to_float_array in 
+      let flattened = float_data |> Array.to_list |> Array.concat in
+      let data_matrix = Mt.of_array flattened (Array.length index) num_cols in
+      {index=index; matrix=data_matrix; labels=labels}
+    end
+  | None -> failwith "Couldn't get data for KNN"
 
 
+let build_knn_model ~pitcher:(pitcher: bool) : knn_model = 
+  match pitcher with
+  | true -> build_knn_model_internal (Database.get_pitcher_data_for_knn) num_pitcher_cols
+  | false -> build_knn_model_internal (Database.get_batter_data_for_knn) num_batter_cols
 
 
-      (* Dataframe_utils.print_dataframe labeled_batter_data;
-      print_string "\n";
-      print_string @@ Int.to_string (Array.length batter_index);
-      print_string "\n";
-      print_string @@ Int.to_string (Array.length batter_labels);
-      print_string "\n";
-      Mt.print data_matrix ~max_row:10 ~max_col:10;
-      print_string "\n"; *)
+(* Dataframe_utils.print_dataframe labeled_batter_data;
+   print_string "\n";
+   print_string @@ Int.to_string (Array.length batter_index);
+   print_string "\n";
+   print_string @@ Int.to_string (Array.length batter_labels);
+   print_string "\n";
+   Mt.print data_matrix ~max_row:10 ~max_col:10;
+   print_string "\n"; *)
 
 
 

@@ -279,7 +279,7 @@ SELECT
     sum(B.SH) as SH, 
     sum(B.SF) as SF, 
     sum(B.GIDP) as GIDP, 
-    ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1) as wRC_plus, 
+    IFNULL(ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1), -10000) as wRC_plus, 
     sum(A.bWAR162) as bWAR162
 FROM 
     People as P, 
@@ -309,8 +309,8 @@ SELECT
     sum(P.HR) as HR, 
     sum(P.BB) as BB, 
     sum(P.SO) as SO, 
-    ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3) as BAOpp, 
-    ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2) as ERA, 
+    IFNULL(ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3), -1) as BAOpp, 
+    IFNULL(ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2), -1) as ERA, 
     sum(P.IBB) as IBB, 
     sum(P.WP) as WP, 
     sum(P.HBP) as HBP,
@@ -320,8 +320,8 @@ SELECT
     sum(P.SH) as SH,
     sum(P.SF) as SF,
     sum(P.GIDP) as GIDP,
-    ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1) as ERA_minus,
-    ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1) as xFIP_minus,
+    IFNULL(ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as ERA_minus,
+    IFNULL(ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as xFIP_minus,
     sum(A.pWAR162) as pWAR162
 FROM 
     People as Pp, 

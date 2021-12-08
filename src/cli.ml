@@ -116,7 +116,14 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 1 -> Database.create_schema ()
   | 2 -> Database.populate_database ()
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
-  | 4 -> let _ = Knn.build_batter_knn_model () in ();
+  | 4 -> 
+    begin
+      let model = Knn.build_knn_model ~pitcher:false in
+      print_string @@ Int.to_string (Array.length model.index);
+      print_string "\n";
+      print_string @@ Int.to_string (Array.length model.labels);
+      print_string "\n";
+    end
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
@@ -138,7 +145,7 @@ let run_main_menu_loop () =
 
 
 (* let parse_player_selection (_: string) = 
-  failwith "Unimplemented"
+   failwith "Unimplemented"
 
-let player_disambiguation (_: string) =
-  failwith "Unimplemented" *)
+   let player_disambiguation (_: string) =
+   failwith "Unimplemented" *)
