@@ -9,6 +9,7 @@
     src/jaws.mli
     src/jaws.ml
     src/knn.mli
+    src/knn.ml
     src/cli.mli
     src/cli.ml
     src/misc.py

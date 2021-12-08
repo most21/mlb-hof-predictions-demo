@@ -105,6 +105,22 @@ let get_all_players () : Dataframe.t =
   | Some df -> df
   | None -> failwith "SQL query failed. Could not get all players."
 
+let get_all_batters () : Dataframe.t = 
+  let& db = Sqlite3.db_open db_file in 
+  let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'N';" 
+  in 
+  match exec_query_sql db sql with
+  | Some df -> df
+  | None -> failwith "SQL query failed. Could not get all batters."
+
+let get_all_pitchers () : Dataframe.t = 
+  let& db = Sqlite3.db_open db_file in 
+  let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'Y';" 
+  in 
+  match exec_query_sql db sql with
+  | Some df -> df
+  | None -> failwith "SQL query failed. Could not get all pitchers."
+
 let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
   let sql = Format.sprintf "SELECT 

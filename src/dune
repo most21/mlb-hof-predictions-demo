@@ -4,7 +4,8 @@
     cli
     database
     dataframe_utils
-    jaws)
+    jaws
+    knn)
   (libraries 
     core
     sqlite3

@@ -24,3 +24,6 @@ val unpack_dataframe : Dataframe.t option -> Dataframe.t
 
 (* Given a dataframe and a column name, return a list of strings with all values in the column *)
 val get_column : Dataframe.t -> string -> string list
+
+(* Fold over a dataframe. Surprised this doesn't exist in the Owl library, but here we are. *)
+val fold : Dataframe.t -> init:'accum -> f:('accum -> Dataframe.elt array -> 'accum) -> 'accum

@@ -285,7 +285,7 @@ FROM
     Advanced as A, 
     Batting as B 
 WHERE 
-    P.playerID = 'martijd02' AND 
+    P.playerID = 'adamsri03' AND 
     P.bbrefID = A.bbrefID AND 
     A.isPitcher = 'N' AND 
     P.playerID = B.playerID AND 

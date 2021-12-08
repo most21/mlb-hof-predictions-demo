@@ -19,3 +19,8 @@ let get_column (df: Dataframe.t) (col: string) : string list =
   Dataframe.get_col_by_name df col 
   |> Dataframe.unpack_string_series 
   |> Array.to_list
+
+let fold (df: Dataframe.t) ~init:(init: 'accum) ~f:(f: 'accum -> Dataframe.elt array -> 'accum) : 'accum = 
+  let result = ref init in 
+  Dataframe.iter_row (fun row -> result := f !result row) df; 
+  !result
