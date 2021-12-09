@@ -119,10 +119,11 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 4 -> 
     begin
       let model = Knn.build_knn_model ~pitcher:false in
-      print_string @@ Int.to_string (Array.length model.index);
+      Knn.predict model "ruthba01" ~k:5
+      (* print_string @@ Int.to_string (Array.length model.index);
       print_string "\n";
       print_string @@ Int.to_string (Array.length model.labels);
-      print_string "\n";
+      print_string "\n"; *)
     end
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
 
