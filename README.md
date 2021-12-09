@@ -33,6 +33,11 @@ git clone https://github.com/most21/mlb-hof-predictions.git
 cd mlb-hof-predictions/
 ```
 
+- Set environment variable for the database file. The variable must be called `HOF_DB_FILE` and it must contain the *absolute* path to the `mlb-hof.db` file on your system. This is crucial, otherwise the application cannot be built or tested.
+```shell
+export HOF_DB_FILE="ABSOLUTE_PATH_TO_DB/mlb-hof.db"
+```
+
 - Build the application
 ```shell
 dune build

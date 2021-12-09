@@ -3,4 +3,5 @@
   (libraries
     core
     ounit2
-    hof))
+    hof)
+)

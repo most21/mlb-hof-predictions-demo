@@ -59,11 +59,10 @@ let database_tests =
     ]
 
 (* ################### JAWS tests ################### *)
-let player_data = Database.get_player_stats_jaws "scherma01"
 
 
 let test_compute_peak_statistics _ =   
-  match player_data with
+  match Database.get_player_stats_jaws "scherma01" with
   | Some df -> 
     begin
       let res = Jaws.compute_peak_statistics df 5 in 
@@ -87,7 +86,7 @@ let jaws_tests =
 
 (* ################### Run entire series of tests ################### *)
 let series = "MLB HOF Tests" >::: [
-    database_tests;
+    (* database_tests; *)
     jaws_tests;
   ]
 
