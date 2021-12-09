@@ -10,6 +10,7 @@ let num_pitcher_cols = 27
 
 type knn_model = {index: string array; matrix: Mt.mat; labels: float array}
 type player = {id: string; idx: int; data: float array; label: float}
+type prediction = {label: float; neighbors: Dataframe.t}
 
 
 let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: int) : knn_model = 
@@ -54,21 +55,29 @@ let init_matrix_from_row (row: float array) (num_rows: int) : Mt.mat =
 let get_row (matrix: Mt.mat) (row: int) : float array = 
   Mt.get_slice [[row]] matrix |> Mt.to_array
 
+(* Helper function to get the number of rows in a matrix. *)
 let num_rows (matrix: Mt.mat) : int = 
   match Mt.shape matrix with (dim1, _) -> dim1
 
-let find_target_player_data (player_id: string) (model: knn_model) = 
+(* Given a player ID, find which row of the matrix has the corresponding data. *)
+let find_player_data (player_id: string) (model: knn_model) : player = 
   let idx, _ = Array.findi_exn model.index ~f:(fun _ s -> String.(=) s player_id) in
   let data = get_row model.matrix idx in
   let label = Array.get model.labels idx in
   {id=player_id; idx=idx; data=data; label=label}
 
-let predict (model: knn_model) (player_id: string) ~k:(k: int) : unit = 
-  let target = find_target_player_data player_id model in
+let predict (model: knn_model) (player_id: string) ~k:(k: int) : float = 
+  let target = find_player_data player_id model in
   let target_matrix = init_matrix_from_row (target.data) (num_rows model.matrix) in
   let diff = Mt.sub model.matrix target_matrix in
-  let scores = Mt.l2norm diff ~axis:1 in
-  let _ (* nearest *) = Mt.top scores k |> Array.map ~f:(fun arr -> Array.get arr 0) in ()
+  let dist = Mt.l2norm diff ~axis:1 in
+  let nearest = 
+    Mt.bottom dist (k + 1) 
+    |> (fun l -> Array.slice l 1 (Array.length l)) (* The lowest dist will be the row compared with itself. Need to skip that one *)
+    |> Array.map ~f:(fun arr -> Array.get arr 0) in
+  let nearest_labels = Array.map nearest ~f:(fun i -> Array.get model.labels i) in
+  let score = Array.sum (module Float) nearest_labels ~f:Fn.id in
+  if (Int.of_float score) > (k / 2) then 1.0 else 0.0
   (* TODO: return list of player records? *)
 
 
