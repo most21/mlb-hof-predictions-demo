@@ -118,8 +118,12 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
   | 4 -> 
     begin
-      let model = Knn.build_knn_model ~pitcher:false in
-      Knn.predict model "ruthba01" ~k:5
+      let model = Knn.build_knn_model ~pitcher:true in
+      let pred = Knn.predict model "scherma01" ~k:10 in
+      print_string pred.label;
+      print_string "\n";
+      Dataframe_utils.print_dataframe pred.neighbors;
+      print_string "\n";
       (* print_string @@ Int.to_string (Array.length model.index);
       print_string "\n";
       print_string @@ Int.to_string (Array.length model.labels);
