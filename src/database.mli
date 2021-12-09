@@ -50,6 +50,10 @@ val get_batter_data_for_jaws : string -> Dataframe.t option
 val get_pitcher_data_for_jaws : string -> Dataframe.t option
 
 
+val get_single_batter_data_for_knn : string -> Dataframe.t option
+
+val get_single_pitcher_data_for_knn : string -> Dataframe.t option
+
 val get_batter_data_for_knn : unit -> Dataframe.t option
 
 val get_pitcher_data_for_knn : unit -> Dataframe.t option

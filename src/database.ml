@@ -4,7 +4,7 @@ open Owl
 
 (* Some useful globals *)
 let db_schema_file = "data/schema.sql"
-let db_file = "mlb-hof.db"
+let db_file = Sys.getenv_exn "HOF_DB_FILE"
 let all_table_names = ["People"; "TeamsFranchises"; "AwardsPlayers"; "AwardsSharePlayers"; "Batting"; "BattingPost"; "HallOfFame"; "Pitching"; "PitchingPost"; "SeriesPost"; "Teams"; "Advanced"]
 
 
@@ -106,20 +106,20 @@ let get_all_players () : Dataframe.t =
   | None -> failwith "SQL query failed. Could not get all players."
 
 (* let get_all_batters () : Dataframe.t = 
-  let& db = Sqlite3.db_open db_file in 
-  let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'N';" 
-  in 
-  match exec_query_sql db sql with
-  | Some df -> df
-  | None -> failwith "SQL query failed. Could not get all batters."
+   let& db = Sqlite3.db_open db_file in 
+   let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'N';" 
+   in 
+   match exec_query_sql db sql with
+   | Some df -> df
+   | None -> failwith "SQL query failed. Could not get all batters."
 
-let get_all_pitchers () : Dataframe.t = 
-  let& db = Sqlite3.db_open db_file in 
-  let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'Y';" 
-  in 
-  match exec_query_sql db sql with
-  | Some df -> df
-  | None -> failwith "SQL query failed. Could not get all pitchers." *)
+   let get_all_pitchers () : Dataframe.t = 
+   let& db = Sqlite3.db_open db_file in 
+   let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'Y';" 
+   in 
+   match exec_query_sql db sql with
+   | Some df -> df
+   | None -> failwith "SQL query failed. Could not get all pitchers." *)
 
 let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
@@ -349,6 +349,7 @@ let is_hofer (player_id: string) : (bool, string) result =
     end
   | None -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
 
+(* Label players in a dataframe with HOF candidacy. Note this actually changes the dataframe in place *)
 let label_hofers (players: Dataframe.t) : Dataframe.t = 
   let num_rows = Dataframe.row_num players in
   let series = Array.init num_rows ~f:(fun _ -> "N") |> Dataframe.pack_string_series in
@@ -362,6 +363,84 @@ let label_hofers (players: Dataframe.t) : Dataframe.t =
   Dataframe.iteri_row iter_func players;
   players
 
+
+let get_single_batter_data_for_knn (player_id: string) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+      P.playerID as playerID,
+      sum(B.G) as G, 
+      sum(B.AB) as AB, 
+      sum(B.R) as R, 
+      sum(B.H) as H, 
+      sum(B._2B) as _2B, 
+      sum(B._3B) as _3B, 
+      sum(B.HR) as HR, 
+      sum(B.RBI) as RBI, 
+      sum(B.SB) as SB, 
+      sum(B.CS) as CS, 
+      sum(B.BB) as BB, 
+      sum(B.SO) as SO, 
+      sum(B.IBB) as IBB, 
+      sum(B.HBP) as HBP, 
+      sum(B.SH) as SH, 
+      sum(B.SF) as SF, 
+      sum(B.GIDP) as GIDP, 
+      IFNULL(ROUND(sum(A.wRC_plus * B.G) / sum(B.G), 1), -10000) as wRC_plus, 
+      sum(A.bWAR162) as bWAR162
+    FROM 
+      People as P, 
+      Advanced as A, 
+      Batting as B 
+    WHERE 
+      P.playerID = '%s' AND
+      P.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'N' AND 
+      P.playerID = B.playerID AND 
+      B.yearID = A.yearID AND B.stint = A.stint;" player_id
+  in exec_query_sql db sql
+
+let get_single_pitcher_data_for_knn (player_id: string) : Dataframe.t option = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT 
+      Pp.playerID as playerID,
+      sum(P.W) as W, 
+      sum(P.L) as L, 
+      sum(P.G) as G, 
+      sum(P.GS) as GS, 
+      sum(P.CG) as CG, 
+      sum(P.SHO) as SHO, 
+      sum(P.SV) as SV, 
+      sum(P.IPouts) as IPouts, 
+      sum(P.H) as H, 
+      sum(P.ER) as ER, 
+      sum(P.HR) as HR, 
+      sum(P.BB) as BB, 
+      sum(P.SO) as SO, 
+      IFNULL(ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3), -1) as BAOpp, 
+      IFNULL(ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2), -1) as ERA, 
+      sum(P.IBB) as IBB, 
+      sum(P.WP) as WP, 
+      sum(P.HBP) as HBP,
+      sum(P.BK) as BK,
+      sum(P.GF) as GF,
+      sum(P.R) as R,
+      sum(P.SH) as SH,
+      sum(P.SF) as SF,
+      sum(P.GIDP) as GIDP,
+      IFNULL(ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as ERA_minus,
+      IFNULL(ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as xFIP_minus,
+      sum(A.pWAR162) as pWAR162
+    FROM 
+      People as Pp, 
+      Advanced as A, 
+      Pitching as P
+    WHERE 
+      Pp.playerID = '%s' AND
+      Pp.bbrefID = A.bbrefID AND 
+      A.isPitcher = 'Y' AND 
+      Pp.playerID = P.playerID AND 
+      P.yearID = A.yearID AND P.stint = A.stint;" player_id
+  in exec_query_sql db sql
 
 let get_batter_data_for_knn () : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
@@ -391,6 +470,7 @@ let get_batter_data_for_knn () : Dataframe.t option =
       Advanced as A, 
       Batting as B 
     WHERE 
+      P.finalGame < '2015-12-31' AND
       P.bbrefID = A.bbrefID AND 
       A.isPitcher = 'N' AND 
       P.playerID = B.playerID AND 
@@ -434,6 +514,7 @@ let get_pitcher_data_for_knn () : Dataframe.t option =
       Advanced as A, 
       Pitching as P
     WHERE 
+      Pp.finalGame < '2015-12-31' AND
       Pp.bbrefID = A.bbrefID AND 
       A.isPitcher = 'Y' AND 
       Pp.playerID = P.playerID AND 

@@ -8,12 +8,12 @@ let num_batter_cols = 19
 let num_pitcher_cols = 27
 
 
-type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array}
-type player = {id: string; idx: int; data: float array; label: float}
+type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool}
+type player = {id: string; data: float array; label: float}
 type prediction = {label: string; neighbors: Dataframe.t}
 
 
-let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: int) : knn_model = 
+let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: int) (pitcher: bool) : knn_model = 
   match get_data () with
   | Some df -> 
     begin
@@ -33,15 +33,15 @@ let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: i
       let float_data = labeled_data |> Dataframe.to_rows |> Array.map ~f:convert_to_float_array in 
       let flattened = float_data |> Array.to_list |> Array.concat in
       let data_matrix = Mt.of_array flattened (Array.length index) num_cols in
-      {index=index; matrix=data_matrix; labels=labels; col_names=(Dataframe.get_heads labeled_data)}
+      {index=index; matrix=data_matrix; labels=labels; col_names=(Dataframe.get_heads labeled_data); pitcher=pitcher}
     end
   | None -> failwith "Couldn't get data for KNN"
 
 
 let build_knn_model ~pitcher:(pitcher: bool) : knn_model = 
   match pitcher with
-  | true -> build_knn_model_internal (Database.get_pitcher_data_for_knn) num_pitcher_cols
-  | false -> build_knn_model_internal (Database.get_batter_data_for_knn) num_batter_cols
+  | true -> build_knn_model_internal (Database.get_pitcher_data_for_knn) num_pitcher_cols pitcher
+  | false -> build_knn_model_internal (Database.get_batter_data_for_knn) num_batter_cols pitcher
 
 
 (* Helper function to essentially broadcast a 1-D array into a matrix. *)
@@ -62,10 +62,30 @@ let num_rows (matrix: Mt.mat) : int =
 
 (* Given a player ID, find which row of the matrix has the corresponding data. *)
 let find_player_data (player_id: string) (model: knn_model) : player = 
-  let idx, _ = Array.findi_exn model.index ~f:(fun _ s -> String.(=) s player_id) in
-  let data = get_row model.matrix idx in
-  let label = Array.get model.labels idx in
-  {id=player_id; idx=idx; data=data; label=label}
+  let data_to_model (df_opt: Dataframe.t option) = 
+    match df_opt with
+    | Some df -> 
+      begin
+        let df = Database.label_hofers df in
+        let label = 
+          if String.(=) (Dataframe.get_by_name df 0 "HOF" |> Dataframe.elt_to_str) "Y" then 
+            1.0 
+          else 
+            0.0 
+        in
+        let data = 
+          Dataframe.remove_col df (Dataframe.head_to_id df "playerID"); 
+          Dataframe.remove_col df (Dataframe.head_to_id df "HOF"); (* Remove playerID and HOF from row before casting to float *)
+          let row = Dataframe.get_row df 0 in
+          row |> Array.map ~f:(fun x -> Float.of_string @@ Dataframe.elt_to_str x)
+        in
+        {id=player_id; data=data; label=label}
+      end
+    | None -> failwith @@ "Could not get KNN data for " ^ player_id ^ "\n"
+  in
+  match model.pitcher with
+  | true -> data_to_model (Database.get_single_pitcher_data_for_knn player_id)
+  | false -> data_to_model (Database.get_single_batter_data_for_knn player_id)
 
 (* Construct an output dataframe with the data of the k nearest neighbors. *)
 let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t = 
@@ -106,7 +126,6 @@ let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction =
   let pred = if (Int.of_float score) > (k / 2) then "Y" else "N" in
   let neighbor_df = build_neighbor_df nearest model in
   {label=pred; neighbors=neighbor_df}
-  (* TODO: return list of player records? *)
 
 
   (* print_string target.id;

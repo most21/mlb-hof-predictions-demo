@@ -286,6 +286,7 @@ FROM
     Advanced as A, 
     Batting as B 
 WHERE 
+    P.finalGame < '2015-12-31' AND
     P.bbrefID = A.bbrefID AND 
     A.isPitcher = 'N' AND 
     P.playerID = B.playerID AND 
@@ -328,8 +329,99 @@ FROM
     Advanced as A, 
     Pitching as P
 WHERE 
+    P.finalGame < '2015-12-31' AND
     Pp.bbrefID = A.bbrefID AND 
     A.isPitcher = 'Y' AND 
     Pp.playerID = P.playerID AND 
     P.yearID = A.yearID AND P.stint = A.stint
 GROUP BY Pp.playerID;
+
+
+
+
+
+
+
+
+
+SELECT 
+    Pp.playerID,
+    sum(P.W) as W, 
+    sum(P.L) as L, 
+    sum(P.G) as G, 
+    sum(P.GS) as GS, 
+    sum(P.CG) as CG, 
+    sum(P.SHO) as SHO, 
+    sum(P.SV) as SV, 
+    sum(P.IPouts) as IPouts, 
+    sum(P.H) as H, 
+    sum(P.ER) as ER, 
+    sum(P.HR) as HR, 
+    sum(P.BB) as BB, 
+    sum(P.SO) as SO, 
+    IFNULL(ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3), -1) as BAOpp, 
+    IFNULL(ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2), -1) as ERA, 
+    sum(P.IBB) as IBB, 
+    sum(P.WP) as WP, 
+    sum(P.HBP) as HBP,
+    sum(P.BK) as BK,
+    sum(P.GF) as GF,
+    sum(P.R) as R,
+    sum(P.SH) as SH,
+    sum(P.SF) as SF,
+    sum(P.GIDP) as GIDP,
+    IFNULL(ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as ERA_minus,
+    IFNULL(ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as xFIP_minus,
+    sum(A.pWAR162) as pWAR162
+FROM 
+    People as Pp, 
+    Advanced as A, 
+    Pitching as P
+WHERE 
+    Pp.playerID = 'santajo01' AND
+    Pp.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'Y' AND 
+    Pp.playerID = P.playerID AND 
+    P.yearID = A.yearID AND P.stint = A.stint;
+
+
+
+SELECT 
+    Pp.playerID,
+    P.W as W, 
+    P.L as L, 
+    P.G as G, 
+    P.GS as GS, 
+    P.CG as CG, 
+    P.SHO as SHO, 
+    P.SV as SV, 
+    P.IPouts as IPouts, 
+    P.H as H, 
+    P.ER as ER, 
+    P.HR as HR, 
+    P.BB as BB, 
+    P.SO as SO, 
+    P.BAOpp as BAOpp, 
+    P.ERA as ERA, 
+    P.IBB as IBB, 
+    P.WP as WP, 
+    P.HBP as HBP,
+    P.BK as BK,
+    P.GF as GF,
+    P.R as R,
+    P.SH as SH,
+    P.SF as SF,
+    P.GIDP as GIDP,
+    A.ERA_minus as ERA_minus,
+    A.xFIP_minus as xFIP_minus,
+    A.pWAR162 as pWAR162
+FROM 
+    People as Pp, 
+    Advanced as A, 
+    Pitching as P
+WHERE 
+    Pp.playerID = 'santajo01' AND
+    Pp.bbrefID = A.bbrefID AND 
+    A.isPitcher = 'Y' AND 
+    Pp.playerID = P.playerID AND 
+    P.yearID = A.yearID AND P.stint = A.stint;

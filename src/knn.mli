@@ -4,7 +4,7 @@ open Owl
 module Mt = Owl.Dense.Matrix.S
 
 
-type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array}
+type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool}
 type prediction = {label: string; neighbors: Dataframe.t}
 
 (* Builds a KNN model for either pitchers (true) or hitters (false) as specified via argument. *)
