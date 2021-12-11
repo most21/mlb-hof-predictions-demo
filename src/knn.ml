@@ -4,6 +4,7 @@ open Owl
 (* Alias the module instead of just opening it to preserve readability *)
 module Mt = Dense.Matrix.S
 
+
 let num_batter_cols = 8
 let num_pitcher_cols = 9
 
@@ -91,7 +92,6 @@ let find_player_data (player_id: string) (model: knn_model) : player =
   | false -> data_to_model (Database.get_single_batter_data_for_knn player_id)
 
 (* Construct an output dataframe with the data of the k nearest neighbors. *)
-(* TODO: need to fix this to get data from the database, not the matrix, since the matrix values are now standardized. *)
 let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t = 
   let df = Dataframe.make model.col_names in
   let add_row_to_df idx = 
