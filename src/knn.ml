@@ -4,8 +4,8 @@ open Owl
 (* Alias the module instead of just opening it to preserve readability *)
 module Mt = Dense.Matrix.S
 
-let num_batter_cols = 19
-let num_pitcher_cols = 27
+let num_batter_cols = 8
+let num_pitcher_cols = 10
 
 
 type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool}
@@ -33,7 +33,8 @@ let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: i
       let float_data = labeled_data |> Dataframe.to_rows |> Array.map ~f:convert_to_float_array in 
       let flattened = float_data |> Array.to_list |> Array.concat in
       let data_matrix = Mt.of_array flattened (Array.length index) num_cols in
-      {index=index; matrix=data_matrix; labels=labels; col_names=(Dataframe.get_heads labeled_data); pitcher=pitcher}
+      let centered_data = Mt.div (Mt.sub data_matrix (Mt.mean data_matrix ~axis:0)) (Mt.std data_matrix ~axis:0) in
+      {index=index; matrix=centered_data; labels=labels; col_names=(Dataframe.get_heads labeled_data); pitcher=pitcher}
     end
   | None -> failwith "Couldn't get data for KNN"
 
