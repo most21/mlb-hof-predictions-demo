@@ -400,7 +400,6 @@ let get_single_pitcher_data_for_knn (player_id: string) : Dataframe.t option =
       IFNULL(ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3), -1) as BAOpp, 
       IFNULL(ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2), -1) as ERA, 
       IFNULL(ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as ERA_minus,
-      IFNULL(ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as xFIP_minus,
       sum(A.pWAR162) as pWAR162
     FROM 
       People as Pp, 
@@ -451,7 +450,6 @@ let get_pitcher_data_for_knn () : Dataframe.t option =
       IFNULL(ROUND(sum(P.BAOpp * P.IPouts) / sum(P.IPouts), 3), -1) as BAOpp, 
       IFNULL(ROUND(sum(P.ERA * P.IPouts) / sum(P.IPouts), 2), -1) as ERA, 
       IFNULL(ROUND(sum(A.ERA_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as ERA_minus,
-      IFNULL(ROUND(sum(A.xFIP_minus * P.IPouts) / sum(P.IPouts), 1), -10000) as xFIP_minus,
       sum(A.pWAR162) as pWAR162
     FROM 
       People as Pp, 

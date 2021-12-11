@@ -5,10 +5,10 @@ open Owl
 module Mt = Dense.Matrix.S
 
 let num_batter_cols = 8
-let num_pitcher_cols = 10
+let num_pitcher_cols = 9
 
 
-type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool}
+type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool; mean: Mt.mat; std: Mt.mat}
 type player = {id: string; data: float array; label: float}
 type prediction = {label: string; neighbors: Dataframe.t}
 
@@ -33,8 +33,10 @@ let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: i
       let float_data = labeled_data |> Dataframe.to_rows |> Array.map ~f:convert_to_float_array in 
       let flattened = float_data |> Array.to_list |> Array.concat in
       let data_matrix = Mt.of_array flattened (Array.length index) num_cols in
-      let centered_data = Mt.div (Mt.sub data_matrix (Mt.mean data_matrix ~axis:0)) (Mt.std data_matrix ~axis:0) in
-      {index=index; matrix=centered_data; labels=labels; col_names=(Dataframe.get_heads labeled_data); pitcher=pitcher}
+      let mean = Mt.mean data_matrix ~axis:0 in
+      let std = Mt.std data_matrix ~axis:0 in
+      let centered_data = Mt.div (Mt.sub data_matrix mean) std in
+      {index=index; matrix=centered_data; labels=labels; col_names=(Dataframe.get_heads labeled_data); pitcher=pitcher; mean=mean; std=std}
     end
   | None -> failwith "Couldn't get data for KNN"
 
@@ -52,16 +54,16 @@ let init_matrix_from_row (row: float array) (num_rows: int) : Mt.mat =
   List.iter row_idx ~f:(fun i -> Array.iteri row ~f:(fun j x -> Mt.set matrix i j x));
   matrix
 
-(* Helper function to extract a single row of a matrix and return it as an OCaml array. *)
+(* Helper function to extract a single row of a matrix and return it as an OCaml array.
 let get_row (matrix: Mt.mat) (row: int) : float array = 
-  Mt.get_slice [[row]] matrix |> Mt.to_array
+  Mt.get_slice [[row]] matrix |> Mt.to_array *)
 
 (* Helper function to get the number of rows in a matrix. *)
 let num_rows (matrix: Mt.mat) : int = 
   match Mt.shape matrix with (dim1, _) -> dim1
 
 
-(* Given a player ID, find which row of the matrix has the corresponding data. *)
+(* Given a player ID, get the data needed for the KNN algorithm. *)
 let find_player_data (player_id: string) (model: knn_model) : player = 
   let data_to_model (df_opt: Dataframe.t option) = 
     match df_opt with
@@ -89,10 +91,12 @@ let find_player_data (player_id: string) (model: knn_model) : player =
   | false -> data_to_model (Database.get_single_batter_data_for_knn player_id)
 
 (* Construct an output dataframe with the data of the k nearest neighbors. *)
+(* TODO: need to fix this to get data from the database, not the matrix, since the matrix values are now standardized. *)
 let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t = 
   let df = Dataframe.make model.col_names in
   let add_row_to_df idx = 
-    get_row model.matrix idx
+    let player_data = find_player_data (Array.get model.index idx) model in
+    player_data.data
     |> Array.map ~f:Dataframe.pack_float
     |> fun r -> Dataframe.append_row df r
   in
@@ -115,11 +119,12 @@ let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t =
 let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction = 
   let target = find_player_data player_id model in
   let target_matrix = init_matrix_from_row (target.data) (num_rows model.matrix) in
-  let diff = Mt.sub model.matrix target_matrix in
+  let target_centered = Mt.div (Mt.sub target_matrix model.mean) model.std in
+  let diff = Mt.sub model.matrix target_centered in
   let dist = Mt.l2norm diff ~axis:1 in
-  let nearest = 
-    Mt.bottom dist (k + 1) (* Take the smallest k+1 distances *)
-    |> (fun l -> Array.slice l 1 (Array.length l)) (* The lowest dist will be the row compared with itself. Need to skip that one *)
+  let nearest = (* TODO: need to chop off the first one if it's the same as the target, else keep *)
+    Mt.bottom dist (k) (* Take the smallest k+1 distances *)
+    (* |> (fun l -> Array.slice l 1 (Array.length l)) The lowest dist will be the row compared with itself. Need to skip that one *)
     |> Array.map ~f:(fun arr -> Array.get arr 0) (* The bottom func returns pairs, but we only need the row indices, not cols (there's only 1 col anyway) *)
   in
   let nearest_labels = Array.map nearest ~f:(fun i -> Array.get model.labels i) in
