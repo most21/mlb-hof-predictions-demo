@@ -60,20 +60,28 @@ let database_tests =
 
 (* ################### JAWS tests ################### *)
 
-
-let test_compute_peak_statistics _ =   
-  match Database.get_player_stats_jaws "scherma01" with
-  | Some df -> 
-    begin
-      let res = Jaws.compute_peak_statistics df 5 in 
-      assert_equal res.id "scherma01"; assert_equal (Float.round_decimal ~decimal_digits:3 res.war) 29.412
-    end
-  | None -> failwith "ERROR - JAWS:test_compute_peak_statistics"
+let test_compute_peak_statistics _ = 
+  let test player_id true_war peak_size = 
+    match Database.get_player_stats_jaws player_id with
+    | Some df -> 
+      begin
+        let res = Jaws.compute_peak_statistics df peak_size in 
+        assert_equal res.id player_id;
+        assert_equal (Float.round_decimal ~decimal_digits:3 res.war) true_war
+      end
+    | None -> failwith "ERROR - JAWS:test_compute_peak_statistics"
+  in
+  test "scherma01" 35.622 5;
+  test "troutmi01" 20.41 2
 
 let test_predict_jaws _ = 
-  match Database.query_nearby_players_jaws "scherma01" 10 with
-  | Some df -> assert_equal 10 (Dataframe.row_num df)
-  | None -> failwith "ERROR - JAWS:test_predict_jaws"
+  let test player_id num_neighbors = 
+    match Database.query_nearby_players_jaws player_id num_neighbors with
+    | Some df -> assert_equal num_neighbors (Dataframe.row_num df)
+    | None -> failwith "ERROR - JAWS:test_predict_jaws"
+  in
+  test "scherma01" 10;
+  test "troutmi01" 5
 
 let jaws_tests = 
   "JAWS Tests" 
