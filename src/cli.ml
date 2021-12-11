@@ -1,6 +1,5 @@
 open Core
 
-(* TODO: Add Player option eventually *)
 type input = MenuOption of int | Player of string | Invalid of string
 
 let main_menu_choices = [1; 2; 3; 4; 42]

@@ -39,7 +39,7 @@ val get_all_players : unit -> Dataframe.t
 
 val get_all_pitchers : unit -> Dataframe.t *)
 
-(* Given a player ID, return that player's data. TODO: return type *)
+(* Given a player ID, return that player's data. *)
 val get_player_stats : string -> Dataframe.t
 
 (* Specialized version that gets only the data necessary to compute peak WAR for JAWS *)
