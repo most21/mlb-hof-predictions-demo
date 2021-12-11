@@ -18,7 +18,7 @@ The goal of this project is to create a tool that can predict future Major Leagu
 3. Build a command-line tool to interact with the above functionality. Users should be able to view a player’s data, make a prediction for a player using each method, and visualize how close this player is to other players.
 
 ## Progress
-As of 12/6/2021, the database has been built and the peak-WAR system (2a) has been implemented. The command line has been built out to support existing functionality.
+As of 12/10/2021, the database has been built, the peak-WAR system (2a), and the KNN model (2b) have been implemented, though further glue code is required. The command line has been built out to support existing functionality.
 
 ## Requirements
 - OCaml 4.12.0
