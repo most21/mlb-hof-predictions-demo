@@ -9,7 +9,7 @@ type player = {id: string; data: float array; label: float}
 type prediction = {label: string; neighbors: Dataframe.t}
 
 (* Return a KNN model for either pitchers (true) or hitters (false) as specified via argument. *)
-val build_knn_model : pitcher:bool -> knn_model
+val build_knn_model : pitcher:bool -> limit:int -> knn_model
 
 (* 
     This does the heavy lifting of constructing a KNN model for pitchers or hitters. 

@@ -2,6 +2,8 @@
   (name tests)
   (libraries
     core
+    owl
+    sqlite3
     ounit2
     hof)
 )

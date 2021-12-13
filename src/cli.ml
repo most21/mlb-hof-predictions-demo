@@ -117,7 +117,7 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
   | 3 -> print_string "Leaving the database admin and returning to the main menu....\n"; quit := true
   | 4 -> 
     begin
-      let model = Knn.build_knn_model ~pitcher:false in
+      let model = Knn.build_knn_model ~pitcher:false ~limit:(-1) in
       let pred = Knn.predict model "murphda05" ~k:10 in
       print_string pred.label;
       print_string "\n";

@@ -54,9 +54,9 @@ val get_single_batter_data_for_knn : string -> Dataframe.t option
 
 val get_single_pitcher_data_for_knn : string -> Dataframe.t option
 
-val get_batter_data_for_knn : unit -> Dataframe.t option
-
-val get_pitcher_data_for_knn : unit -> Dataframe.t option
+(* Limit the size of the data by passing in an integer number of players to use, or -1 to use all. *)
+val get_batter_data_for_knn : ?num_players:int -> unit -> Dataframe.t option
+val get_pitcher_data_for_knn : ?num_players:int -> unit -> Dataframe.t option
 
 (* 
     Given a player's name, return the ID of that player. 

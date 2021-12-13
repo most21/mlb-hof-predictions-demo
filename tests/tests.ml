@@ -91,11 +91,66 @@ let jaws_tests =
       "Predict (JAWS)" >:: test_predict_jaws;
     ]
 
+(* ################### KNN tests ################### *)
+module Mt = Owl.Dense.Matrix.S
+
+let test_build_knn_model _ = 
+  let test (model: Knn.knn_model) true_limit true_cols true_is_pitcher = 
+    assert_equal true_limit (Array.length model.index);
+    assert_equal true_limit (Array.length model.labels);
+    assert_equal true_cols (Array.length model.col_names);
+    assert_equal true_is_pitcher model.pitcher;
+    assert_equal (true_limit, true_cols) (Mt.shape model.matrix);
+  in
+  let pitcher_model = Knn.build_knn_model ~pitcher:true ~limit:100 in test pitcher_model 100 9 true;
+  let batter_model = Knn.build_knn_model ~pitcher:false ~limit:100 in test batter_model 100 8 false
+
+let test_find_player_data _ = 
+  let pitcher_model = Knn.build_knn_model ~pitcher:true ~limit:100 in
+  let batter_model = Knn.build_knn_model ~pitcher:false ~limit:100 in
+  let test (result: Knn.player) true_player_id true_label true_num_cols = 
+    assert_equal true_player_id result.id;
+    assert_equal true_label result.label;
+    assert_equal true_num_cols (Array.length result.data);
+  in 
+  test (Knn.find_player_data "scherma01" pitcher_model) "scherma01" 0.0 9; 
+  test (Knn.find_player_data "ruthba01" batter_model) "ruthba01" 1.0 8
+
+let test_build_neighbor_df _ = 
+  let pitcher_model = Knn.build_knn_model ~pitcher:true ~limit:100 in
+  let batter_model = Knn.build_knn_model ~pitcher:false ~limit:100 in
+  let test (result: Dataframe.t) true_num_results true_num_cols = 
+    assert_equal (true_num_results, true_num_cols) (Dataframe.shape result);
+  in
+  test (Knn.build_neighbor_df [|0; 1; 2|] pitcher_model) 3 (9 + 2);
+  test (Knn.build_neighbor_df [|0; 1; 2; 5; 8; 12; 55|] batter_model) 7 (8 + 2)
+
+let test_predict_knn _ = 
+  let pitcher_model = Knn.build_knn_model ~pitcher:true ~limit:100 in
+  let batter_model = Knn.build_knn_model ~pitcher:false ~limit:100 in
+  let test (result: Knn.prediction) true_num_neighbors true_num_cols = 
+    assert_equal true ((String.(=) "Y" result.label) || (String.(=) "N" result.label));
+    assert_equal (true_num_neighbors, true_num_cols) (Dataframe.shape result.neighbors)
+  in
+  test (Knn.predict pitcher_model "scherma01" ~k:5) 5 (9 + 2);
+  test (Knn.predict batter_model "troutmi01" ~k:12) 12 (8 + 2)
+
+
+let knn_tests = 
+  "KNN Tests" 
+  >: test_list
+    [
+      "Build KNN model" >:: test_build_knn_model;
+      "Get 1 player's KNN data" >:: test_find_player_data;
+      "Build output neighbor dataframe" >:: test_build_neighbor_df;
+      "Predict (KNN)" >:: test_predict_knn;
+    ]
 
 (* ################### Run entire series of tests ################### *)
 let series = "MLB HOF Tests" >::: [
     (* database_tests; *)
     jaws_tests;
+    knn_tests;
   ]
 
 let () = run_test_tt_main series

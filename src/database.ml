@@ -413,9 +413,9 @@ let get_single_pitcher_data_for_knn (player_id: string) : Dataframe.t option =
       P.yearID = A.yearID AND P.stint = A.stint;" player_id
   in exec_query_sql db sql
 
-let get_batter_data_for_knn () : Dataframe.t option = 
+let get_batter_data_for_knn ?num_players:(num_players=(-1)) () : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
-  let sql = "SELECT 
+  let sql = Format.sprintf "SELECT 
       P.playerID,
       sum(B.G) as G, 
       sum(B.R) as R, 
@@ -435,12 +435,12 @@ let get_batter_data_for_knn () : Dataframe.t option =
       A.isPitcher = 'N' AND 
       P.playerID = B.playerID AND 
       B.yearID = A.yearID AND B.stint = A.stint
-    GROUP BY P.playerID;"
+    GROUP BY P.playerID LIMIT %d;" num_players
   in exec_query_sql db sql
 
-let get_pitcher_data_for_knn () : Dataframe.t option = 
+let get_pitcher_data_for_knn ?num_players:(num_players=(-1)) () : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
-  let sql = "SELECT 
+  let sql = Format.sprintf "SELECT 
       Pp.playerID,
       sum(P.W) as W, 
       sum(P.SV) as SV, 
@@ -461,5 +461,5 @@ let get_pitcher_data_for_knn () : Dataframe.t option =
       A.isPitcher = 'Y' AND 
       Pp.playerID = P.playerID AND 
       P.yearID = A.yearID AND P.stint = A.stint
-    GROUP BY Pp.playerID;"
+    GROUP BY Pp.playerID LIMIT %d;" num_players
   in exec_query_sql db sql

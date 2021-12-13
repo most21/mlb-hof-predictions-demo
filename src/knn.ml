@@ -42,10 +42,10 @@ let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: i
   | None -> failwith "Couldn't get data for KNN"
 
 
-let build_knn_model ~pitcher:(pitcher: bool) : knn_model = 
+let build_knn_model ~pitcher:(pitcher: bool) ~limit:(limit: int) : knn_model = 
   match pitcher with
-  | true -> build_knn_model_internal (Database.get_pitcher_data_for_knn) num_pitcher_cols pitcher
-  | false -> build_knn_model_internal (Database.get_batter_data_for_knn) num_batter_cols pitcher
+  | true -> build_knn_model_internal (Database.get_pitcher_data_for_knn ~num_players:limit) num_pitcher_cols pitcher
+  | false -> build_knn_model_internal (Database.get_batter_data_for_knn ~num_players:limit) num_batter_cols pitcher
 
 
 (* Helper function to essentially broadcast a 1-D array into a matrix. *)
