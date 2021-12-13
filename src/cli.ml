@@ -124,17 +124,28 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
       Dataframe_utils.print_dataframe pred.neighbors;
       print_string "\n";
       (* print_string @@ Int.to_string (Array.length model.index);
-      print_string "\n";
-      print_string @@ Int.to_string (Array.length model.labels);
-      print_string "\n"; *)
+         print_string "\n";
+         print_string @@ Int.to_string (Array.length model.labels);
+         print_string "\n"; *)
     end
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
+
+let knn_driver id = 
+  match Database.is_pitcher id with
+  | Ok p -> 
+    begin
+      let model = Knn.build_knn_model ~pitcher:p ~limit:(-1) in 
+      let pred = Knn.predict model id ~k:10 in
+      Dataframe_utils.print_dataframe pred.neighbors;
+      print_string @@ "Prediction: " ^ pred.label ^ "\n"
+    end
+  | Error s -> print_string s
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
   | 1 -> get_player_input quit (fun id -> Dataframe_utils.print_dataframe @@ Database.get_player_stats id)
   | 2 -> get_player_input quit (fun id -> match Jaws.predict (Jaws.get_nearby_players id 10) with (n_df, s) -> Dataframe_utils.print_dataframe n_df; print_string s)
-  | 3 -> failwith "TODO: HOF predictions with KNN"
+  | 3 -> get_player_input quit (fun id -> knn_driver id)
   | 4 -> print_string "Goodbye.\n"; quit := true
   | 42 -> menu_choice_loop print_db_menu db_admin_menu_choices perform_db_menu_selection ~prompt_prefix:"db"
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."

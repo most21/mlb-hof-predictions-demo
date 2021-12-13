@@ -171,3 +171,8 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+# Bisect coverage files
+_coverage/
+*.coverage

@@ -10,6 +10,7 @@
     core
     sqlite3
     owl)
+  (preprocess (pps bisect_ppx))
 )
 
 (executable

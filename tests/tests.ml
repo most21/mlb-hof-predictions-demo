@@ -74,20 +74,23 @@ let test_compute_peak_statistics _ =
   test "scherma01" 35.622 5;
   test "troutmi01" 20.41 2
 
-let test_predict_jaws _ = 
+let test_get_nearby_players _ = 
   let test player_id num_neighbors = 
-    match Database.query_nearby_players_jaws player_id num_neighbors with
-    | Some df -> assert_equal num_neighbors (Dataframe.row_num df)
-    | None -> failwith "ERROR - JAWS:test_predict_jaws"
+    let df = Jaws.get_nearby_players player_id num_neighbors in
+    assert_equal num_neighbors (Dataframe.row_num df)
   in
   test "scherma01" 10;
   test "troutmi01" 5
+
+let test_predict_jaws _ = 
+  assert_equal false false
 
 let jaws_tests = 
   "JAWS Tests" 
   >: test_list
     [
       "Compute peak stats" >:: test_compute_peak_statistics;
+      "Get nearby players" >:: test_get_nearby_players;
       "Predict (JAWS)" >:: test_predict_jaws;
     ]
 
