@@ -246,7 +246,7 @@ let is_hofer (player_id: string) : (bool, string) result =
       match r with
       | "1" -> Ok true
       | "0" -> Ok false
-      | _ -> Error "Could not determine if player is in the Hall of Fame."
+      | _ -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
     end
   | None -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
 

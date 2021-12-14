@@ -6,52 +6,33 @@ open Owl
 open Hof
 
 (* ################### Database tests ################### *)
-let test_exec_sql_query _ = 
-  assert_equal true true
-
-let test_rows_to_string _ = 
-  assert_equal true true
 
 let test_is_pitcher _ = 
   assert_equal (Ok false) @@ Database.is_pitcher "troutmi01";
   assert_equal (Ok true) @@ Database.is_pitcher "scherma01";
+  assert_equal (Ok false) @@ Database.is_pitcher "cobbty01";
+  assert_equal (Ok true) @@ Database.is_pitcher "koufasa01";
   assert_equal (Error "Could not determine if player is pitcher.\n") @@ Database.is_pitcher "fakeID01"
 
-let test_get_all_players _ = 
-  assert_equal true true
-
-let test_get_player_stats _ = 
-  assert_equal true true
-
 let test_find_player_id _ = 
-  assert_equal true true
-
-let test_get_player_stats_jaws _ = 
-  assert_equal true true
-
-let test_query_nearby_players_jaws _ = 
-  assert_equal true true
+  assert_equal (Ok (1, "troutmi01")) @@ Database.find_player_id "Mike Trout";
+  assert_equal (Ok (1, "scherma01")) @@ Database.find_player_id "Max Scherzer";
+  assert_equal (Error "Could not find player with name 'Joe Shmoe'\n") @@ Database.find_player_id "Joe Shmoe"
 
 let test_is_hofer _ =
-  assert_equal true true
+  assert_equal (Ok false) @@ Database.is_hofer "troutmi01";
+  assert_equal (Ok false) @@ Database.is_hofer "scherma01";
+  assert_equal (Ok true) @@ Database.is_hofer "cobbty01";
+  assert_equal (Ok true) @@ Database.is_hofer "koufasa01"
 
-let test_label_hofers _ =
-  assert_equal true true
 
 let database_tests = 
   "Database Tests"
   >: test_list
     [
-      "Exec SQL query" >:: test_exec_sql_query;
-      "Convert Dataframe rows to string" >:: test_rows_to_string;
       "Is Pitcher?" >:: test_is_pitcher;
-      "Get all players" >:: test_get_all_players;
-      "Get player stats" >:: test_get_player_stats;
       "Find player ID" >:: test_find_player_id;
-      "Get player stats (JAWS)" >:: test_get_player_stats_jaws;
-      "Query nearby players (JAWS)" >:: test_query_nearby_players_jaws;
       "Is HOFer?" >:: test_is_hofer;
-      "Label HOFers" >:: test_label_hofers;
     ]
 
 (* ################### JAWS tests ################### *)
