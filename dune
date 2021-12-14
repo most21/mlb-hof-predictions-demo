@@ -16,7 +16,10 @@
     tests/tests.ml
     src/dune
     tests/dune
+    dune
+    dune-project
     README.md
+    mlb-hof.opam
   )
   (action
     (run zip -R fpse-project-most1.zip %{deps})))

@@ -34,7 +34,4 @@ val build_neighbor_df : int array -> knn_model -> Dataframe.t
     Generate predictions for each example in the provided feature matrix based on the k nearest neighbors. 
     Output is a vector of probabilities for each player.
 *)
-val predict : knn_model -> string -> k:int -> prediction (*float array*)
-
-(* Given a player ID, get the HOF prediction score for that player *)
-(* val get_player_prediction : string -> float *)
+val predict : knn_model -> string -> k:int -> prediction

@@ -88,6 +88,7 @@ let find_player_data (player_id: string) (model: knn_model) : player =
   | true -> data_to_model (Database.get_single_pitcher_data_for_knn player_id)
   | false -> data_to_model (Database.get_single_batter_data_for_knn player_id)
 
+
 (* Construct an output dataframe with the data of the k nearest neighbors. *)
 let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t = 
   let df = Dataframe.make model.col_names in
@@ -112,6 +113,7 @@ let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t =
   Dataframe.append_col df label_series "HOF";
   df
 
+(* Helper function to format the output of a single player's KNN data (post-prediction) *)
 let format_player_output (player_id: string) (model: knn_model) (pred: string) : Dataframe.t = 
   let p = find_player_data player_id model in
   let df = Dataframe.make model.col_names in
@@ -130,9 +132,8 @@ let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction =
   let target_centered = Mt.div (Mt.sub target_matrix model.mean) model.std in
   let diff = Mt.sub model.matrix target_centered in
   let dist = Mt.l2norm diff ~axis:1 in
-  let nearest = (* TODO: need to chop off the first one if it's the same as the target, else keep *)
-    Mt.bottom dist (k) (* Take the smallest k+1 distances *)
-    (* |> (fun l -> Array.slice l 1 (Array.length l)) The lowest dist will be the row compared with itself. Need to skip that one *)
+  let nearest = 
+    Mt.bottom dist (k) (* Take the smallest k distances *)
     |> Array.map ~f:(fun arr -> Array.get arr 0) (* The bottom func returns pairs, but we only need the row indices, not cols (there's only 1 col anyway) *)
   in
   let nearest_labels = Array.map nearest ~f:(fun i -> Array.get model.labels i) in

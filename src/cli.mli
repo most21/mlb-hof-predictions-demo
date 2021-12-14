@@ -25,12 +25,3 @@ val perform_main_menu_selection : int -> bool ref -> unit
 
 (* Function that handles the user selection when disambiguating players with the same name. *)
 val perform_player_disambiguation_selection : int -> bool ref -> unit
-
-(* 
-    Validate/parse user input for the player being queried. 
-    Takes the name of the player as typed by the user and finds the proper playerID for querying the database.
-*)
-(* val parse_player_selection : string -> string *)
-
-(* Given the name of a player that is not unique, list all players and prompt the user to clarify. *)
-(* val player_disambiguation : string -> string *)
