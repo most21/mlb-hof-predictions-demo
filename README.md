@@ -64,6 +64,11 @@ All data is publicly available and was downloaded in .csv format. Some light cle
 ## Directory Structure
 
 - `src/` contains all source code (Ocaml, Python)
+   - `src/cli.*` files have the relevant code for the command line interface
+   - `src/dataframe_utils.*` files have some handy utility functions for working with Owl Dataframes
+   - `src/database.*` files contain the many functions that interact with the database directly, including data getter functions for the different analytical methods.
+   - `src/jaws.*` files contain the logic for the peak-WAR (JAWS) prediction method
+   - `src/knn.*` files contain the logic for the kNN prediction method  
 - `data/` contains the clean and raw data files (.csv), the database schema, and a doc containing some important database queries (SQL)
 - `tests/` contains the test files for the project
 - The database file used for SQLite is called `mlb-hof.db`
