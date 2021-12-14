@@ -54,7 +54,7 @@ dune exec ./src/main.exe
 dune test
 ```
 
-Players to experiment with: Max Scherzer, Mike Trout, Sandy Koufax, Clayton Kershaw, and more!
+Players to experiment with: Max Scherzer, Mike Trout, Sandy Koufax, Clayton Kershaw, Albert Pujols, and more!
 
 ## Data Sources
 All data is publicly available and was downloaded in .csv format. Some light cleaning was done in Python (e.g. to resolve latin alphabet characters and handle missing values). This code can be found in `src/misc.py`.
