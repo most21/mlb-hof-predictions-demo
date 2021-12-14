@@ -36,6 +36,7 @@ let exec_query_sql (db: Sqlite3.db) (sql: string): Dataframe.t option =
 
 
 (* ################### Database maintenance functions ################### *)
+[@@@coverage off]
 let drop_db_tables (db: Sqlite3.db) (tables: string list)= 
   let sql_template = "DROP TABLE IF EXISTS "
   in List.iter tables ~f:(fun t -> exec_non_query_sql db (sql_template ^ t ^ ";"))
@@ -76,7 +77,7 @@ let populate_database () =
   in
   List.iter all_table_names ~f:iter_func;
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
-
+[@@@coverage on]
 
 (* ################### General utility functions ################### *)
 let is_pitcher (player_id: string) : (bool, string) result = 

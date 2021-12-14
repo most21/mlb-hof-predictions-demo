@@ -5,12 +5,6 @@ open Owl
 
 open Hof
 
-(* ################### Some important globals ################### *)
-(* let db_file = "mlb-hof.db" *)
-(* let db = Sqlite3.db_open db_file *)
-(* let sql_small = "select playerID, nameFirst, nameLast, debut, finalGame from People LIMIT 5;" *)
-(* let sql_error = "select * from Pple;" (* Mis-spelled table name *) *)
-
 (* ################### Database tests ################### *)
 let test_exec_sql_query _ = 
   assert_equal true true
@@ -83,7 +77,13 @@ let test_get_nearby_players _ =
   test "troutmi01" 5
 
 let test_predict_jaws _ = 
-  assert_equal false false
+  let test player_id num_neighbors = 
+    let df = Jaws.get_nearby_players player_id num_neighbors in
+    let (neighbor_df, _) = Jaws.predict df in
+    assert_equal num_neighbors (Dataframe.row_num neighbor_df)
+  in
+  test "scherma01" 10;
+  test "troutmi01" 5
 
 let jaws_tests = 
   "JAWS Tests" 

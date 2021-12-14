@@ -55,9 +55,6 @@ let init_matrix_from_row (row: float array) (num_rows: int) : Mt.mat =
   List.iter row_idx ~f:(fun i -> Array.iteri row ~f:(fun j x -> Mt.set matrix i j x));
   matrix
 
-(* Helper function to extract a single row of a matrix and return it as an OCaml array.
-let get_row (matrix: Mt.mat) (row: int) : float array = 
-  Mt.get_slice [[row]] matrix |> Mt.to_array *)
 
 (* Helper function to get the number of rows in a matrix. *)
 let num_rows (matrix: Mt.mat) : int = 
@@ -144,13 +141,3 @@ let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction =
   let neighbor_df = build_neighbor_df nearest model in
   let player_df = format_player_output player_id model pred in
   {label=pred; neighbors=neighbor_df; player=player_df}
-
-
-  (* print_string target.id;
-  print_string "\n";
-  print_string @@ Int.to_string target.idx;
-  print_string "\n";
-  print_string (target.data |> Array.to_list |> List.to_string ~f:Float.to_string);
-  print_string "\n";
-  print_string @@ Float.to_string target.label;
-  print_string "\n"; *)
