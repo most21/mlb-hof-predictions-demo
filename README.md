@@ -1,6 +1,7 @@
 # mlb-hof-predictions
 
-Repository: https://github.com/most21/mlb-hof-predictions
+Repository: https://github.com/most21/mlb-hof-predictions  
+Presentation slide deck: https://docs.google.com/presentation/d/13epTXxoR_98UWV5akfgNNTISKj_POZzSUw2n1vHUCCA/edit?usp=sharing
 
 ## Purpose
 The goal of this project is to create a tool that can predict future Major League Baseball (MLB) Hall of Fame (HOF) inductees. The project can be broken down into three main phases with one stretch phase:

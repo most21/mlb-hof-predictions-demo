@@ -20,6 +20,7 @@
     dune-project
     README.md
     mlb-hof.opam
+    mlb-hof.db
   )
   (action
     (run zip -R fpse-project-most1.zip %{deps})))
