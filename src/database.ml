@@ -79,6 +79,7 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 [@@@coverage on]
 
+
 (* ################### General utility functions ################### *)
 let is_pitcher (player_id: string) : (bool, string) result = 
   let& db = Sqlite3.db_open db_file in
@@ -92,9 +93,9 @@ let is_pitcher (player_id: string) : (bool, string) result =
       match r with
       | "Y" -> Ok true
       | "N" -> Ok false
-      | _ -> Error "Could not determine if player is pitcher."
+      | _ -> Error "Could not determine if player is pitcher.\n"
     end
-  | None -> Error ("SQL query failed: Could not determine if " ^ player_id ^ " is a pitcher.\n")
+  | None -> Error ("Could not determine if player is pitcher.\n")
 
 let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 

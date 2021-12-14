@@ -2,7 +2,7 @@ open Core
 
 type input = MenuOption of int | Player of string | Invalid of string
 
-let main_menu_choices = [1; 2; 3; 4; 42]
+let main_menu_choices = [0; 1; 2; 3; 4; 42]
 let db_admin_menu_choices = [1; 2; 3; 4]
 
 
@@ -17,6 +17,7 @@ let print_player_input_prompt () =
 let print_main_menu () = 
   print_string "+======================================================================+\n";
   print_string "+ Welcome to the MLB Hall of Fame prediction engine. Select an option: +\n";
+  print_string "+     0 - Print main menu                                              +\n";
   print_string "+     1 - View player data                                             +\n";
   print_string "+     2 - Predict HOF candidacy for a player with JAWS                 +\n";
   print_string "+     3 - Predict HOF candidacy for a player with KNN                  +\n";
@@ -130,7 +131,7 @@ let knn_driver id =
   | Ok p -> 
     begin
       let model = Knn.build_knn_model ~pitcher:p ~limit:(-1) in 
-      let pred = Knn.predict model id ~k:10 in
+      let pred = Knn.predict model id ~k:7 in
       print_string "\nNearest neighbors:";
       Dataframe_utils.print_dataframe pred.neighbors;
       Dataframe_utils.print_dataframe pred.player;
@@ -140,6 +141,7 @@ let knn_driver id =
 
 let perform_main_menu_selection (choice: int) (quit: bool ref) = 
   match choice with
+  | 0 -> print_main_menu ()
   | 1 -> get_player_input quit (fun id -> Dataframe_utils.print_dataframe @@ Database.get_player_stats id)
   | 2 -> get_player_input quit (fun id -> match Jaws.predict (Jaws.get_nearby_players id 10) with (n_df, s) -> Dataframe_utils.print_dataframe n_df; print_string s)
   | 3 -> get_player_input quit (fun id -> knn_driver id)

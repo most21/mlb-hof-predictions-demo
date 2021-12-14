@@ -13,7 +13,9 @@ let test_rows_to_string _ =
   assert_equal true true
 
 let test_is_pitcher _ = 
-  assert_equal true true
+  assert_equal (Ok false) @@ Database.is_pitcher "troutmi01";
+  assert_equal (Ok true) @@ Database.is_pitcher "scherma01";
+  assert_equal (Error "Could not determine if player is pitcher.\n") @@ Database.is_pitcher "fakeID01"
 
 let test_get_all_players _ = 
   assert_equal true true
@@ -66,7 +68,8 @@ let test_compute_peak_statistics _ =
     | None -> failwith "ERROR - JAWS:test_compute_peak_statistics"
   in
   test "scherma01" 35.622 5;
-  test "troutmi01" 20.41 2
+  test "troutmi01" 20.41 2;
+  assert_raises (Failure "ERROR - JAWS:test_compute_peak_statistics") (fun () -> test "fakeID01" 6.12 10)
 
 let test_get_nearby_players _ = 
   let test player_id num_neighbors = 
@@ -74,7 +77,8 @@ let test_get_nearby_players _ =
     assert_equal num_neighbors (Dataframe.row_num df)
   in
   test "scherma01" 10;
-  test "troutmi01" 5
+  test "troutmi01" 5;
+  assert_raises (Failure "Could not find JAWS neighbors") (fun () -> Jaws.get_nearby_players "fakeID01" 10)
 
 let test_predict_jaws _ = 
   let test player_id num_neighbors = 
@@ -151,7 +155,7 @@ let knn_tests =
 
 (* ################### Run entire series of tests ################### *)
 let series = "MLB HOF Tests" >::: [
-    (* database_tests; *)
+    database_tests;
     jaws_tests;
     knn_tests;
   ]
