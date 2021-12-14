@@ -6,9 +6,9 @@ let main_menu_choices = [1; 2; 3; 4; 42]
 let db_admin_menu_choices = [1; 2; 3; 4]
 
 
-let perform_player_disambiguation_selection (choice: int) (quit: bool ref) = 
-  print_string @@ "You selected " ^ (Int.to_string choice) ^ "\n";
-  quit := true
+let perform_player_disambiguation_selection (_: int) (_: bool ref) = 
+  print_string @@ "\nUh oh! It looks like there is more than one player in the database with that name. Unfortunately, we can't handle this case at this time. Please try again.\n"
+  (* quit := true *)
 
 
 let print_player_input_prompt () = 
@@ -56,7 +56,6 @@ let parse_menu_choice (s: string) (choices: int list): input =
     end
   | _ -> Invalid s
 
-(* TODO: Delete "You selected..." once I know the CLI definitely works *)
 let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices: int list) (selection_handler: int -> bool ref -> unit) = 
   print_menu ();
   let quit = ref false in
@@ -67,7 +66,7 @@ let menu_choice_loop ?(prompt_prefix="main") (print_menu: unit -> unit) (choices
     | Some s -> 
       begin
         match parse_menu_choice s choices with
-        | MenuOption opt -> print_string @@ "You selected " ^ (Int.to_string opt) ^ "\n"; selection_handler opt quit
+        | MenuOption opt -> selection_handler opt quit
         | Player _ -> failwith "Not possible for parse_menu_choice to return a Player type"
         | Invalid y -> print_string @@ "Invalid input: " ^ y ^ "\n";
       end
@@ -91,17 +90,16 @@ let get_player_input (quit: bool ref) (do_next: string -> unit) =
       match parse_player_input s with
       | Player p -> 
         begin
-          print_string @@ "You selected " ^ p ^ "\n"; (* TODO: delete this later *)
           match Database.find_player_id p with
           | Error s -> print_string s
           | Ok (matches, player_id) when matches = 1 -> do_next player_id
-          | Ok (matches, df_str) when matches > 1 -> 
-            begin
+          | Ok (matches, _) when matches > 1 -> perform_player_disambiguation_selection (-1) quit
+            (* begin
               print_string (Format.sprintf "Found multiple players with name '%s'. Enter row number to select a player.\n" p); 
               print_string @@ df_str ^ "\n";
               let choices = List.range ~start:`inclusive ~stop:`exclusive 0 matches
               in menu_choice_loop ~prompt_prefix:"row #" (fun () -> ()) choices perform_player_disambiguation_selection
-            end
+            end *)
           | _ -> failwith "Unreachable case"
         end
       | Invalid y -> print_string @@ "Invalid input: " ^ y ^ "\n";
@@ -123,12 +121,9 @@ let perform_db_menu_selection (choice: int) (quit: bool ref) =
       print_string "\n";
       Dataframe_utils.print_dataframe pred.neighbors;
       print_string "\n";
-      (* print_string @@ Int.to_string (Array.length model.index);
-         print_string "\n";
-         print_string @@ Int.to_string (Array.length model.labels);
-         print_string "\n"; *)
     end
   | _ -> failwith "Unreachable case: user menu choice should already be validated at this point."
+
 
 let knn_driver id = 
   match Database.is_pitcher id with
@@ -136,7 +131,9 @@ let knn_driver id =
     begin
       let model = Knn.build_knn_model ~pitcher:p ~limit:(-1) in 
       let pred = Knn.predict model id ~k:10 in
+      print_string "\nNearest neighbors:";
       Dataframe_utils.print_dataframe pred.neighbors;
+      Dataframe_utils.print_dataframe pred.player;
       print_string @@ "Prediction: " ^ pred.label ^ "\n"
     end
   | Error s -> print_string s

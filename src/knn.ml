@@ -11,7 +11,7 @@ let num_pitcher_cols = 9
 
 type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool; mean: Mt.mat; std: Mt.mat}
 type player = {id: string; data: float array; label: float}
-type prediction = {label: string; neighbors: Dataframe.t}
+type prediction = {label: string; neighbors: Dataframe.t; player: Dataframe.t}
 
 
 let build_knn_model_internal (get_data: unit -> Dataframe.t option) (num_cols: int) (pitcher: bool) : knn_model = 
@@ -115,6 +115,17 @@ let build_neighbor_df (neighbors: int array) (model: knn_model): Dataframe.t =
   Dataframe.append_col df label_series "HOF";
   df
 
+let format_player_output (player_id: string) (model: knn_model) (pred: string) : Dataframe.t = 
+  let p = find_player_data player_id model in
+  let df = Dataframe.make model.col_names in
+  let cur_hof = if Float.(=) p.label 1.0 then "Y" else "N" in
+  p.data |> Array.map ~f:Dataframe.pack_float |> fun r -> Dataframe.append_row df r; (* Add player data as 1 row *)
+  Dataframe.insert_col df 0 "playerID" (Dataframe.pack_string_series [|p.id|]); (* Add playerID *)
+  Dataframe.append_col df (Dataframe.pack_string_series [|cur_hof|]) "Current HOF Status";
+  Dataframe.append_col df (Dataframe.pack_string_series [|pred|]) "Predicted HOF Status";
+  df
+
+
 (* Classify a player using the KNN algorithm. *)
 let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction = 
   let target = find_player_data player_id model in
@@ -131,7 +142,8 @@ let predict (model: knn_model) (player_id: string) ~k:(k: int) : prediction =
   let score = Array.sum (module Float) nearest_labels ~f:Fn.id in
   let pred = if (Int.of_float score) > (k / 2) then "Y" else "N" in
   let neighbor_df = build_neighbor_df nearest model in
-  {label=pred; neighbors=neighbor_df}
+  let player_df = format_player_output player_id model pred in
+  {label=pred; neighbors=neighbor_df; player=player_df}
 
 
   (* print_string target.id;

@@ -8,6 +8,7 @@ let db_file = Sys.getenv_exn "HOF_DB_FILE"
 let all_table_names = ["People"; "TeamsFranchises"; "AwardsPlayers"; "AwardsSharePlayers"; "Batting"; "BattingPost"; "HallOfFame"; "Pitching"; "PitchingPost"; "SeriesPost"; "Teams"; "Advanced"]
 
 
+(* ################### Main query helper functions ################### *)
 let exec_non_query_sql ?(indicator=".") (db: Sqlite3.db) (sql: string) = 
   let result = Sqlite3.exec_no_headers db sql ~cb:(fun _ -> ()) 
   in 
@@ -34,6 +35,7 @@ let exec_query_sql (db: Sqlite3.db) (sql: string): Dataframe.t option =
   | _ -> None
 
 
+(* ################### Database maintenance functions ################### *)
 let drop_db_tables (db: Sqlite3.db) (tables: string list)= 
   let sql_template = "DROP TABLE IF EXISTS "
   in List.iter tables ~f:(fun t -> exec_non_query_sql db (sql_template ^ t ^ ";"))
@@ -51,23 +53,19 @@ let create_schema () =
       List.iter l ~f:(fun sql -> exec_non_query_sql db sql); 
       print_string "Loaded database schema!\n")
 
-
-let row_to_string (row: Dataframe.elt array) : string = 
-  row
-  |> Array.fold ~init:[] ~f:(fun accum elt -> (let s = Dataframe.elt_to_str elt in accum @ [s]))
-  |> List.map ~f:(fun s -> "\"" ^ s ^ "\"")
-  |> String.concat ~sep:", "
-
-
-
 let insert_rows (table: string) (data: Dataframe.t) (db: Sqlite3.db) : unit = 
+  let row_to_string (row: Dataframe.elt array) : string = 
+    row
+    |> Array.fold ~init:[] ~f:(fun accum elt -> (let s = Dataframe.elt_to_str elt in accum @ [s]))
+    |> List.map ~f:(fun s -> "\"" ^ s ^ "\"")
+    |> String.concat ~sep:", "
+  in
   let sql = Format.sprintf "INSERT INTO %s VALUES (%s);" table
   in Dataframe.iter_row (fun r -> exec_non_query_sql db (sql @@ row_to_string r) ~indicator:"") data
 
 let insert_rows_wrapper (table: string) (data: Dataframe.t) : unit = 
   let& db = Sqlite3.db_open db_file 
   in insert_rows table data db
-
 
 let populate_database () = 
   let& db = Sqlite3.db_open db_file 
@@ -80,6 +78,7 @@ let populate_database () =
   print_string @@ "\nPopulated " ^ Int.to_string (List.length all_table_names) ^ " tables.\n"
 
 
+(* ################### General utility functions ################### *)
 let is_pitcher (player_id: string) : (bool, string) result = 
   let& db = Sqlite3.db_open db_file in
   let sql = Format.sprintf "SELECT DISTINCT P.playerID, A.isPitcher FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND P.playerID = '%s';" player_id 
@@ -96,7 +95,6 @@ let is_pitcher (player_id: string) : (bool, string) result =
     end
   | None -> Error ("SQL query failed: Could not determine if " ^ player_id ^ " is a pitcher.\n")
 
-
 let get_all_players () : Dataframe.t = 
   let& db = Sqlite3.db_open db_file in 
   let sql = "SELECT playerID, nameFirst, nameLast FROM People;" 
@@ -104,22 +102,6 @@ let get_all_players () : Dataframe.t =
   match exec_query_sql db sql with
   | Some df -> df
   | None -> failwith "SQL query failed. Could not get all players."
-
-(* let get_all_batters () : Dataframe.t = 
-   let& db = Sqlite3.db_open db_file in 
-   let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'N';" 
-   in 
-   match exec_query_sql db sql with
-   | Some df -> df
-   | None -> failwith "SQL query failed. Could not get all batters."
-
-   let get_all_pitchers () : Dataframe.t = 
-   let& db = Sqlite3.db_open db_file in 
-   let sql = "SELECT DISTINCT P.playerID, P.nameFirst, P.nameLast FROM People as P, Advanced as A WHERE P.bbrefID = A.bbrefID AND A.isPitcher = 'Y';" 
-   in 
-   match exec_query_sql db sql with
-   | Some df -> df
-   | None -> failwith "SQL query failed. Could not get all pitchers." *)
 
 let get_batter_data (player_id: string) : Dataframe.t =
   let& db = Sqlite3.db_open db_file in 
@@ -244,15 +226,44 @@ let find_player_id (player_name: string) : (int * string, string) result =
   | Some df -> 
     begin 
       match Dataframe.row_num df with
-      | 0 -> Error (Format.sprintf "Could not find player with name '%s'" player_name)
+      | 0 -> Error (Format.sprintf "Could not find player with name '%s'\n" player_name)
       | 1 -> Ok (1, Dataframe.get_by_name df 0 "playerID" |> Dataframe.elt_to_str)
       | num_options -> Ok (num_options, Dataframe_utils.dataframe_to_string df)
     end
-  | None -> failwith "SQL query failed."
+  | None -> Error (Format.sprintf "Could not find player with name '%s'\n" player_name)
+
+let is_hofer (player_id: string) : (bool, string) result = 
+  let& db = Sqlite3.db_open db_file in
+  let sql = Format.sprintf "SELECT '%s' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF" player_id
+  in 
+  match exec_query_sql db sql with
+  | Some df -> 
+    begin
+      let r = Dataframe.get_by_name df 0 "HOF" |> Dataframe.elt_to_str
+      in
+      match r with
+      | "1" -> Ok true
+      | "0" -> Ok false
+      | _ -> Error "Could not determine if player is in the Hall of Fame."
+    end
+  | None -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
+
+(* Note this actually changes the dataframe provided via argument in-place *)
+let label_hofers (players: Dataframe.t) : Dataframe.t = 
+  let num_rows = Dataframe.row_num players in
+  let series = Array.init num_rows ~f:(fun _ -> "N") |> Dataframe.pack_string_series in
+  let iter_func (i: int) (row: Dataframe.elt array) = 
+    let player_id = Array.get row (Dataframe.head_to_id players "playerID") |> Dataframe.elt_to_str in
+    match is_hofer player_id with
+    | Ok true -> Dataframe.set_by_name players i "HOF" (Dataframe.pack_string "Y")
+    | _ -> ()
+  in
+  Dataframe.append_col players series "HOF"; 
+  Dataframe.iteri_row iter_func players;
+  players
 
 
-
-
+(* ################### JAWS-specific functions ################### *)
 let get_batter_data_for_jaws (player_id: string) : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
   let sql = Format.sprintf "SELECT 
@@ -296,13 +307,11 @@ let get_pitcher_data_for_jaws (player_id: string) : Dataframe.t option =
     GROUP BY P.yearID;" player_id
   in exec_query_sql db sql
 
-
 let get_player_stats_jaws (player_id: string) : Dataframe.t option = 
   match is_pitcher player_id with
   | Ok false -> get_batter_data_for_jaws player_id
   | Ok true -> get_pitcher_data_for_jaws player_id
   | Error _ -> None
-
 
 let get_neighbors_jaws (player_id: string) (pitcher: bool) (num_neighbors: int): Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
@@ -333,37 +342,8 @@ let query_nearby_players_jaws (player_id: string) (num_neighbors: int): Datafram
   | Ok true -> get_neighbors_jaws player_id true num_neighbors
   | Error _ -> None
 
-let is_hofer (player_id: string) : (bool, string) result = 
-  let& db = Sqlite3.db_open db_file in
-  let sql = Format.sprintf "SELECT '%s' IN (SELECT playerID FROM HallOfFame WHERE inducted = 'Y') as HOF" player_id
-  in 
-  match exec_query_sql db sql with
-  | Some df -> 
-    begin
-      let r = Dataframe.get_by_name df 0 "HOF" |> Dataframe.elt_to_str
-      in
-      match r with
-      | "1" -> Ok true
-      | "0" -> Ok false
-      | _ -> Error "Could not determine if player is in the Hall of Fame."
-    end
-  | None -> Error ("Could not find HOF status of " ^ player_id ^ "\n")
 
-(* Label players in a dataframe with HOF candidacy. Note this actually changes the dataframe in place *)
-let label_hofers (players: Dataframe.t) : Dataframe.t = 
-  let num_rows = Dataframe.row_num players in
-  let series = Array.init num_rows ~f:(fun _ -> "N") |> Dataframe.pack_string_series in
-  let iter_func (i: int) (row: Dataframe.elt array) = 
-    let player_id = Array.get row (Dataframe.head_to_id players "playerID") |> Dataframe.elt_to_str in
-    match is_hofer player_id with
-    | Ok true -> Dataframe.set_by_name players i "HOF" (Dataframe.pack_string "Y")
-    | _ -> ()
-  in
-  Dataframe.append_col players series "HOF"; 
-  Dataframe.iteri_row iter_func players;
-  players
-
-
+(* ################### KNN-specific functions ################### *)
 let get_single_batter_data_for_knn (player_id: string) : Dataframe.t option = 
   let& db = Sqlite3.db_open db_file in
   let sql = Format.sprintf "SELECT 
@@ -463,3 +443,6 @@ let get_pitcher_data_for_knn ?num_players:(num_players=(-1)) () : Dataframe.t op
       P.yearID = A.yearID AND P.stint = A.stint
     GROUP BY Pp.playerID LIMIT %d;" num_players
   in exec_query_sql db sql
+
+
+

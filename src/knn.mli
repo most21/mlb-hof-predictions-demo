@@ -6,7 +6,7 @@ module Mt = Owl.Dense.Matrix.S
 
 type knn_model = {index: string array; matrix: Mt.mat; labels: float array; col_names: string array; pitcher: bool; mean: Mt.mat; std: Mt.mat}
 type player = {id: string; data: float array; label: float}
-type prediction = {label: string; neighbors: Dataframe.t}
+type prediction = {label: string; neighbors: Dataframe.t; player: Dataframe.t}
 
 (* Return a KNN model for either pitchers (true) or hitters (false) as specified via argument. *)
 val build_knn_model : pitcher:bool -> limit:int -> knn_model
