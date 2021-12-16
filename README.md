@@ -1,4 +1,4 @@
-# mlb-hof-predictions
+# mlb-hof-predictions-demo
 
 Presentation slide deck: https://docs.google.com/presentation/d/13epTXxoR_98UWV5akfgNNTISKj_POZzSUw2n1vHUCCA/edit?usp=sharing
 
