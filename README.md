@@ -1,6 +1,5 @@
 # mlb-hof-predictions
 
-Repository: https://github.com/most21/mlb-hof-predictions  
 Presentation slide deck: https://docs.google.com/presentation/d/13epTXxoR_98UWV5akfgNNTISKj_POZzSUw2n1vHUCCA/edit?usp=sharing
 
 ## Purpose
@@ -8,13 +7,11 @@ The goal of this project is to create a tool that can predict future Major Leagu
 
 1. Create a database of baseball statistics that specifically focuses on HOF players.
 
-2. Develop methods to predict whether a player will be inducted into the HOF. The project will attempt three different algorithms:
+2. Develop methods to predict whether a player will be inducted into the HOF. The project will attempt two different algorithms:
 
    a. A peak-WAR (WAR is a common statistic to measure value) estimation system that extracts a player’s best years and compares them to existing HOFers. This is similar to Jay Jaffe’s [JAWS](https://www.mlb.com/glossary/miscellaneous/jaws) system. This method is not a probabilistic model and thus only provides a soft indication of a player's HOF worthiness.
 
    b.   A K-Nearest-Neighbors (KNN) model that predicts HOF candidacy for players, either based on their entire career statistics or their peak-WAR data from the previous part.
-
-   c.   (STRETCH GOAL) A neural network autoencoder that will be used to create dense vector embeddings for each player which can then be compared using cosine similarity.
 
 3. Build a command-line tool to interact with the above functionality. Users should be able to view a player’s data, make a prediction for a player using each method, and visualize how close this player is to other players.
 
